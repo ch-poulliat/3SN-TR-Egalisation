@@ -1,0 +1,2 @@
+# Egalisation linéaire temporelle
+

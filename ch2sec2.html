@@ -1,0 +1,946 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.2. Egalisation linéaire avec critère ZF &#8212; Egalisation temporelle et fréquentielle</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/tabs.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Bibliographie" href="biblio.html" />
+    <link rel="prev" title="2.1. Principes" href="ch2sec1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/N7solo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Egalisation temporelle et fréquentielle</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenue au cours d’Egalisation.
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch1intro.html">
+   1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec1.html">
+     1.1. Représentation bande base des signaux sur canal sélectif en fréquence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec2.html">
+     1.2. Exemple : Canaux à trajets multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec3.html">
+     1.3. Fitrage adapté et blanchiment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec4.html">
+     1.4. Filtrage adapté partiel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch2intro.html">
+   2. Egalisation linéaire temporelle
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec1.html">
+     2.1. Principes
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.2. Egalisation linéaire avec critère ZF
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="biblio.html">
+   3. Bibliographie
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch2sec2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/ch2sec2.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principe">
+   2.2.1. Principe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#egalisation-zf-structure-sans-contrainte">
+   2.2.2. Egalisation ZF - structure sans contrainte
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#egalisation-zf-structure-contrainte">
+   2.2.3. Egalisation ZF - structure contrainte
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zf-partiel-par-inversion-directe">
+     2.2.3.1. ZF partiel par inversion directe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zf-partiel-par-methode-des-moindres-carres">
+     2.2.3.2. ZF partiel par méthode des moindres carrés
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resume-structure-egaliseur-zf">
+     2.2.3.3. Résumé Structure Egaliseur ZF
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-en-presence-de-bruit">
+   2.2.4. Analyse en présence de bruit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#egaliseur-zf-sans-contrainte">
+     2.2.4.1. Egaliseur ZF sans contrainte
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#egalisation-a-structure-contrainte">
+     2.2.4.2. Egalisation à structure contrainte
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resume-bruit-zf">
+     2.2.4.3. Résumé Bruit ZF
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Egalisation linéaire avec critère ZF</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principe">
+   2.2.1. Principe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#egalisation-zf-structure-sans-contrainte">
+   2.2.2. Egalisation ZF - structure sans contrainte
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#egalisation-zf-structure-contrainte">
+   2.2.3. Egalisation ZF - structure contrainte
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zf-partiel-par-inversion-directe">
+     2.2.3.1. ZF partiel par inversion directe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zf-partiel-par-methode-des-moindres-carres">
+     2.2.3.2. ZF partiel par méthode des moindres carrés
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resume-structure-egaliseur-zf">
+     2.2.3.3. Résumé Structure Egaliseur ZF
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-en-presence-de-bruit">
+   2.2.4. Analyse en présence de bruit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#egaliseur-zf-sans-contrainte">
+     2.2.4.1. Egaliseur ZF sans contrainte
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#egalisation-a-structure-contrainte">
+     2.2.4.2. Egalisation à structure contrainte
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resume-bruit-zf">
+     2.2.4.3. Résumé Bruit ZF
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="egalisation-lineaire-avec-critere-zf">
+<h1><span class="section-number">2.2. </span>Egalisation linéaire avec critère ZF<a class="headerlink" href="#egalisation-lineaire-avec-critere-zf" title="Permalink to this headline">#</a></h1>
+<div class="section" id="principe">
+<h2><span class="section-number">2.2.1. </span>Principe<a class="headerlink" href="#principe" title="Permalink to this headline">#</a></h2>
+<p>Le but de cette technique est d’imposer l’IES nulle en absence de bruit.
+Le principe est assez simple. Supposons la réponse impulsionnelle <span class="math notranslate nohighlight">\(h[n]\)</span>
+connue, ou de manière équivalente sa transformée en <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>
+définie comme <span class="math notranslate nohighlight">\(\overline{h}(z)=\mathcal{Z}\{h[n]\}=\sum_k h[k] z^{-k}\)</span>.
+Alors en utilisant <span class="math notranslate nohighlight">\(\overline{w}(z)=1/\overline{h}(z)\)</span>, un calcul
+immédiat dans le domaine transformé montre que</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\hat{x}&amp;=w[n]*y[n] \nonumber \\
+&amp;= s[n] +w[n]*b[n]
+\end{aligned}\end{split}\]</div>
+<p>Dans ce cas le signal estimé est bien le signal <span class="math notranslate nohighlight">\(s[n]\)</span>
+sans IES. On obtient donc un système sans interférence avec un bruit
+additif. C’est ce bruit qui limitera beaucoup les performances du
+système dans le cadre de canaux très sélectifs (existence de <em>“zéros”</em>
+du canal <span class="math notranslate nohighlight">\(h[n]\)</span>).</p>
+</div>
+<div class="section" id="egalisation-zf-structure-sans-contrainte">
+<h2><span class="section-number">2.2.2. </span>Egalisation ZF - structure sans contrainte<a class="headerlink" href="#egalisation-zf-structure-sans-contrainte" title="Permalink to this headline">#</a></h2>
+<p>On considère dans un premier temps qu’il n’y a pas de contrainte sur la
+structure de l’égaliseur (réponse impulsionnelle éventuellement
+infinie). Le signal reçu est alors donné par</p>
+<div class="math notranslate nohighlight">
+\[y[n]=h[n]*s[n]+b[n]=\sum_{k=0}^{L-1}{h[k] s[n-k]+b[n]}\]</div>
+<p>Après filtrage par <span class="math notranslate nohighlight">\(w[n]\)</span>, on obtient</p>
+<div class="math notranslate nohighlight">
+\[\hat{s}[n]=w[n]*h[n]*s[n]+w*b[n]\]</div>
+<p>Dans le domaine transformé en <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>, on aura donc</p>
+<div class="math notranslate nohighlight">
+\[\overline{\hat{s}}(z)=\overline{w}(z)\overline{h}(z)\overline{s}(z)+\overline{w}(z)\overline{b}(z)\]</div>
+<p>La fonction de transfert associée au système complet est donnée par</p>
+<div class="math notranslate nohighlight">
+\[T(z)=\mathcal{Z}\{w[n]*h[n]\}=\overline{w}(z)\overline{h}(z)\]</div>
+<p>et correspond au transfert quand le signal est non bruité. Par définition,
+un égaliseur sera dît <em>zero-forcing</em> si on a</p>
+<div class="math notranslate nohighlight">
+\[T(z) = z^{-d},\]</div>
+<p>soit de manière équivalente dans le domaine fréquentiel</p>
+<div class="math notranslate nohighlight">
+\[\overset{\circ}{T}(\nu)= T(z=e^{+i 2 \pi \nu})= e^{-i 2 \pi \nu d},\]</div>
+<p>et dans le domaine dans le domaine temporel</p>
+<div class="math notranslate nohighlight">
+\[w[n]*h[n]=\delta(n-d), \forall n \in \mathbb{Z}\]</div>
+<p>On cherche donc <span class="math notranslate nohighlight">\(\overline{w}(z)\)</span> tel que le transfert global soit un délai pur, ie. pas
+de distorsion en gain (<span class="math notranslate nohighlight">\(|\overset{\circ}{T}(\nu)|=1\)</span>) et une distorsion
+en phase linéaire. On remarque également que le bruit n’influe par sur
+le critère qui ne dépend que de <span class="math notranslate nohighlight">\(T(z)\)</span>. Si <span class="math notranslate nohighlight">\(\overline{w}(z)\)</span> vérifie la
+relation précédente, on obtient alors</p>
+<div class="math notranslate nohighlight">
+\[\hat{s}[n]=s[n-d]+w[n]*b[n].\]</div>
+<p>Le critère ZF nous impose</p>
+<div class="math notranslate nohighlight">
+\[\overline{w}(z) \overline{h}(z)=z^{-d}.\]</div>
+<p>On en déduit donc</p>
+<div class="math notranslate nohighlight">
+\[\overline{w}(z)=\frac{z^{-d}}{\overline{h}(z)}.\]</div>
+<p>Dans le domaine de Fourier, on obtient</p>
+<div class="math notranslate nohighlight">
+\[\overset{\circ}{w}(\nu)=\frac{e^{-i 2 \pi \nu d}}{\overset{\circ}{h}(\nu)}.\]</div>
+<p>En pratique, <span class="math notranslate nohighlight">\(\overline{h}(z)\)</span> sera associé à un filtre de type FIR.
+Dans ce cadre, son inverse est un filtre de type IIR. Il se pose alors
+la question de la stabilité du filtre. En effet, les “zéros du canal”
+(ie. <span class="math notranslate nohighlight">\(z\)</span> tel <span class="math notranslate nohighlight">\(\overline{h}(z)\)</span>=0) deviennent les pôles de
+<span class="math notranslate nohighlight">\(\overline{w}(z)\)</span>. Il faut donc faire attention à la mise en oeuvre du
+filtre inverse. Si tous les zéros sont contenus dans le cercle unité,
+alors <span class="math notranslate nohighlight">\(\overline{w}(z)\)</span> est un filtre IIR stable causal. Si les pôles
+sont à l’intérieur et à l’extérieur du cercles unités, on se retrouve
+avec un filtre IIR non causal, ce qui pose des problèmes
+d’implémentation pratique.</p>
+</div>
+<div class="section" id="egalisation-zf-structure-contrainte">
+<h2><span class="section-number">2.2.3. </span>Egalisation ZF - structure contrainte<a class="headerlink" href="#egalisation-zf-structure-contrainte" title="Permalink to this headline">#</a></h2>
+<div class="section" id="zf-partiel-par-inversion-directe">
+<h3><span class="section-number">2.2.3.1. </span>ZF partiel par inversion directe<a class="headerlink" href="#zf-partiel-par-inversion-directe" title="Permalink to this headline">#</a></h3>
+<p>Pour pallier à ce problème, on peut considérer une approche
+sous-optimale avec une structure imposée de type FIR. En s’inspirant des
+propriétés du filtre inverse, on considérera un filtre RIF anti-causal
+<span class="math notranslate nohighlight">\(\lbrace w[n], n  \in \left[-N, \cdots, +N\right]  \rbrace\)</span>, ce qui
+impose en pratique un délai <span class="math notranslate nohighlight">\(d=N\)</span> pour le traitement et la décision.
+Ici, <span class="math notranslate nohighlight">\(N\)</span> est considéré comme fixe, mais en pratique, c’est un paramètre
+à optimiser également. Le critère ZF s’écrit</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}w[n]*h[n]= \sum_{k=-N}^{N}{w_k h_{n-k}}=\left\{\begin{array}{l}1, \; n=0 \\ 0, \; n=\pm 1, \ldots, \pm N \end{array}\right.\end{split}\]</div>
+<p>On remarque alors, que pour le cas de la taille finie, on s’efforce de
+forcer à zéro qu’un nombre fini de termes du transfert global <span class="math notranslate nohighlight">\(T(z)\)</span>. On
+peut noter que si les filtres <span class="math notranslate nohighlight">\(h[n]\)</span> et <span class="math notranslate nohighlight">\(w[n]\)</span> sont RIF, on ne peut
+avoir le critère satisfait pour <span class="math notranslate nohighlight">\(N \rightarrow +\infty\)</span> que si les deux
+filtres sont des diracs purs (éventuellement décalés). Donc de manière
+formelle, il n’existe pas de filtre ZF FIR à proprement parlé car on ne
+peut avoir une élimination complète de l’IES : on cherche ici juste à en
+éliminer une grande partie seulement (généralement, les termes les plus
+contributifs en terme de puissance).</p>
+<p>Si on écrit le système sous forme matricielle, on obtient
+<span class="math notranslate nohighlight">\(\lbrace w[n] \rbrace\)</span> de taille <span class="math notranslate nohighlight">\(2 \times N -1\)</span> comme solution du
+système suivant</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+h[0]&amp; \ldots &amp; \ldots &amp; h[-N] &amp; \ldots &amp; \ldots &amp; h[-2N] \\ 
+\vdots &amp; &amp;  &amp; \vdots &amp;  &amp; &amp; \vdots  \\ 
+h[N-1] &amp;\ldots &amp; &amp; h[-1] &amp;  &amp;\ldots &amp; h[-N-1] \\ 
+h[N] &amp; \ldots&amp; &amp; h[0] &amp;  &amp;\ldots &amp; h[-N] \\ 
+h[N+1] &amp; \ldots&amp; &amp; h[1] &amp;  &amp;\ldots &amp; h[-N+1] \\ 
+\vdots &amp; &amp; &amp; \vdots &amp;  &amp; &amp; \vdots \\ 
+h[2N] &amp; \ldots &amp; &amp; h[N] &amp; &amp; \ldots &amp; h[0]
+\end{pmatrix}\begin{pmatrix}
+w_{-N}\\ 
+\vdots \\ 
+w_{-1}\\ 
+w_{0}\\ 
+w_{1}\\ 
+\vdots \\ 
+w_{N}
+\end{pmatrix}=\begin{pmatrix}
+0\\ 
+\vdots \\ 
+0\\ 
+1\\ 
+0\\ 
+\vdots \\ 
+0
+\end{pmatrix}\end{split}\]</div>
+<p>Si on note <span class="math notranslate nohighlight">\({\bf w}=[w_{-N},\cdots,w_{+N}]\)</span>,
+<span class="math notranslate nohighlight">\(\Delta=[0,\cdots,0, 1, 0,\cdots,0]^\top\)</span>, on obtient le système</p>
+<div class="math notranslate nohighlight">
+\[{\bf H} {\bf w}=\Delta.\]</div>
+<p>Et donc on aura simplement</p>
+<div class="math notranslate nohighlight">
+\[{\bf w}={\bf H}^{-1}\Delta.\]</div>
+</div>
+<div class="section" id="zf-partiel-par-methode-des-moindres-carres">
+<h3><span class="section-number">2.2.3.2. </span>ZF partiel par méthode des moindres carrés<a class="headerlink" href="#zf-partiel-par-methode-des-moindres-carres" title="Permalink to this headline">#</a></h3>
+<p>Si elle est simple à mettre en oeuvre, l’approche précédente est
+cependant fortement sous optimale dans le sens où l’on ne contrôle pas
+ce qui se passe en dehors du support <span class="math notranslate nohighlight">\([-N, N]\)</span>. Pour une approche
+formelle plus satisfaisante, on peut également considérer la formulation
+suivante comme un problème d’estimation au sens des moindres carrés. En
+effet, si on note <span class="math notranslate nohighlight">\(\{e[n]\}\)</span> la séquence qui mesure la différence entre
+un dirac “parfait” et le transfert global
+<span class="math notranslate nohighlight">\(t[n]=\mathcal{Z}^{-1}\{T(z)\}\)</span>, et <span class="math notranslate nohighlight">\(d\)</span> le retard à introduire, on alors</p>
+<div class="math notranslate nohighlight">
+\[e[n]=w[n]*h[n]-\delta[n-d].\]</div>
+<p>Si on adopte la notation vectorielle <span class="math notranslate nohighlight">\({\bf w}=[w[0],\cdots,w[L_w]]^{\top}\)</span>, l’optimisation de <span class="math notranslate nohighlight">\(w[n]\)</span> revient
+à chercher le filtre <span class="math notranslate nohighlight">\(w[n]\)</span> qui va minimiser la fonction de coût
+<span class="math notranslate nohighlight">\(\mathsf{J}({\bf w})=\sum_n{\vert e[n]\vert^2}\)</span>. Le transfert global</p>
+<div class="math notranslate nohighlight">
+\[T(z)=\overline{w}(z)\overline{h}(z)=\sum_{k=0}^{L} t[k]z^{-k}\]</div>
+<p>a un ordre fini <span class="math notranslate nohighlight">\(L\)</span> car c’est la résultante de la convolution de deux FIR.
+Notons <span class="math notranslate nohighlight">\(L=L_w+L_h\)</span> et <span class="math notranslate nohighlight">\({\bf t}=[t[0], \cdots, t[L]]^{\top}\)</span>. On a alors la relation</p>
+<div class="math notranslate nohighlight">
+\[{\bf t}={\bf H} {\bf w}\]</div>
+<p>où <span class="math notranslate nohighlight">\({\bf H}\)</span> est une matrice triangulaire inférieure dont l’expression est donnée par</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf H}=\begin{pmatrix} { h [ 0 ] } &amp; { 0 } &amp; { \dots } &amp; { 0 } &amp; { \ldots } &amp; { 0 } \\ { h [ 1 ] } &amp; { h [ 0 ] } &amp; { } &amp; { } &amp; { } &amp; { 0 } \\ { \vdots } &amp; { } &amp; { \ddots } &amp; { } &amp; { } &amp; { \vdots } \\ { h \left[ L _ { h } \right] } &amp; { } &amp; { } &amp; { h [ 0 ] } &amp; { } &amp; { } \\ { 0 } &amp; { \ddots } &amp; { } &amp; { } &amp; { \ddots } &amp; { } \\ { \vdots } &amp; { } &amp; { h \left[ L _ { h } \right] } &amp; { } &amp; { \dots } &amp; { h [ 0 ] } \\ { 0 } &amp; { \dots } &amp; { 0 } &amp; { h \left[ L _ { h } \right] } &amp; { } &amp; { h [ 1 ] } \\ { \vdots } &amp; { } &amp; { \vdots } &amp; { } &amp; { \ddots } &amp; { \vdots } \\ { 0 } &amp; { \ldots } &amp; { 0 } &amp; { } &amp; { } &amp; { h \left[ L _ { h } \right] } \end{pmatrix}.\end{split}\]</div>
+<p>Comme <span class="math notranslate nohighlight">\(T(z)\)</span> a un ordre fini de même <span class="math notranslate nohighlight">\(\mathsf{J}({\bf w})\)</span> aura un nombre fini de termes. En notant le vecteur de taille <span class="math notranslate nohighlight">\((L+1)\times 1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+   {\bf 1}_{d}= &amp; (0 &amp; \cdots &amp; 0  &amp; \underbrace{1}_{\text{Position } d} &amp; 0 &amp; \cdots&amp; 0)^{\top}
+  \end{align*}
+,\]</div>
+<p>on peut alors formuler le problème d’optimisation ZF avec FIR comme la minimisation de la fonction quadratique suivante :</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{J}({\bf w})=\sum_{n=0}^L{\vert e[n] \vert^2}=\| {\bf t}-{\bf 1}_{d} \|_{2}^2=\| {\bf H} {\bf w}-{\bf 1}_{d} \|_{2}^2\]</div>
+<p>Le problème à résoudre est donc un problème de minimisation au sens des
+moindres carrés. La matrice <span class="math notranslate nohighlight">\({\bf H}\)</span> étant de rang plein sur les
+colonnes, en notant <span class="math notranslate nohighlight">\(\dagger\)</span> l’opérateur conjoint de transposition et de
+conjugaison, la solution unique de ce problème est alors donnée par</p>
+<div class="math notranslate nohighlight">
+\[{\bf w}_{\mathsf{ZF-LS}}=({\bf H}^{\dagger}{\bf H})^{-1}{\bf H}^{\dagger}{\bf 1}_{d}={\bf H}^{\sharp}{\bf 1}_{d}.\]</div>
+<p>La matrice <span class="math notranslate nohighlight">\({\bf H}^{\sharp}=({\bf H}^{\dagger}{\bf \dagger})^{-1}{\bf H}^{\dagger}\)</span>
+est la matrice pseudo-inverse de Moore-Penrose, notée quelquefois
+également <span class="math notranslate nohighlight">\({\bf H}^{+}\)</span>. A l’optimal, la fonction de coût est donnée par
+la fonction de <span class="math notranslate nohighlight">\(d\)</span> suivante</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{J}_{{\bf w},\min}(d)=\| {\bf H}({\bf H}^{\dagger}{\bf H})^{-1}{\bf H}^{\dagger}{\bf 1}_{d}-{\bf 1}_{d} \|_{2}^2.\]</div>
+<p>On notera alors</p>
+<div class="math notranslate nohighlight">
+\[{\bf P}={\bf H}({\bf H}^{\dagger}{\bf H})^{-1}{\bf H}^{\dagger}={\bf H}{\bf H}^{\sharp}\]</div>
+<p>qui est en fait la matrice de projection associée ayant les propriétés
+suivantes :</p>
+<p>(a) hermitianité: <span class="math notranslate nohighlight">\({\bf P}^{\dagger}={\bf P}\)</span></p>
+<p>(b) Idempotence <span class="math notranslate nohighlight">\({\bf P}^{\dagger}{\bf P}={\bf P}^2={\bf P}\)</span></p>
+<p>On peut alors simplifier l’expression de <span class="math notranslate nohighlight">\(\mathsf{J}_{{\bf w},\min}(d)\)</span> comme suit</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{J}_{{\bf w},\min}(d)=1-p_{d,d},\]</div>
+<p>où <span class="math notranslate nohighlight">\(p_{d,d}\)</span> est le <span class="math notranslate nohighlight">\(d\)</span>-ième élément de la diagonal de <span class="math notranslate nohighlight">\({\bf P}\)</span>. Pour une taille de filtre <span class="math notranslate nohighlight">\({\bf w}\)</span>
+donnée, on atteint donc le minimum pour un délai <span class="math notranslate nohighlight">\(d\)</span> correspondant à l’élément de la diagonal de <span class="math notranslate nohighlight">\({\bf P}\)</span> le plus grand. On peut d’ailleurs
+montrer que <span class="math notranslate nohighlight">\(0 \leq p_{d,d} \leq 1, \; \forall d\)</span>. On obtient ainsi un filtre optimisé en délai. Le filtre optimal <span class="math notranslate nohighlight">\({\bf w}\)</span> en donc obtenu en
+sélectionnant la <span class="math notranslate nohighlight">\(d\)</span>-ième colonne de <span class="math notranslate nohighlight">\({\bf H}^{\sharp}\)</span>.</p>
+</div>
+<div class="section" id="resume-structure-egaliseur-zf">
+<h3><span class="section-number">2.2.3.3. </span>Résumé Structure Egaliseur ZF<a class="headerlink" href="#resume-structure-egaliseur-zf" title="Permalink to this headline">#</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">ZF non contraint</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">ZF FIR, inversion directe</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">ZF FIR, Moindres Carrés</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{|ccc|}
+\hline 
+\textrm{En Temporel }&amp; \vert &amp; \textrm{Domaine transformé en } \mathcal{Z}\\
+\hline 
+\hat{s}[n]=w_{ZF}[n]*y[n]=s[n-d] &amp; \Longleftrightarrow &amp; \overline{\hat{s}}(z)=\overline{w}_{ZF}(z)\overline{h}(z)\overline{s}(z)=\overline{s}(z)z^{-d}\\
+&amp; &amp;\\
+w_{zf}[n]*h[n]=\delta[n-d] &amp; \Longleftrightarrow &amp; \large \overline{w}_{zf}(z)=\frac{z^{-d}}{\overline{h}(z)}\\
+&amp; &amp; \\
+\hline
+\end{array}\end{split}\]</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Pour <span class="math notranslate nohighlight">\(\mathbf{w}_{z f}=\left\{w_k, k=-N \ldots+N\right\},\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+w_{z f}[n] * h[n]=\sum_{k=-N}^N w_k h_{n-k}=\left\{\begin{array}{l}
+1, n=0 \\
+0, n=\pm 1, \ldots, \pm N
+\end{array}\right.
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left(\begin{array}{ccccccc}
+h[0] &amp; \ldots &amp; \ldots &amp; h[-N] &amp; \ldots &amp; \ldots &amp; h[-2 N] \\
+\vdots &amp; &amp; &amp; \vdots &amp; &amp; &amp; \vdots \\
+h[N-1] &amp; \ldots &amp; &amp; h[-1] &amp; &amp; \ldots &amp; h[-N-1] \\
+h[N] &amp; \ldots &amp; &amp; h[0] &amp; &amp; \ldots &amp; h[-N] \\
+h[N+1] &amp; \ldots &amp; &amp; h[1] &amp; &amp; \ldots &amp; h[-N+1] \\
+\vdots &amp; &amp; &amp; \vdots &amp; &amp; &amp; \vdots \\
+h[2 N] &amp; \ldots &amp; &amp; h[N] &amp; &amp; \ldots &amp; h[0]
+\end{array}\right)\left(\begin{array}{c}
+w_{-N} \\
+\vdots \\
+w_{-1} \\
+w_0 \\
+w_1 \\
+\vdots \\
+w_N
+\end{array}\right)=\left(\begin{array}{c}
+0 \\
+\vdots \\
+0 \\
+1 \\
+0 \\
+\vdots \\
+0
+\end{array}\right)
+\end{split}\]</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>Pour calculer <span class="math notranslate nohighlight">\(\mathbf{w}_{\mathrm{ZF}-\mathrm{LS}}=\left[w[0], \cdots, w\left[L_w\right]\right]^{\top}\)</span>,</p>
+<p>avec</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{H}=\left(\begin{array}{cccccc}
+h[0] &amp; 0 &amp; \ldots &amp; 0 &amp; \ldots &amp; 0 \\
+h[1] &amp; h[0] &amp; &amp; &amp; &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; &amp; &amp; \vdots \\
+h\left[L_h\right] &amp; &amp; &amp; h[0] &amp; &amp; \\
+0 &amp; \ddots &amp; &amp; &amp; \ddots &amp; \\
+\vdots &amp; &amp; h\left[L_h\right] &amp; &amp; \ldots &amp; h[0] \\
+0 &amp; \ldots &amp; 0 &amp; h\left[L_h\right] &amp; &amp; h[1] \\
+\vdots &amp; &amp; \vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; 0 &amp; &amp; &amp; h\left[L_h\right]
+\end{array}\right)
+\end{split}\]</div>
+<ol class="simple">
+<li><p>Calculer <span class="math notranslate nohighlight">\(\mathbf{H}^{\sharp}=\left(\mathbf{H}^{\dagger} \mathbf{H}\right)^{-1} \mathbf{H}^{\dagger}\)</span>;</p></li>
+<li><p>Calculer <span class="math notranslate nohighlight">\(\mathbf{P}=\mathbf{H H}^{\sharp}\)</span>;</p></li>
+<li><p>Sélectionner <span class="math notranslate nohighlight">\(d\)</span> tel que <span class="math notranslate nohighlight">\(p_{d, d}\)</span> est la plus grande valeur de la diagonale;</p></li>
+<li><p>Sélectionner la <span class="math notranslate nohighlight">\(d\)</span>-ième colonne de <span class="math notranslate nohighlight">\(\mathbf{H}^*\)</span>, identique au calcul <span class="math notranslate nohighlight">\(\mathrm{W}_{\mathrm{ZF}-\mathrm{LS}}=\mathrm{H}^* 1_d\)</span>.</p></li>
+</ol>
+</div></div>
+</div>
+</div>
+<div class="section" id="analyse-en-presence-de-bruit">
+<h2><span class="section-number">2.2.4. </span>Analyse en présence de bruit<a class="headerlink" href="#analyse-en-presence-de-bruit" title="Permalink to this headline">#</a></h2>
+<div class="section" id="egaliseur-zf-sans-contrainte">
+<h3><span class="section-number">2.2.4.1. </span>Egaliseur ZF sans contrainte<a class="headerlink" href="#egaliseur-zf-sans-contrainte" title="Permalink to this headline">#</a></h3>
+<p>Dans le cadre de l’égalisation sans contrainte, ie. <span class="math notranslate nohighlight">\(w[n]*h[n]=\delta[n-d]\)</span>, on obtient en présence de bruit le modèle
+suivant après filtrage numérique en réception par le filtre égaliseur</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\hat{x}[n]&amp;=w[n]*y[n]=w[n]*h[n]*s[n]+w[n]*b[n] \nonumber \\
+&amp;=s[n-d]+b_w[n]
+\end{align*}\]</div>
+<p>On a donc un modèle équivalent avec un bruit filtré</p>
+<div class="math notranslate nohighlight">
+\[b_w[n]=w[n]*b[n].\]</div>
+<p><span class="math notranslate nohighlight">\(b_w[n]\)</span> est donc issu d’un processus aléatoire de bruit Gaussien <em>coloré</em> et de moyenne nulle. En utilisant les formules
+de filtrage d’un processus stationnaire au sens large (ordre 1 et 2), la densité spectrale de puissance associée s’écrit</p>
+<div class="math notranslate nohighlight">
+\[\overset{\circ}{\boldsymbol{\gamma}}_{b_w}(\nu)=|\overset{\circ}{w}(\nu)|^2 \overset{\circ}{\boldsymbol{\gamma}}_{b}(\nu).\]</div>
+<p><span class="math notranslate nohighlight">\(b[n]\)</span> étant un processus blanc Gaussien, l’autocorrélation du bruit est donnée par <span class="math notranslate nohighlight">\(\gamma_b[p]=\mathbb{E}(b[n]b^*[n-p])=\sigma_b^2 \delta[p]\)</span>
+et donc</p>
+<div class="math notranslate nohighlight">
+\[\overset{\circ}{\boldsymbol{\gamma}}_{b}(\nu)=\mathcal{F}\{\gamma_b[p]\}=\sigma_b^2.\]</div>
+<p>On obtient au final</p>
+<div class="math notranslate nohighlight">
+\[\overset{\circ}{\boldsymbol{\gamma}}_{b_w}(\nu))=\sigma_b^2 |\overset{\circ}{w}(\nu)|^2=\frac{\sigma_b^2}{|\overset{\circ}{h}(\nu)|^2},\]</div>
+<p>où</p>
+<div class="math notranslate nohighlight">
+\[\overset{\circ}{h}(\nu)=\mathcal{F}\{h[n]\}=\sum_k{h[k]e^{+i 2 \pi \nu k}}\]</div>
+<p>Par définition,</p>
+<div class="math notranslate nohighlight">
+\[\sigma^2_{b_w}= \gamma_{b_w}(0) =\int_{[1]} \! \overset{\circ}{\boldsymbol{\gamma}}_{b_w}(\nu)\mathrm{d}\nu,\]</div>
+<p>on obtient alors</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\sigma_{b_w}^2&amp;=&amp;\int_{[1]} \! \sigma_b^2 \frac{1}{|\overset{\circ}{h}(\nu)|^2}\mathrm{d}\nu.
+\end{align*}\]</div>
+<p>En considérant que <span class="math notranslate nohighlight">\(\sigma_b^2=N_0\)</span> et <span class="math notranslate nohighlight">\(\sigma_s^2=\mathbb{E}(\vert s[n] \vert^2)=1\)</span>, le rapport signal sur
+bruit (signal-to-noise ratio, <em>SNR</em>) s’exprime alors</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{IIR-ZF}}=\frac{1}{\sigma^2_{b_w}}=\frac{1}{ \int_{[1]} \! \frac{N_0}{|\overset{\circ}{h}(\nu)|^2}\mathrm{d}\nu}\]</div>
+<p>Cette expression peut s’interpréter de la manière suivante. Soit</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR}( \nu ) = \frac{\sigma_s^2 \vert \overset{\circ}{h}{(\nu)}\vert ^ { 2 }}{ N _ { 0 }}\]</div>
+<p>le rapport signal à bruit par unité de fréquence. On définit alors l’opérateur de moyenne harmonique <span class="math notranslate nohighlight">\(\mathcal { H }\{.\}\)</span> par</p>
+<div class="math notranslate nohighlight">
+\[\mathcal { H } \left\{ \overset{\circ}{x}{(\nu)} \right\} = \frac { 1 } { \int _ {[1]} {\frac { 1 } { \overset{\circ}{x}{(\nu)} }} d \nu }.\]</div>
+<p>On peut alors écrire</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{IIR-ZF}}=\mathcal { H }\{\mathsf{SNR}( \nu )\}\]</div>
+<p>On peut également étudier différents cas limites:</p>
+<ol>
+<li><p>Si <span class="math notranslate nohighlight">\(\overline{h}(z)\)</span> est un filtre passe-tout, ie.
+<span class="math notranslate nohighlight">\(\vert\overset{\circ}{h}(\nu)\vert=\alpha, \forall \nu \in [0,1]\)</span>,
+alors</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{IIR-ZF}}=\frac{\alpha^2}{N_0}.\]</div>
+<p>On a alors un canal de type Gaussian sans IES.</p>
+</li>
+<li><p>Ainsi si il existe <span class="math notranslate nohighlight">\(\nu\)</span> tel que <span class="math notranslate nohighlight">\(\overset{\circ}{h}(\nu)=0\)</span>, ou si
+<span class="math notranslate nohighlight">\(\overline{h}(z)\)</span> a des zéros proches du cercle unité, on peut avoir
+une variance très fortement augmentée (<span class="math notranslate nohighlight">\(\sigma_{b_w}^2 \rightarrow 0\)</span>), d’où une dégradation du rapport
+signal sur bruit (<span class="math notranslate nohighlight">\(\mathsf{SNR_{IIR-ZF}} \rightarrow +\infty\)</span>). Dans
+ce dernier cas, il devient évident que l’égalisation de type ZF aura
+des performances très faibles, ce qui fait que ce critère est très
+peu considéré en pratique pour cette application.</p></li>
+</ol>
+</div>
+<div class="section" id="egalisation-a-structure-contrainte">
+<h3><span class="section-number">2.2.4.2. </span>Egalisation à structure contrainte<a class="headerlink" href="#egalisation-a-structure-contrainte" title="Permalink to this headline">#</a></h3>
+<p>On peut reprendre le même type de calcul si on considère <span class="math notranslate nohighlight">\(w[n]\)</span> de type RIF. Cependant, il devient aisé de redériver les calculs dans le domaine
+temporel, plutôt que fréquentiel, où l’on peut avoir une autre interprétation. Ainsi, par définition, on a</p>
+<div class="math notranslate nohighlight">
+\[\sigma^2_{b_w}= \gamma_{b_w}[0]=\sigma^2_b \gamma_w[0],\]</div>
+<p>où l’on a a utiliser le fait que</p>
+<div class="math notranslate nohighlight">
+\[\gamma_{b_w}[p]=w[p]*\gamma_{b}[p]=\sigma^2_b w[p]\]</div>
+<p>Comme <span class="math notranslate nohighlight">\(w[n]\)</span> est un filtre numérique de type RIF, on obtient facilement</p>
+<div class="math notranslate nohighlight">
+\[\sigma^2_{b_w}=\sigma^2_b \sum_{k=-N}^{+N}{|w_k|^2}.\]</div>
+<p>On a donc une variance augmentée d’un facteur <span class="math notranslate nohighlight">\(\sum_{k=-N}^{+N}{|w_k|^2}\)</span> et donc une
+diminution du rapport signal sur bruit du même facteur. Le rapport signal sur bruit est lui un peu plus compliqué a évaluer car, dans notre
+cas, il reste de l’IES résiduelle dont l’expression dépend du filtre <span class="math notranslate nohighlight">\(w[n]\)</span> obtenu après calcul. En effet après filtrage, le modèle du signal
+estimé est donné par</p>
+<div class="math notranslate nohighlight">
+\[\hat{x}[n]=w[n]*h[n]*s[n]+w[n]*b[n]=s[n]+\sum_{|k|&gt;N}{(w*h)[k]s[n-k]}+w[n]*b[n].\]</div>
+<p>Le terme de bruit plus interférences à prendre en compte dans le rapport signal sur bruit plus interférence est alors donné par</p>
+<div class="math notranslate nohighlight">
+\[b_i[n]=\sum_{|k|&gt;N}{(w*h)[k]s[n-k]}+w[n]*b[n].\]</div>
+<p>On définit alors la quantité</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SINR_{FIR-ZF}}=\frac{1}{\sigma_{b_i}^2}.\]</div>
+<p>Une expression similaire peut être dérivée pour le cas d’un filtre obtenu par la méthode des moindres carrés.</p>
+</div>
+<div class="section" id="resume-bruit-zf">
+<h3><span class="section-number">2.2.4.3. </span>Résumé Bruit ZF<a class="headerlink" href="#resume-bruit-zf" title="Permalink to this headline">#</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">ZF non contraint</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">ZF FIR (sans délai)</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{|ccc|}
+\hline 
+\textrm{En Temporel }&amp; \vert &amp; \textrm{Domaine fréquentiel   } \\
+\hline 
+&amp; &amp; \stackrel{\circ}{\gamma}_{b_f}(\nu)=\sigma_b^2\left|\stackrel{\circ}{w}_{z f}(\nu)\right|^2 \;\;\;\\
+\hat{s}[n]=s[n-d]+\underbrace{w_{Z F} * b[n]}_{b_f[n]}&amp; &amp; \Downarrow\\
+&amp; &amp; \sigma_{b_f}^2=\sigma_b^2 \int_{[1]} \frac{1}{\mid \stackrel{\circ}{|h(\nu)|^2}} \mathrm{~d} \nu \;\;\;\\
+\hline
+\end{array}\end{split}\]</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="math notranslate nohighlight">
+\[
+b_f[n]=\sum_{k=-N}^N w_k b_{n-k} \Rightarrow  \sigma_{b_f}^2=\sigma_b^2 \sum_{k=-N}^N\left|w_k\right|^2=\sigma_b^2 E_w
+\]</div>
+</div></div>
+<p>Le terme égalisation se comprend très bien dans le domaine fréquentiel où le produit des deux réponses fréquentielles permet d’obtenir une réponse fréquentielle globale constante.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ch2sec1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.1. </span>Principes</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="biblio.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Bibliographie</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By C. Poulliat<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
