@@ -1,2 +1,2 @@
 # 3SN-TR-Egalisation
-N7 - COurs 2SN -Egalisation
+N7 - Cours 2SN -Egalisation
