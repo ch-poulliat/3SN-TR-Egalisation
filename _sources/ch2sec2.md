@@ -305,7 +305,7 @@ $$
 
 3. Sélectionner $d$ tel que $p_{d, d}$ est la plus grande valeur de la diagonale;
 
-4. Sélectionner la $d$-ième colonne de $\mathbf{H}^*$, identique au calcul $\mathrm{W}_{\mathrm{ZF}-\mathrm{LS}}=\mathrm{H}^* 1_d$.
+4. Sélectionner la $d$-ième colonne de $\mathbf{H}^{\sharp}$, identique au calcul $\mathrm{W}_{\mathrm{ZF}-\mathrm{LS}}=\mathrm{H}^{\sharp} 1_d$.
 
 ```
 ````
