@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.1. Maximum de Vraisemblance &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>5.1. Transformée de Fourier des signaux à temps discrets/des séquences. &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,8 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex": {"macros": {"tf": ["\\\\overset{\\\\circ}{#1}", 1], "tz": ["\\\\overline{#1}", 1]}}, "tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3.2. Egaliseur à retour de décision" href="ch3sec2.html" />
-    <link rel="prev" title="3. Egalisation non linéaire" href="ch3intro.html" />
+    <link rel="next" title="5.2. Transformée en \(\mathcal{Z}\)." href="A2sec2.html" />
+    <link rel="prev" title="5. Analyse et représentations des signaux et systèmes discrets" href="A2intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
   Egalisation
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="ch1intro.html">
    1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
@@ -183,18 +183,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="ch3intro.html">
    3. Egalisation non linéaire
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3sec1.html">
      3.1. Maximum de Vraisemblance
     </a>
    </li>
@@ -211,7 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
   Annexes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="A1intro.html">
    4. Signaux et systèmes à temps discrets
@@ -234,18 +234,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="A2intro.html">
    5. Analyse et représentations des signaux et systèmes discrets
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A2sec1.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      5.1. Transformée de Fourier des signaux à temps discrets/des séquences.
     </a>
    </li>
@@ -355,7 +355,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch3sec1.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FA2sec1.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -383,7 +383,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/ch3sec1.md"
+        <a href="_sources/A2sec1.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -443,18 +443,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modele-discret-equivalent-bande-de-base">
-   3.1.1. Modèle discret équivalent bande de base
+  <a class="reference internal nav-link" href="#fonctions-propres-d-un-systeme">
+   5.1.1. Fonctions propres d’un système
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modele-a-etats-finis">
-   3.1.2. Modèle à états finis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decodage-d-une-sequence-par-maximum-de-vraisemblance-mlse">
-   3.1.3. Décodage d’une Séquence par Maximum de Vraisemblance (MLSE)
+  <a class="reference internal nav-link" href="#transformee-de-fourier-des-signaux-a-temps-discrets">
+   5.1.2. Transformée de Fourier des signaux à temps discrets
   </a>
  </li>
 </ul>
@@ -466,7 +461,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Maximum de Vraisemblance</h1>
+                <h1>Transformée de Fourier des signaux à temps discrets/des séquences.</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -477,18 +472,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modele-discret-equivalent-bande-de-base">
-   3.1.1. Modèle discret équivalent bande de base
+  <a class="reference internal nav-link" href="#fonctions-propres-d-un-systeme">
+   5.1.1. Fonctions propres d’un système
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modele-a-etats-finis">
-   3.1.2. Modèle à états finis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decodage-d-une-sequence-par-maximum-de-vraisemblance-mlse">
-   3.1.3. Décodage d’une Séquence par Maximum de Vraisemblance (MLSE)
+  <a class="reference internal nav-link" href="#transformee-de-fourier-des-signaux-a-temps-discrets">
+   5.1.2. Transformée de Fourier des signaux à temps discrets
   </a>
  </li>
 </ul>
@@ -501,158 +491,42 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="maximum-de-vraisemblance">
-<h1><span class="section-number">3.1. </span>Maximum de Vraisemblance<a class="headerlink" href="#maximum-de-vraisemblance" title="Permalink to this headline">#</a></h1>
-<p>On va maintenant dériver le détecteur optimal au sens du maximum de vraisemblance.</p>
-<div class="section" id="modele-discret-equivalent-bande-de-base">
-<h2><span class="section-number">3.1.1. </span>Modèle discret équivalent bande de base<a class="headerlink" href="#modele-discret-equivalent-bande-de-base" title="Permalink to this headline">#</a></h2>
-<div class="figure align-default" id="isichannel">
-<a class="reference internal image-reference" href="_images/canalisieq.png"><img alt="_images/canalisieq.png" src="_images/canalisieq.png" style="width: 10cm;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Modèle de filtrage</span><a class="headerlink" href="#isichannel" title="Permalink to this image">#</a></p>
-</div>
-<p>Le modèle équivalent bande de base que l’on considérera est le suivant:</p>
+  <div class="section" id="transformee-de-fourier-des-signaux-a-temps-discrets-des-sequences">
+<h1><span class="section-number">5.1. </span>Transformée de Fourier des signaux à temps discrets/des séquences.<a class="headerlink" href="#transformee-de-fourier-des-signaux-a-temps-discrets-des-sequences" title="Permalink to this headline">#</a></h1>
+<div class="section" id="fonctions-propres-d-un-systeme">
+<h2><span class="section-number">5.1.1. </span>Fonctions propres d’un système<a class="headerlink" href="#fonctions-propres-d-un-systeme" title="Permalink to this headline">#</a></h2>
+<p>On considère à l’entrée d’un FLID de réponse impulsionnelle <span class="math notranslate nohighlight">\(h[n]\)</span>, la séquence <span class="math notranslate nohighlight">\(x[n] = e^{i2 \pi \nu n}\)</span>. La sortie est alors</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-y[n]&amp;= \sum_{k \in \mathbb{N} }{s_k h_{n-k}} + b[n]  \\
-&amp;= \sum_{k =0 }^{L_h-1}{ h[k] s[n-k]} + b[n] \\
-&amp;= h_0 s[n]+ \underbrace{\sum_{k =1 }^{L_h-1}{ h[k] s[n-k]}}_{\mathsf{IES}} + b[n]
-\end{aligned}
-\end{split}\]</div>
-</div>
-<div class="section" id="modele-a-etats-finis">
-<h2><span class="section-number">3.1.2. </span>Modèle à états finis<a class="headerlink" href="#modele-a-etats-finis" title="Permalink to this headline">#</a></h2>
-<div class="figure align-default" id="isiregister">
-<a class="reference internal image-reference" href="_images/canalisi2.png"><img alt="_images/canalisi2.png" src="_images/canalisi2.png" style="width: 15cm;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Modèle de filtrage</span><a class="headerlink" href="#isiregister" title="Permalink to this image">#</a></p>
-</div>
-<p>Le modèle discret équivalent est donné par</p>
+\[y[n] =\sum_{p=-\infty}^{+\infty} h[{p}] {e}^{{j} 2 \pi \nu({n}-{p})}={e}^{{j} 2 \pi \nu {n}} \sum_{{p}=-\infty}^{+\infty} {h}[{p}] {e}^{-{j} 2 \pi \nu {p}}.\]</div>
+<p>La sortie <span class="math notranslate nohighlight">\(y[n]\)</span> est donc égale à l’entrée <span class="math notranslate nohighlight">\(x[n]\)</span> multipliée par un terme complexe qui est ce que l’on appelle la réponse en fréquence du système. On notera</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-y[n] &amp;= \sum_{k \in \mathbb{N} }{s_k h_{n-k}} + b[n] \\
-&amp;= \sum_{k =0 }^{L_h-1}{ h[k] s[n-k]} + b[n] \\
-&amp;= h_0 s[n]+ \underbrace{\sum_{k =1 }^{L_h-1}{ h[k] s[n-k]}}_{\mathsf{IES}} + b[n]
-\end{aligned}
-\end{split}\]</div>
-<p>On peut alors représenter le signal suivant le schéma donné figure <a class="reference internal" href="#isiregister"><span class="std std-numref">Fig. 3.2</span></a>. On voir alors que le canal est bien représenter par une ligne à retards (registre) et peut donc se voir comme un code convolutif défini sur <span class="math notranslate nohighlight">\(\mathbb{C}\)</span> de mémoire <span class="math notranslate nohighlight">\(L-1\)</span> de rendement <span class="math notranslate nohighlight">\(R_c=1\)</span>. C’est cette analogie qui sera exploitée pour bien comprendre le modèle à état sous-jacent.</p>
-<p>Le modèle à état peut se mettre en exergue en remarquant que l’on peut mettre l’équation précédente sous la forme suivante:</p>
+\[{y}[{n}]=\overset{\circ}{h}({\nu}) {x}[{n}]=\lambda_{\nu} {x}[{n}]\]</div>
+<p>avec</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-y[n] &amp;= z[n] +b[n] \\
-&amp;=\mathbf{h}^T \left[\begin{array}{c}
-s_n \\
-\mathbf{\sigma}_{n-1}
-\end{array}\right] +b[n]
-\end{aligned}
-\end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(\sigma_n\)</span> représente l’état “interne” (la mémoire du canal) de dimension <span class="math notranslate nohighlight">\(M^{(L-1)}\)</span>. On peut alors donner une représentation du canal par sa machine à états finis associée. Comme pour un code convolutif, de cette machine à état, on peut déduire une représentation en treillis en incluant la dimension temporelle. Pour décrire complètement le treillis associé au canal, on doit dériver la représentation fonctionnelle suivante:</p>
-<ul class="simple">
-<li><p><strong>Equation d’évolution :  passage d’un état à <span class="math notranslate nohighlight">\(\mathbf{\sigma}_{n-1}\)</span> à <span class="math notranslate nohighlight">\(\mathbf{\sigma}_{n}\)</span>.</strong></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\mathbf{\sigma}_n = F_1(\mathbf{\sigma}_{n-1},s_n)\]</div>
-<ul>
-<li><p><strong>Equation d’observation :  génération des sorties observables <span class="math notranslate nohighlight">\(z_{n}=\sum_{k=0}^{L-1}{h_k s_{n-k}}\)</span>.</strong></p>
-<div class="math notranslate nohighlight">
-\[z_n = F_2(\mathbf{\sigma}_{n-1} ,s_n) = F_3(\mathbf{\sigma}_{n-1} ,\mathbf{\sigma}_{n})\]</div>
-</li>
-</ul>
-<p>Ainsi, pour une représentation en treillis chaque état(représenté par un noeud) du treillis est une réalisation possible de <span class="math notranslate nohighlight">\(\sigma_n \in \Sigma\)</span>. Les transitions (associées aux branches) entre ses états sont régies par l’équation d’évolution et les labels associés à ces branches (ie. les symboles émis et symboles reçus) sont donnés par l’équation d’observation. L’ensemble du treillis est périodique dont une période est complètement déterminée par les transitions occurant sur une section de treillis. On donne ci-après un exemple de treillis pour un canal de mémoire <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(L=3\)</span>) et une modulation BPSK. Dans ce cadre <span class="math notranslate nohighlight">\(\sigma_n\)</span> représente un vecteur de taille <span class="math notranslate nohighlight">\(2^2\)</span>.</p>
-<div class="figure align-default" id="treillis-isi">
-<a class="reference internal image-reference" href="_images/treillisisi.png"><img alt="_images/treillisisi.png" src="_images/treillisisi.png" style="width: 15cm;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Exemple de treillis.</span><a class="headerlink" href="#treillis-isi" title="Permalink to this image">#</a></p>
+\[\overset{\circ}{h}({\nu})=\sum_{{p}=-\infty}^{+\infty} {h}[{p}] \cdot {e}^{-{j} 2 \pi {\nu p}}.\]</div>
+<p>Les séquences <span class="math notranslate nohighlight">\(e^{i2 \pi \nu n}\)</span> sont donc les fonctions propres des systèmes linéaires à temps discret. La réponse en fréquence s’identifie à celle trouvée de la transformée  de Fourier d’une séquence comme définie ci-après.</p>
 </div>
-</div>
-<div class="section" id="decodage-d-une-sequence-par-maximum-de-vraisemblance-mlse">
-<h2><span class="section-number">3.1.3. </span>Décodage d’une Séquence par Maximum de Vraisemblance (MLSE)<a class="headerlink" href="#decodage-d-une-sequence-par-maximum-de-vraisemblance-mlse" title="Permalink to this headline">#</a></h2>
+<div class="section" id="transformee-de-fourier-des-signaux-a-temps-discrets">
+<h2><span class="section-number">5.1.2. </span>Transformée de Fourier des signaux à temps discrets<a class="headerlink" href="#transformee-de-fourier-des-signaux-a-temps-discrets" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 3.1 </span> (Décodage d’une Séquence par Maximum de Vraisemblance)</p>
+<p class="admonition-title"><span class="caption-number">Definition 5.1 </span> (Transformée  de Fourier d’une séquence)</p>
 <div class="definition-content section" id="proof-content">
-<p>La détection par maximum de vraisemblance consiste à recherche la séquence de symbole émis vérifiant:</p>
+<p>La transformée  de Fourier d’une séquence <span class="math notranslate nohighlight">\(x[n]\)</span> est définie (sous réserve de convergence)  par :</p>
 <div class="math notranslate nohighlight">
-\[
-\hat{{\bf s}}= \mathrm{arg} \max_{{\bf s'}}{p({\bf y} | {\bf s'})}
-\]</div>
-<p>où</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\({\bf s}=[s_1 s_2 \ldots s_N]\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\({\bf y}=[y_1 y_2 \ldots y_N]\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(y[n] \sim \mathcal{N}(\sum_k{h_k s_{n-k}}, N_0)\)</span></p></li>
-</ul>
+\[\overset{\circ}{x}{(\nu)}=\sum_{{n}=-\infty}^{+\infty} {x}[{n}] . {e}^{-{i} 2 \pi {\nu n}}\]</div>
+<p>C’est une fonction <strong>continue</strong> de <span class="math notranslate nohighlight">\(\nu\)</span> et <span class="math notranslate nohighlight">\(1\)</span>-périodique.</p>
 </div>
-</div><p>Dans le contexte d’une transmission sur un canal sélectif en fréquence avec un bruit additif Gaussien en réception, le critère se simplifie de la manière suivante:</p>
+</div><div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 5.2 </span> (Transformée de Fourier inverse )</p>
+<div class="definition-content section" id="proof-content">
+<p>La transformée inverse est donnée par</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\hat{\mathbf{s}}&amp;= \mathrm{arg} \max_{\mathbf{s}'}{p(\mathbf{y} | \mathbf{s}')} \nonumber \\
-&amp;=  \mathrm{arg} \max_{\mathbf{s}'}{\prod_n{p(y_n | \mathbf{s}')}} \nonumber \\
-&amp;= \mathrm{arg} \min_{\left\{s_n \right\}}{\sum_n{|y_n-\sum_{k=0}^{L-1}{h_k s_{n-k}}|^2}}
-\end{aligned}
-\end{split}\]</div>
-<p>Ainsi la séquence optimale au sens du maximum de vraisemblance est celle qui minimise la distance euclidienne entre la séquence émise et la séquence reçus. Une approche “brute force” par énumération de toutes les séquences possibles nous donne une complexité de l’ordre de <span class="math notranslate nohighlight">\(M^N=2^{\log_2{(M)} N}\)</span>, ie exponentielle en l’ordre de la modulation et de la longueur de la séquence. L’utilisation de la structure markovienne du canal va nous permettre de réaliser un décodage MLSE avec une complexité raisonnable. Ainsi l’exploitation de la structure markovienne du canal permet d’avoir une énumération efficace des séquences candidates à la maximisation du critère MLSE. Elle se base en partie sur les propriétés suivantes :</p>
-<div class="proof property admonition" id="property-1">
-<p class="admonition-title"><span class="caption-number">Property 3.1 </span></p>
-<div class="property-content section" id="proof-content">
-<ul class="simple">
-<li><p><em><strong>Chaque chemin sur le treillis représente une séquence de symboles émis possibles :</strong></em></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{ccc}
- &amp;  &amp;  \text{chemin le plus problable, ie} \\
- \text{séquence MLSE} &amp; \Leftrightarrow &amp;  \text{de plus petite  distance euclidienne} \\
-&amp; &amp;  \text{cumulée sur le treillis}
-\end{array}\end{split}\]</div>
-<ul class="simple">
-<li><p><em><strong>Correspondance espace des états et des séquences :</strong></em></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{array}{ccc}
-\left \{ s[n] | n=1 \cdots N \right\} &amp; \Longleftrightarrow &amp; \left\{ \sigma[n] | n=0 \cdots N \right\}\\
- &amp; &amp;\\
-\text{Espace des séquences} &amp; &amp;  \text{Espaces des Etats} 
-\end{array}
-\end{split}\]</div>
+\[{x}[{n}]=\int_{[1]}{ \overset{\circ}{x}({\nu})  {e}^{+{i} 2 \pi {\nu n}}} {d}\nu.\]</div>
 </div>
-</div><p>En utilisant l’équivalence précédente, on peut alors par un simple jeu de réécriture instancier le problème d’optimisation initial dans le domaine des <em>d’états</em>.</p>
+</div><p>On note souvent le passage de l’un à l’autre des domaines par la paire</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\hat{\mathbf{s}}&amp;= \mathrm{arg} \min_{\left\{s_n \right\}}{\sum_n{|y_n-\sum_{k=0}^{L-1}{h_k s_{n-k}}|^2}}\\
-&amp; = \mathrm{arg} \min_{ \left\{\sigma_n \right\}}{\sum_n{|y_n-{z_n(\sigma_{n-1},\sigma_n)}}|^2}
-\end{aligned}
-\end{split}\]</div>
-<p>On peut alors dériver l’algorithme de Viterbi qui réalise un calcul efficace de la séquence MLSE à l’aide du treillis. La dérivation se fait par récurrence en analysant une métrique cumulée représentant la distance euclidienne entre la séquence reçue et celle équivalente à la séquence <span class="math notranslate nohighlight">\(\left\{\sigma_0, \sigma_1, \cdots, \sigma_{n-1}, \sigma_n \right\}\)</span>. En effet, pour une séquence d’états se terminant à la section de treillis <span class="math notranslate nohighlight">\(n\)</span> et dans l’état <span class="math notranslate nohighlight">\(\sigma_n(s)\)</span>, on peut écrire une métrique cumulée notée <span class="math notranslate nohighlight">\(\Lambda_n(\sigma_n)\)</span> donnée par</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\Lambda_n(\sigma_n) &amp;= \underset{\left\{\sigma_0, \sigma_1, \cdots, \sigma_{n-1}, \sigma_n \right\}}{\operatorname{min}}{\sum_{k=0}^{n}{|y_k-{ z_k(\sigma_{k-1},\sigma_k)}}|^2} \\
-&amp; \\  
-&amp; = \underset{\left\{\sigma_{n-1} \rightarrow \sigma_n \right\}}{\operatorname{min}} \left\{ \underset{\left\{\sigma_0, \cdots, \sigma_{n-1}\right\}}{\operatorname{min}} \left\{\sum_{k=0}^{n-1}{|y_k- z_k|^2} \right\} + |y_n- z_n(\sigma_{n-1},\sigma_n)|^2 \right\}  \\
-&amp; \\  
-&amp; =\underset{\underbrace{\left\{\sigma_{n-1} \rightarrow \sigma_n \right\}}_{\mbox{transitions possibles}}}{\operatorname{min}} \left\{ \Lambda_{n-1}{(\sigma_{n-1})} + \lambda_n(\sigma_{n-1},\sigma_n) \right\}
-\end{aligned}
-\end{split}\]</div>
-<p>De cette récursion, on peut alors dériver l’algorithme suivant :</p>
-<div class="proof algorithm admonition" id="algorithm-2">
-<p class="admonition-title"><span class="caption-number">Algorithm 3.1 </span> (Algorithme de Viterbi)</p>
-<div class="algorithm-content section" id="proof-content">
-<p>Pour chaque section <span class="math notranslate nohighlight">\(n\)</span> (<span class="math notranslate nohighlight">\(n=1 \cdots N\)</span>), pour chaque état <span class="math notranslate nohighlight">\(\sigma_n=s\)</span> (<span class="math notranslate nohighlight">\(s=0 \cdots |\mathcal{S}|\)</span>) :</p>
-<ol class="simple">
-<li><p>calculer <span class="math notranslate nohighlight">\(\Lambda_n\)</span> tel que</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[\Lambda_n{(\sigma_{n})}=\underset{\left\{\sigma_{n-1} \rightarrow \sigma_n \right\}}{\operatorname{min}} \left\{ \Lambda_{n-1}{(\sigma_{n-1})} + \lambda_n(\sigma_{n-1},\sigma_n) \right\}\]</div>
-<ol class="simple">
-<li><p>stocker l’état précédent <span class="math notranslate nohighlight">\(\sigma_{n-1}\)</span> : pour chaque état <span class="math notranslate nohighlight">\(\sigma_n\)</span>, on peut donc associer une séquence \emph{survivante} <span class="math notranslate nohighlight">\(\left\{\sigma_0, \cdots, \sigma_n \right\}\)</span> de distance euclidienne cumulée associée <span class="math notranslate nohighlight">\(\Lambda_n{(\sigma_{n})}\)</span>)</p></li>
-</ol>
-<p>A la fin du treillis, il ne reste plus que <span class="math notranslate nohighlight">\(|\mathcal{S}|\)</span> chemins possibles, après avoir sélectionné le plus probable, par parcours arrière des états du treillis, on obtient</p>
-<div class="math notranslate nohighlight">
-\[\hat{{\bf s}}= \left\{\sigma_0, \sigma_1, \cdots, \sigma_{N-1}, \sigma_N | \underset{\sigma_N}{\operatorname{argmin}}\left\{\Lambda_{N}(\sigma_N) \right\} \right\} \]</div>
+\[x[n]  \leftrightharpoons \overset{\circ}{x}(\nu)\]</div>
 </div>
-</div></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -682,17 +556,17 @@ s_n \\
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ch3intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="A2intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3. </span>Egalisation non linéaire</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Analyse et représentations des signaux et systèmes discrets</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ch3sec2.html" title="next page">
+    <a class='right-next' id="next-link" href="A2sec2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.2. </span>Egaliseur à retour de décision</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Transformée en <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>.</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
