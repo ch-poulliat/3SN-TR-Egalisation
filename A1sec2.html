@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4.2. Systèmes à temps discret &#8212; Egalisation temporelle et fréquentielle</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Bibliographie" href="biblio.html" />
+    <link rel="prev" title="4.1. Signaux à temps discrets" href="A1sec1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/N7solo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Egalisation temporelle et fréquentielle</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenue au cours d’Egalisation.
+                </a>
+            </li>
+        </ul>
+        <p class="caption">
+ <span class="caption-text">
+  Egalisation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch1intro.html">
+   1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec1.html">
+     1.1. Représentation bande base des signaux sur canal sélectif en fréquence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec2.html">
+     1.2. Exemple : Canaux à trajets multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec3.html">
+     1.3. Fitrage adapté et blanchiment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec4.html">
+     1.4. Filtrage adapté partiel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2intro.html">
+   2. Egalisation linéaire temporelle
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec1.html">
+     2.1. Principes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec2.html">
+     2.2. Egalisation linéaire avec critère ZF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec3.html">
+     2.3. Egalisation par filtrage de Wiener
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch3intro.html">
+   3. Egalisation non linéaire
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3sec1.html">
+     3.1. Maximum de Vraisemblance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3sec2.html">
+     3.2. Egaliseur à retour de décision
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Annexes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="A1intro.html">
+   4. Signaux et systèmes à temps discrets
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="A1sec1.html">
+     4.1. Signaux à temps discrets
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.2. Systèmes à temps discret
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="biblio.html">
+   5. Bibliographie
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FA1sec2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/A1sec2.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtres-lineaires-invariants-par-decalage">
+   4.2.1. Filtres Linéaires Invariants par Décalage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definitions">
+     4.2.1.1. Définitions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reponse-impulsionnelle-et-produit-de-convolution-discret">
+     4.2.1.2. Réponse impulsionnelle et Produit de convolution discret
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#critere-s-de-stabilite">
+     4.2.1.3. Critère(s) de stabilité
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#causalite-des-flid">
+     4.2.1.4. Causalité des FLID
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equations-aux-differences-systemes-rii-et-rif">
+   4.2.2. Equations aux différences  :  systèmes RII et RIF
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#les-filtres-a-reponse-impulsionnelle-finie">
+     4.2.2.1. Les filtres à réponse impulsionnelle finie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#les-filtres-a-reponse-impulsionnelle-infinie">
+     4.2.2.2. Les filtres à réponse impulsionnelle infinie
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtres-non-invariants-par-decalage">
+   4.2.3. Filtres non invariants par décalage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-compresseur">
+     4.2.3.1. Le compresseur
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#l-echantillonneur">
+     4.2.3.2. L’échantillonneur
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-surechantillonneur">
+     4.2.3.3. Le suréchantillonneur
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Systèmes à temps discret</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtres-lineaires-invariants-par-decalage">
+   4.2.1. Filtres Linéaires Invariants par Décalage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definitions">
+     4.2.1.1. Définitions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reponse-impulsionnelle-et-produit-de-convolution-discret">
+     4.2.1.2. Réponse impulsionnelle et Produit de convolution discret
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#critere-s-de-stabilite">
+     4.2.1.3. Critère(s) de stabilité
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#causalite-des-flid">
+     4.2.1.4. Causalité des FLID
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equations-aux-differences-systemes-rii-et-rif">
+   4.2.2. Equations aux différences  :  systèmes RII et RIF
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#les-filtres-a-reponse-impulsionnelle-finie">
+     4.2.2.1. Les filtres à réponse impulsionnelle finie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#les-filtres-a-reponse-impulsionnelle-infinie">
+     4.2.2.2. Les filtres à réponse impulsionnelle infinie
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtres-non-invariants-par-decalage">
+   4.2.3. Filtres non invariants par décalage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-compresseur">
+     4.2.3.1. Le compresseur
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#l-echantillonneur">
+     4.2.3.2. L’échantillonneur
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-surechantillonneur">
+     4.2.3.3. Le suréchantillonneur
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="systemes-a-temps-discret">
+<h1><span class="section-number">4.2. </span>Systèmes à temps discret<a class="headerlink" href="#systemes-a-temps-discret" title="Permalink to this headline">#</a></h1>
+<div class="section" id="filtres-lineaires-invariants-par-decalage">
+<h2><span class="section-number">4.2.1. </span>Filtres Linéaires Invariants par Décalage<a class="headerlink" href="#filtres-lineaires-invariants-par-decalage" title="Permalink to this headline">#</a></h2>
+<div class="section" id="definitions">
+<h3><span class="section-number">4.2.1.1. </span>Définitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 4.3 </span> (Filtre)</p>
+<div class="definition-content section" id="proof-content">
+<p>Un filtre est un opérateur <span class="math notranslate nohighlight">\(\mathcal{H}[.]\)</span> qui associe à une séquence <span class="math notranslate nohighlight">\(x[n] \in \mathcal{S}\)</span> une séquence <span class="math notranslate nohighlight">\(y[n] = \mathcal{H}[x[n]] \in \mathcal{S'}\)</span>, où <span class="math notranslate nohighlight">\(\mathcal{S}\)</span> et <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span> sont typiquement <span class="math notranslate nohighlight">\(\ell^2(\mathbb{Z})\)</span> ou <span class="math notranslate nohighlight">\(\ell^{\infty}(\mathbb{Z})\)</span>.</p>
+</div>
+</div><div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 4.4 </span> (Filtre linéaire invariant par décalage )</p>
+<div class="definition-content section" id="proof-content">
+<p>Un filtre linéaire invariant par décalage (FLID) vérifie:</p>
+<ul class="simple">
+<li><p><em><strong>la linéarité :</strong></em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}[a x_1[n]  + b x_2[n]]   =a.\mathcal{H}[x_1[n]] + b.\mathcal{H}[x_2[n]]\]</div>
+<ul class="simple">
+<li><p><em><strong>l’invariance par décalage :</strong></em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathrm{si }\; y[n] = \mathcal{H}[ x[n]] \;\mathrm{ alors }\; y[n-p] = \mathcal{H}[x[n-p]]\]</div>
+</div>
+</div></div>
+<div class="section" id="reponse-impulsionnelle-et-produit-de-convolution-discret">
+<h3><span class="section-number">4.2.1.2. </span>Réponse impulsionnelle et Produit de convolution discret<a class="headerlink" href="#reponse-impulsionnelle-et-produit-de-convolution-discret" title="Permalink to this headline">#</a></h3>
+<p>On note <span class="math notranslate nohighlight">\(h[n]  = \mathcal{H}[ \delta[n]]\)</span>  la réponse dîte <em>impulsionnelle</em> d’un système discret.  Si le système est linéaire et invariant par décalage, la connaissance  de <span class="math notranslate nohighlight">\(h[n]\)</span> suffit pour caractériser totalement  le système, et permet de trouver la réponse à une entrée quelconque par une opération de convolution.</p>
+<p>Considérons un signal d’entrée <span class="math notranslate nohighlight">\(x[n]\)</span> quelconque. En utilisant la décomposition sur la base des impulsions Delta décalées, on peut écrire</p>
+<div class="math notranslate nohighlight">
+\[x[n]=\sum_{k\in \mathbb{Z}}{x[k]\delta[n-k]}\]</div>
+<p>On peut alors écrire en appliquant les propriétés de linéarité et d’invariance par décalage</p>
+<div class="math notranslate nohighlight">
+\[y[n]=\mathcal{H}[x[n]]=\sum_{k \in \mathbb{Z}}{x[k]\mathcal{H}[\delta[n-k]]}=\sum_{k \in \mathbb{Z}}{x[k] h[n-k]}\]</div>
+<p>On reconnaît ici le produit de convolution discret des séquences <span class="math notranslate nohighlight">\(x[n]\)</span> et <span class="math notranslate nohighlight">\(h[n]\)</span>, qui s’écrit:</p>
+<div class="math notranslate nohighlight">
+\[
+y[n]= (h*x)[n]=\sum_{k=-\infty}^{+\infty}{x[k] h[n-k]}
+\]</div>
+<p>Le produit de convolution  discret est commutatif, ie. <span class="math notranslate nohighlight">\(y[n]= (h*x)[n]=(x*h)[n]\)</span>. On en déduit que l’ordre de mise en cascade de deux FLID est indifférent.</p>
+</div>
+<div class="section" id="critere-s-de-stabilite">
+<h3><span class="section-number">4.2.1.3. </span>Critère(s) de stabilité<a class="headerlink" href="#critere-s-de-stabilite" title="Permalink to this headline">#</a></h3>
+<p>De manière générale, un système est stable si une entrée bornée provoque une sortie bornée (ce qui inclut les systèmes à la limite de stabilité), ce qui s’écrit</p>
+<div class="math notranslate nohighlight">
+\[x \in \ell^{\infty}(\mathbb{Z}) \; \Rightarrow \; y=\mathcal{H}[x] \in \ell^{\infty}(\mathbb{Z})\]</div>
+<p>Pour un système linéaire invariant par décalage, une condition nécessaire et suffisante de stabilité  est alors donnée par</p>
+<div class="math notranslate nohighlight">
+\[\sum_{k \in \mathbb{Z}}{|h_k|} &lt; +\infty\]</div>
+</div>
+<div class="section" id="causalite-des-flid">
+<h3><span class="section-number">4.2.1.4. </span>Causalité des FLID<a class="headerlink" href="#causalite-des-flid" title="Permalink to this headline">#</a></h3>
+<p>Un système est causal si la sortie <span class="math notranslate nohighlight">\(y[n]\)</span> est indépendante des échantillons  d’entrée <span class="math notranslate nohighlight">\(x[n']\)</span> pour <span class="math notranslate nohighlight">\(n'  &gt; n\)</span>. Pour un FLID, cette condition est équivalente à $<span class="math notranslate nohighlight">\(h[n] = 0\; \forall n &lt; 0.\)</span>$</p>
+</div>
+</div>
+<div class="section" id="equations-aux-differences-systemes-rii-et-rif">
+<h2><span class="section-number">4.2.2. </span>Equations aux différences  :  systèmes RII et RIF<a class="headerlink" href="#equations-aux-differences-systemes-rii-et-rif" title="Permalink to this headline">#</a></h2>
+<p>Les systèmes linéaires invariants par décalage sont définis par une équation aux différences  à coefficients constants. La forme générale est:</p>
+<div class="math notranslate nohighlight">
+\[y[n]=\sum_{k=1}^{N} a_{k} \cdot y[n-k]+\sum_{r=P}^{M} b_{r} \cdot x[n-r].\]</div>
+<p>On remarque ici que l’indice <span class="math notranslate nohighlight">\(k\)</span> varie de <span class="math notranslate nohighlight">\(1\)</span> à <span class="math notranslate nohighlight">\(N &gt; 0\)</span>, i.e. que seules  interviennent les valeurs passées de la sortie, ce qui permet de calculer <span class="math notranslate nohighlight">\(y[n]\)</span>  de proche en proche. L’indice <span class="math notranslate nohighlight">\(r\)</span> varie de <span class="math notranslate nohighlight">\(P\)</span> à <span class="math notranslate nohighlight">\(M\)</span> quelconques. Si <span class="math notranslate nohighlight">\(P &lt; 0\)</span>, le filtre est non causal, mais reste cependant réalisable en temps différé.</p>
+<p>Ces systèmes sont les correspondants  discrets des systèmes continus définis par une équation différentielle à coefficients constants. Ils sont classés en deux catégories :</p>
+<ul class="simple">
+<li><p>les  filtres à réponse impulsionnelle  finie,</p></li>
+<li><p>les filtres à réponse impulsionnelle  infinie.</p></li>
+</ul>
+<div class="section" id="les-filtres-a-reponse-impulsionnelle-finie">
+<h3><span class="section-number">4.2.2.1. </span>Les filtres à réponse impulsionnelle finie<a class="headerlink" href="#les-filtres-a-reponse-impulsionnelle-finie" title="Permalink to this headline">#</a></h3>
+<p>L’équation aux différences associée à des filtres à réponse impulsionnelle finie se réduit à</p>
+<div class="math notranslate nohighlight">
+\[y[n]=\sum_{r=P}^{M} b_{r} \cdot x[n-r].\]</div>
+<p>Dans ce cas, la sortie <span class="math notranslate nohighlight">\(y[n]\)</span> ne dépend pas des valeurs passées de la sortie. La réponse impulsionnelle  est triviale si on pose
+<span class="math notranslate nohighlight">\(x[n] = \delta[n]\)</span>, et vaut donc</p>
+<div class="math notranslate nohighlight">
+\[h[n]= b_n.\]</div>
+<p>L’équation aux différences s’identifie de manière directe au produit de convolution <span class="math notranslate nohighlight">\(h[n]*x[n]\)</span>. La longueur de la réponse impulsionnelle correspond  aux nombres de termes de la somme sur l’indice <span class="math notranslate nohighlight">\(r\)</span>, ie. <span class="math notranslate nohighlight">\(M-P+1\)</span>, qui est obligatoirement  fini pour un filtre réalisable.</p>
+<p>Ces filtres sont toujours stables car la condition <span class="math notranslate nohighlight">\(\sum_k |h[k]|  &lt; +\infty\)</span> est toujours vérifiée. Ces filtres sont appelés filtres RIF (Réponse impulsionnelle  finie) et en anglais FIR (Finite Impulse Response filters). Ce sont des filtres non récursifs, encore dénommés filtres MA (Moving Average, ou Moyenne mobile) car l’opération de convolution ainsi réalisée peut-être assimilée à une opération de moyennage glissant si on normalise cette moyenne.</p>
+<p>Par exemple, <span class="math notranslate nohighlight">\(y[[n] = x[n-l]+x[n]+x[n+l]\)</span> est un filtre RIF non causal réalisant un lissage.</p>
+</div>
+<div class="section" id="les-filtres-a-reponse-impulsionnelle-infinie">
+<h3><span class="section-number">4.2.2.2. </span>Les filtres à réponse impulsionnelle infinie<a class="headerlink" href="#les-filtres-a-reponse-impulsionnelle-infinie" title="Permalink to this headline">#</a></h3>
+<p>L’équation aux différences associée aux filtres dîts à réponse imulsionnelle infinie à la forme générale</p>
+<div class="math notranslate nohighlight">
+\[y[n]=\sum_{k=1}^{N} a_{k} \cdot y[n-k]+\sum_{r=P}^{M} b_{r} \cdot x[n-r].\]</div>
+<p>La sortie <span class="math notranslate nohighlight">\(y[n]\)</span> étant dépendante des valeurs passées <span class="math notranslate nohighlight">\(y[n-k]\)</span>, la réponse impulsionnelle sera infinie.</p>
+<p>Par exemple <span class="math notranslate nohighlight">\(y[n] = a.y[n-1] + x[n]\)</span> est un filtre à réponse impulsionnelle  infinie du premier ordre. Le calcul de sa réponse impulsionnelle nécessite la connaissance d’un échantillon particulier (de même que la résolution d’une équation différentielle du premier ordre suppose la connaissance d’une condition initiale). Pour cet exemple ordre, <span class="math notranslate nohighlight">\(h[n]\)</span> vaut <span class="math notranslate nohighlight">\(h[0].a^n\)</span> pour <span class="math notranslate nohighlight">\(n &gt; 0\)</span> et vaut <span class="math notranslate nohighlight">\((h[0]-1)a^n\)</span> pour <span class="math notranslate nohighlight">\(n &lt; 0\)</span>. L’équation aux différences a une infinité de solutions : toutes ces solutions différent de <span class="math notranslate nohighlight">\(K.a^n\)</span>, puisque  <span class="math notranslate nohighlight">\(K.a\)</span> est solution de <span class="math notranslate nohighlight">\(y[n]- a.y[n-1]= 0\)</span>. Parmi toutes ces solutions, une seule correspond à un système causal (lorsque  <span class="math notranslate nohighlight">\(h[0] = 1\)</span>).</p>
+<p>La réponse impulsionnelle  étant infinie, ces filtres peuvent être instables.
+Ces filtres sont appelés filtres RII (Réponse impulsionnelle infinie), soit en anglais IIR (Infinite Impulse Response filters). Ce sont par nature des filtres récursifs.</p>
+<p>Lorsque l’équation aux différences se limite à</p>
+<div class="math notranslate nohighlight">
+\[y[n]=\sum_{k=1}^{N} a_{k} \cdot y[n-k]+x[n],\]</div>
+<p>ils sont appelés filtres AR (Auto-Regressive). Sous la forme la plus générale, ils sont également appelés filtres ARMA (Auto-Regressive Moving-Average).</p>
+</div>
+</div>
+<div class="section" id="filtres-non-invariants-par-decalage">
+<h2><span class="section-number">4.2.3. </span>Filtres non invariants par décalage<a class="headerlink" href="#filtres-non-invariants-par-decalage" title="Permalink to this headline">#</a></h2>
+<p>Les formes les plus courantes des filtres non invariants par décalage sont :</p>
+<ul class="simple">
+<li><p>le compresseur,</p></li>
+<li><p>l’échantillonneur,</p></li>
+<li><p>le suréchantillonneur.</p></li>
+</ul>
+<p>La condition d’invariance par décalage n’étant pas vérifiée, ces filtres ne sont pas régis par une équation de convolution,  et donc la connaissance  de leur réponse impulsionnelle ne permet pas de déduire leurs propriétés.</p>
+<div class="section" id="le-compresseur">
+<h3><span class="section-number">4.2.3.1. </span>Le compresseur<a class="headerlink" href="#le-compresseur" title="Permalink to this headline">#</a></h3>
+<p>Il est défini par</p>
+<div class="math notranslate nohighlight">
+\[y[n] = x[M.n].\]</div>
+<p>Il est non invariant par décalage, car décaler l’entrée de <span class="math notranslate nohighlight">\(M\)</span> échantillons décale la sortie de <span class="math notranslate nohighlight">\(1\)</span> seulement, et décaler l’entrée de <span class="math notranslate nohighlight">\(P \neq k.M\)</span> change complètement  les échantillons  en sortie. Il est évidemment  stable (car à une entrée bornée correspond une sortie bornée). Il est non causal (de manière évidente, on vérifie par exemple que <span class="math notranslate nohighlight">\(y[1]\)</span> dépend de <span class="math notranslate nohighlight">\(x[M]\)</span>).
+Sa réponse impulsionnelle  est <span class="math notranslate nohighlight">\(h[n] = \delta[n]\)</span>.</p>
+<p>D’un point de vue pratique, cet opérateur correspond à une opération de sous-échantillonnage : si <span class="math notranslate nohighlight">\(x[n]\)</span> est obtenu par échantillonnage  d’un signal <span class="math notranslate nohighlight">\(x_a(t)\)</span> à la fréquence d’échantillonnage <span class="math notranslate nohighlight">\(F_e\)</span>, <span class="math notranslate nohighlight">\(y[n]\)</span> correspond à l’échantillonnage  de <span class="math notranslate nohighlight">\(x_a(t)\)</span> à la fréquence <span class="math notranslate nohighlight">\(F_e/M\)</span>.</p>
+</div>
+<div class="section" id="l-echantillonneur">
+<h3><span class="section-number">4.2.3.2. </span>L’échantillonneur<a class="headerlink" href="#l-echantillonneur" title="Permalink to this headline">#</a></h3>
+<p>Il est défini par</p>
+<div class="math notranslate nohighlight">
+\[y[k.M] = x[k.M],\]</div>
+<p>et <span class="math notranslate nohighlight">\(y[n] = 0\)</span> si <span class="math notranslate nohighlight">\(n\)</span> est non multiple de <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p>Il est non invariant par décalage : décaler l’entrée de <span class="math notranslate nohighlight">\(M\)</span> revient bien à décaler la sortie de M, mais décaler l’entrée de <span class="math notranslate nohighlight">\(P \neq k M\)</span> change complètement  les échantillons en sortie. Il est évidemment  stable (une entrée bornée donne une sortie bornée) et causal. Sa réponse impulsionnelle  est <span class="math notranslate nohighlight">\(h[n] = \delta[n]\)</span>.</p>
+</div>
+<div class="section" id="le-surechantillonneur">
+<h3><span class="section-number">4.2.3.3. </span>Le suréchantillonneur<a class="headerlink" href="#le-surechantillonneur" title="Permalink to this headline">#</a></h3>
+<p>Il est défini par</p>
+<div class="math notranslate nohighlight">
+\[y[k.M] = x[k],\]</div>
+<p>et <span class="math notranslate nohighlight">\(y[n] = 0\)</span> si <span class="math notranslate nohighlight">\(n\)</span> est non multiple de <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p>Il est non invariant par décalage : décaler l’entrée de <span class="math notranslate nohighlight">\(1\)</span> échantillon, décale la sortie de <span class="math notranslate nohighlight">\(M\)</span> échantillons. Il est évidemment stable (une entrée bornée donne une sortie bornée). Il est non causal (par exemple, <span class="math notranslate nohighlight">\(y[-M]\)</span> dépend de <span class="math notranslate nohighlight">\(x[-1]\)</span>). Sa réponse impulsionnelle  est donnée par <span class="math notranslate nohighlight">\(h[n] = \delta[n]\)</span>.</p>
+<p>Ce filtre permet d’élever la fréquence d’échantillonnage  d’un signal en intercalant <span class="math notranslate nohighlight">\((M-1)\)</span> échantillons nuls entre chaque échantillon.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="A1sec1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4.1. </span>Signaux à temps discrets</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="biblio.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Bibliographie</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By C. Poulliat<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

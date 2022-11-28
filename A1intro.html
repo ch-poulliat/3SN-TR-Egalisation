@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bienvenue au cours d’Egalisation. &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>4. Signaux et systèmes à temps discrets &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Modèles des signaux en réception pour les canaux sélectifs en fréquence" href="ch1intro.html" />
+    <link rel="next" title="4.1. Signaux à temps discrets" href="A1sec1.html" />
+    <link rel="prev" title="3.2. Egaliseur à retour de décision" href="ch3sec2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,8 +110,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Bienvenue au cours d’Egalisation.
                 </a>
             </li>
@@ -208,12 +209,12 @@ const thebe_selector_output = ".output, .cell_output"
   Annexes
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="A1intro.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    4. Signaux et systèmes à temps discrets
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
@@ -326,7 +327,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FA1intro.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -354,7 +355,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/A1intro.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -403,7 +404,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bienvenue au cours d’Egalisation.</h1>
+                <h1>Signaux et systèmes à temps discrets</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -415,22 +416,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="bienvenue-au-cours-d-egalisation">
-<h1>Bienvenue au cours d’Egalisation.<a class="headerlink" href="#bienvenue-au-cours-d-egalisation" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="signaux-et-systemes-a-temps-discrets">
+<h1><span class="section-number">4. </span>Signaux et systèmes à temps discrets<a class="headerlink" href="#signaux-et-systemes-a-temps-discrets" title="Permalink to this headline">#</a></h1>
+<p>La théorie de l’échantillonnage montre qu’il est possible de définir la transformée de Fourier d’une séquence de nombres/d’échantillons, et que celle-ci est identique à la transformée de Fourier d’un signal échantillonné parfait. Ce chapitre présente les systèmes de traitement des séquences, et les outils nécessaires à leur modélisation.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Egalisation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="ch1intro.html">1. Modèles des signaux en réception pour les canaux sélectifs en fréquence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch2intro.html">2. Egalisation linéaire temporelle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch3intro.html">3. Egalisation non linéaire</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Annexes</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="A1intro.html">4. Signaux et systèmes à temps discrets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="biblio.html">5. Bibliographie</a></li>
-</ul>
 </div>
 </div>
 
@@ -461,10 +450,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="ch1intro.html" title="next page">
+    <a class='left-prev' id="prev-link" href="ch3sec2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.2. </span>Egaliseur à retour de décision</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="A1sec1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Modèles des signaux en réception pour les canaux sélectifs en fréquence</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span>Signaux à temps discrets</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

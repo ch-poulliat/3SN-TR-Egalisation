@@ -1,0 +1,718 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4.1. Signaux à temps discrets &#8212; Egalisation temporelle et fréquentielle</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.2. Systèmes à temps discret" href="A1sec2.html" />
+    <link rel="prev" title="4. Signaux et systèmes à temps discrets" href="A1intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/N7solo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Egalisation temporelle et fréquentielle</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenue au cours d’Egalisation.
+                </a>
+            </li>
+        </ul>
+        <p class="caption">
+ <span class="caption-text">
+  Egalisation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch1intro.html">
+   1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec1.html">
+     1.1. Représentation bande base des signaux sur canal sélectif en fréquence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec2.html">
+     1.2. Exemple : Canaux à trajets multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec3.html">
+     1.3. Fitrage adapté et blanchiment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec4.html">
+     1.4. Filtrage adapté partiel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2intro.html">
+   2. Egalisation linéaire temporelle
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec1.html">
+     2.1. Principes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec2.html">
+     2.2. Egalisation linéaire avec critère ZF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec3.html">
+     2.3. Egalisation par filtrage de Wiener
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch3intro.html">
+   3. Egalisation non linéaire
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3sec1.html">
+     3.1. Maximum de Vraisemblance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3sec2.html">
+     3.2. Egaliseur à retour de décision
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Annexes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="A1intro.html">
+   4. Signaux et systèmes à temps discrets
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.1. Signaux à temps discrets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="A1sec2.html">
+     4.2. Systèmes à temps discret
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="biblio.html">
+   5. Bibliographie
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FA1sec1.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/A1sec1.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequences-et-espace-s-des-sequences">
+   4.1.1. Séquences et Espace(s) des séquences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequences-a-support-infini">
+     4.1.1.1. Séquences à support infini
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequences-a-support-temporel-fini">
+     4.1.1.2. Séquences à support temporel fini
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequences-particulieres">
+   4.1.2. Séquences particulières
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#impulsion-delta-de-kronecker">
+     4.1.2.1. Impulsion Delta de Kronecker
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequence-impulsion-unite">
+     4.1.2.2. Séquence Impulsion Unité
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequences-sinusoidales">
+   4.1.3. Séquences sinusoïdales
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Signaux à temps discrets</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequences-et-espace-s-des-sequences">
+   4.1.1. Séquences et Espace(s) des séquences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequences-a-support-infini">
+     4.1.1.1. Séquences à support infini
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequences-a-support-temporel-fini">
+     4.1.1.2. Séquences à support temporel fini
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequences-particulieres">
+   4.1.2. Séquences particulières
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#impulsion-delta-de-kronecker">
+     4.1.2.1. Impulsion Delta de Kronecker
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequence-impulsion-unite">
+     4.1.2.2. Séquence Impulsion Unité
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequences-sinusoidales">
+   4.1.3. Séquences sinusoïdales
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="signaux-a-temps-discrets">
+<h1><span class="section-number">4.1. </span>Signaux à temps discrets<a class="headerlink" href="#signaux-a-temps-discrets" title="Permalink to this headline">#</a></h1>
+<div class="section" id="sequences-et-espace-s-des-sequences">
+<h2><span class="section-number">4.1.1. </span>Séquences et Espace(s) des séquences<a class="headerlink" href="#sequences-et-espace-s-des-sequences" title="Permalink to this headline">#</a></h2>
+<p>A partir des échantillons d’un signal analogique <span class="math notranslate nohighlight">\(x_a(t)\)</span>, on obtient un signal à temps discret représenté par des séquences de nombres qui sont notées <span class="math notranslate nohighlight">\(\left\{x[n]\right\},\)</span> ou de manière vectorielle par <span class="math notranslate nohighlight">\({\bf x}\)</span>, où <span class="math notranslate nohighlight">\(x[n]\)</span> étant l’élément d’index temporelle <span class="math notranslate nohighlight">\(n\)</span> (<span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span> entier relatif). Par souci de simplicité des notations, on omettra les parenthèses lorsque le contexte le permet. Généralement, on a à manipuler deux grandes catégories de séquences:</p>
+<ol>
+<li><p><em><strong>Les séquences discrètes à support temporel infini :</strong></em></p>
+<p>ce sont des séquences dont le support temporel <span class="math notranslate nohighlight">\(n\)</span> est défini sur <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> (dîtes infinies “à gauche” et “à droite”, en référence à l’échantillon de référence pour <span class="math notranslate nohighlight">\(n=0\)</span>), sur <span class="math notranslate nohighlight">\(\mathbb{Z}_{+}\)</span> (encore noté <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>) (signal causal infini à droite), ou sur <span class="math notranslate nohighlight">\(\mathbb{Z}_{-}\)</span> (signal infini à gauche). Ces séquences appartiennent appartiennent à l’espace vectoriel <span class="math notranslate nohighlight">\(\mathbb{C}^{\mathbb{Z}}\)</span> et sont notées</p>
+</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[{\bf x}=\left[\begin{array}{lllll}{\cdots} &amp; {x[-1]} &amp; {x[0]} &amp; {x[1]} &amp; {\cdots}\end{array}\right]^{\top}.\]</div>
+<ol>
+<li><p><em><strong>Les séquences discrètes à support temporel fini :</strong></em></p>
+<p>Ces séquences sont à support fini et sont représentées de manière générale par un vecteur de taille fini <span class="math notranslate nohighlight">\({\bf x} \in \mathbb{C}^N\)</span> donné par</p>
+<div class="math notranslate nohighlight">
+\[{\bf x}=\left[\begin{array}{lllll} x[-P] &amp; \ldots &amp; {x[0]} &amp; {\ldots} &amp; {x[M]}\end{array}\right]^{\top},\]</div>
+<p>avec <span class="math notranslate nohighlight">\(N=P+M-1\)</span>.</p>
+<p>Sans perte de généralité, si on doit travailler essentiellement avec des outils de l’algèbre linéaire classique, on préférera souvent se ramener  à une notations vectorielle classique de type</p>
+<div class="math notranslate nohighlight">
+\[{\bf x}=\left[\begin{array}{llll} x[0] &amp; {x[1]} &amp; {\ldots} &amp; {x[N-1]}\end{array}\right]^{\top},\]</div>
+</li>
+</ol>
+<p>où <span class="math notranslate nohighlight">\({\bf x}\)</span> est assimilé à un vecteur de <span class="math notranslate nohighlight">\(\mathbb{C}^N\)</span>. L’indexation retenue ne correspond donc plus nécessairement à l’indexation temporelle des échantillons.</p>
+<div class="section" id="sequences-a-support-infini">
+<h3><span class="section-number">4.1.1.1. </span>Séquences à support infini<a class="headerlink" href="#sequences-a-support-infini" title="Permalink to this headline">#</a></h3>
+<p>Pour les séquences à support infinies, les séquences de <span class="math notranslate nohighlight">\(\mathbb{C}^{\mathbb{Z}}\)</span> définissent un espace vectoriel des séquences complexes infinies définies sur <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> formellement décrit comme</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{C}^{\mathbb{Z}}=\left\{{\bf x}=\left[\begin{array}{lllll}{\cdots} &amp; {x[-1]} &amp; {x[0]} &amp; {x[1]} &amp; {\cdots}\end{array}\right]^{\top} | x[n] \in \mathbb{C}, n \in \mathbb{Z}\right\}\]</div>
+<p>et pour lequel l’addition de vecteurs et la multiplication par un scalaire sont réalisés par composantes. C’est un espace de dimension infinie.</p>
+<p>Parmi les sous-espaces d’intérêt, nous avons <em><strong>l’espace <span class="math notranslate nohighlight">\(\ell^{2}(\mathbb{Z})\)</span> des séquences de carrés sommables</strong></em>. Du point de vue vue du signal, cela s’identifie à <em><strong>l’espace des signaux discrets à énergie finie</strong></em>. On construit ce sous-espace vectoriel normé en dotant <span class="math notranslate nohighlight">\(\mathbb{C}^{\mathbb{Z}}\)</span> de la norme euclidienne <span class="math notranslate nohighlight">\(\ell^2\)</span> définie par</p>
+<div class="math notranslate nohighlight">
+\[\Vert x\Vert _2=\left(\sum_{n=0}^{N-1}\left|x_{n}\right|^{2}\right)^{1 / 2}\]</div>
+<p>et induite par le produit scalaire usuel défini comme</p>
+<div class="math notranslate nohighlight">
+\[\langle x, y\rangle=\sum_{n \in \mathbb{Z}} x_{n} y_{n}^{*}.\]</div>
+<p>Dans la notation précédente, on suppose que la dernière somme sur les indices à valeurs dans <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> est par essence finie, ce qui est vérifié si on suppose <span class="math notranslate nohighlight">\(\Vert x\Vert _2\)</span> et <span class="math notranslate nohighlight">\(\Vert y\Vert _2\)</span> finies. Cet espace est un espace de Hilbert et donc hérite de toutes les propriétés géométriques associées connues à ce type d’espaces.</p>
+<p>On peut également retenir *** l’espace vectoriel normé <span class="math notranslate nohighlight">\(\ell^{\infty}(\mathbb{Z})\)</span> des séquences d’échantillons à amplitude bornée***, qui définit une contrainte plus faible sur les séquences de <span class="math notranslate nohighlight">\(\mathbb{C}^{\mathbb{Z}}\)</span>. Pour cet espace, les séquences sont telles que <span class="math notranslate nohighlight">\(|x[n]|&lt; A,\; \forall n \in \mathbb{Z}\)</span>, et <span class="math notranslate nohighlight">\(A \in \mathbb{R}^+\)</span> fini. La norme associée est alors la norme infinie donnée par</p>
+<div class="math notranslate nohighlight">
+\[\Vert x\Vert _{\infty}=\sup _{n \in \mathbb{Z}}\left|x_{n}\right|\]</div>
+<p>Enfin, *** l’espace vectoriel normé <span class="math notranslate nohighlight">\(\ell^{1}(\mathbb{Z})\)</span> des séquences absolument sommables*** est l’espace des séquences dont la norme-<span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(\ell^1\)</span> est finie, définissant un ensemble plus contraint que <span class="math notranslate nohighlight">\(\ell^{2}(\mathbb{Z})\)</span>.
+La norme associé est donnée par</p>
+<div class="math notranslate nohighlight">
+\[\Vert x\Vert _{1}=\sum_{n \in \mathbb{Z}}\left|x_{n}\right|\]</div>
+<p>Les deux derniers sous-ensembles sont des cas particuliers des espaces vectoriels normés (complets) <span class="math notranslate nohighlight">\(\ell^{p}(\mathbb{Z})\)</span>, définit pour <span class="math notranslate nohighlight">\(p \in [1,+ \infty]\)</span>, et pour lequel  la norme-<span class="math notranslate nohighlight">\(p\)</span> <span class="math notranslate nohighlight">\(\ell^p\)</span> est finie. <span class="math notranslate nohighlight">\(\ell^p\)</span> est définie par</p>
+<div class="math notranslate nohighlight">
+\[\Vert x\Vert _{p}=\left(\sum_{n \in \mathbb{Z}}\left|x_{n}\right|^{p}\right)^{1 / p}\]</div>
+<p>On peut alors montrer que si <span class="math notranslate nohighlight">\(p&lt;q\)</span>, alors <span class="math notranslate nohighlight">\(\ell^{p}(\mathbb{Z})\subset \ell^{p}(\mathbb{Z}\)</span>. Ceci implique que l’ensemble <span class="math notranslate nohighlight">\(\ell^{1}(\mathbb{Z}\)</span> est l’ensemble de séquences le plus réduit/restreint. En particulier, pour ce qui nous concerne le plus, on s’intéresse surtout au fait que <span class="math notranslate nohighlight">\(\ell^{1}(\mathbb{Z})\subset \ell^{2}(\mathbb{Z})\)</span>. Cela induit en effet que que si une séquence à une norme <span class="math notranslate nohighlight">\(\ell^1\)</span> finie alors elle aura une norme <span class="math notranslate nohighlight">\(\ell^2\)</span> finie., les signaux absolument sommables sont donc de carrés sommables. L’inverse est faux.</p>
+</div>
+<div class="section" id="sequences-a-support-temporel-fini">
+<h3><span class="section-number">4.1.1.2. </span>Séquences à support temporel fini<a class="headerlink" href="#sequences-a-support-temporel-fini" title="Permalink to this headline">#</a></h3>
+<p>Pour les séquences à support fini, les séquences de <span class="math notranslate nohighlight">\(\mathbb{C}^{\mathbb{Z}}\)</span> définissent un sous-espace vectoriel de dimension finie des séquences complexes finies définies sur <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> se décrivant formellement comme</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{C}^{N}=\left\{x=\left[\begin{array}{llll} x[0] &amp; {x[1]} &amp; {\ldots} &amp; {x[N-1]}\end{array}\right]^{\top} | x[n] \in \mathbb{C}, n \in\{0,1, \ldots, N-1\}\right\}\]</div>
+<p>Comme dans le cas in,fini, on peut alors associé le produit scalaire défini comme</p>
+<div class="math notranslate nohighlight">
+\[\langle x, y\rangle=\sum_{n = 0}^{N-1} x_{n} y_{n}^{*}={\bf y}^{\dagger}{\bf x},\]</div>
+<p>où <span class="math notranslate nohighlight">\(^{\dagger}\)</span>, noté également <span class="math notranslate nohighlight">\(^{H}\)</span>, est l’opérateur conjoint de transposition et conjugaison. La norme-<span class="math notranslate nohighlight">\(2\)</span> induite</p>
+<div class="math notranslate nohighlight">
+\[ \Vert x \Vert_2=\left(\sum_{n=0}^{N-1}\left|x_{n}\right|^{2}\right)^{1 / 2}\]</div>
+<p>permet de dotée <span class="math notranslate nohighlight">\(\mathbb{C}^{N}\)</span> de sa structure usuelle d’espace vectoriel normé, et comme nous sommes en dimension finie, ce dernier est un espace de Hilbert.</p>
+<p>Comme dans le cas infini, onpeut également doté <span class="math notranslate nohighlight">\(\mathbb{C}^{N}\)</span> d’autres normes, généralement des normes-<span class="math notranslate nohighlight">\(p\)</span> définies pour <span class="math notranslate nohighlight">\(p\in[1, +\infty]\)</span> par</p>
+<div class="math notranslate nohighlight">
+\[\Vert x \Vert_p=\left(\sum_{n=0}^{N-1}\left|x_{n}\right|^{p}\right)^{1 / p}.\]</div>
+<p>Pour <span class="math notranslate nohighlight">\(p=+\infty\)</span>, on obtient</p>
+<div class="math notranslate nohighlight">
+\[\Vert x\Vert _{\infty}=\max \left(\left|x_{0}\right|,\left|x_{1}\right|, \ldots,\left|x_{N-1}\right|\right)\]</div>
+<p>et pour <span class="math notranslate nohighlight">\(p=1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\Vert x \Vert_1=\sum_{n=0}^{N-1}\left|x_{n}\right|.\]</div>
+</div>
+</div>
+<div class="section" id="sequences-particulieres">
+<h2><span class="section-number">4.1.2. </span>Séquences particulières<a class="headerlink" href="#sequences-particulieres" title="Permalink to this headline">#</a></h2>
+<div class="section" id="impulsion-delta-de-kronecker">
+<h3><span class="section-number">4.1.2.1. </span>Impulsion Delta de Kronecker<a class="headerlink" href="#impulsion-delta-de-kronecker" title="Permalink to this headline">#</a></h3>
+<p>La séquence dîte de Kronecker est donnée par définition par</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 4.1 </span> (Impulsion Delta de Kronecker)</p>
+<div class="definition-content section" id="proof-content">
+<div class="math notranslate nohighlight">
+\[\begin{split}\delta[n]=\left\{\begin{array}{ll}{1,} &amp; {\text { for } n=0 ;} \\ {0,} &amp; {\text { otherwise }}\end{array} \quad n \in \mathbb{Z}\right.\end{split}\]</div>
+<p>En notation vectoriel, on  notera</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\delta}=\left[\begin{array}{lllll}{\cdots} &amp; 0 &amp; {1} &amp; {0} &amp; {\cdots}\end{array}\right]^{\top}\]</div>
+</div>
+</div><p>L’ensemble <span class="math notranslate nohighlight">\(\left\{\delta[n-k]\right\}_{k \in \mathbb{Z}}\)</span> qui correspond aux versions décalées de <span class="math notranslate nohighlight">\(k\)</span> échantillons dans le temps de la séquence <span class="math notranslate nohighlight">\(\delta[n]\)</span> forme la base orthonormale usuelle associée à <span class="math notranslate nohighlight">\(\ell^{2}(\mathbb{Z})\)</span>. On notera <span class="math notranslate nohighlight">\({\bf \delta_k}\)</span> la version vectorielle de <span class="math notranslate nohighlight">\(\delta[n-k]\)</span>.</p>
+<p>En particulier, on aura les propriétés suivantes:</p>
+<div class="proof property admonition" id="property-1">
+<p class="admonition-title"><span class="caption-number">Property 4.1 </span></p>
+<div class="property-content section" id="proof-content">
+<ul class="simple">
+<li><p><em><strong>Produit (terme à terme) d’une séquence par l’impulsion de Kronecker:</strong></em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[x[n].\delta[n]=x[0]\delta[n]\]</div>
+<ul class="simple">
+<li><p><em><strong>Produit scalaire d’une séquence par l’impulsion de Kronecker:</strong></em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\langle x, \delta_{n_0} \rangle =\sum_{k \in \mathbb{Z}}{x[k] \delta[k-n_0]}=x[n_0]\]</div>
+</div>
+</div></div>
+<div class="section" id="sequence-impulsion-unite">
+<h3><span class="section-number">4.1.2.2. </span>Séquence Impulsion Unité<a class="headerlink" href="#sequence-impulsion-unite" title="Permalink to this headline">#</a></h3>
+<p>La séquence d’impulsion Unité dîte Heaviside est donnée par définition par</p>
+<div class="proof definition admonition" id="definition-2">
+<p class="admonition-title"><span class="caption-number">Definition 4.2 </span> (Echelon Heaviside)</p>
+<div class="definition-content section" id="proof-content">
+<div class="math notranslate nohighlight">
+\[\begin{split}U[n]=\left\{\begin{array}{ll}{1,} &amp; {\text { for } n \in \mathbb{N} ;} \\ {0,} &amp; {\text { otherwise }}\end{array} \quad n \in \mathbb{Z}\right.\end{split}\]</div>
+</div>
+</div><p>On a la relation suivante par rapport à la séquence Delta</p>
+<div class="math notranslate nohighlight">
+\[U[n]=\sum_{k=-\infty}^{n}{\delta[k]}.\]</div>
+<p>On voit qu’il existe une relation d’intégration entre ces deux séquences.</p>
+<p>Cette séquence a ses éléments bornés par 1 et donc appartient à <span class="math notranslate nohighlight">\(\ell^{\infty}(\mathbb{Z})\)</span> et donc n’appartient ni à <span class="math notranslate nohighlight">\(\ell^{1}(\mathbb{Z})\)</span>, ni à <span class="math notranslate nohighlight">\(\ell^{2}(\mathbb{Z})\)</span>.</p>
+</div>
+</div>
+<div class="section" id="sequences-sinusoidales">
+<h2><span class="section-number">4.1.3. </span>Séquences sinusoïdales<a class="headerlink" href="#sequences-sinusoidales" title="Permalink to this headline">#</a></h2>
+<p>Ce sont les séquences de type <span class="math notranslate nohighlight">\(x[n]=e^{i 2 \pi \mathbb{N}u n},\)</span> ou <span class="math notranslate nohighlight">\(x[n]=sin(2nvn),\)</span>  et <span class="math notranslate nohighlight">\(x[n]=cos(2nvn),\)</span> .</p>
+<p>Par périodicité <span class="math notranslate nohighlight">\(x[n]=e^{i 2 \pi \mathbb{N}u n}\)</span> et <span class="math notranslate nohighlight">\(x'[n]=e^{i 2 \pi (\mathbb{N}u+N) n}\)</span>  sont identiques pour <span class="math notranslate nohighlight">\(N\)</span> est entier. Ceci peut être interprété  comme une conséquence du repliement de  spectre lors de  l’échantillonnage à la fréquence <span class="math notranslate nohighlight">\(F_e=1/T_e\)</span>. Ainsi, deux signaux continus définis par <span class="math notranslate nohighlight">\(x_a(t)=e^{i 2 \pi f t}\)</span> et <span class="math notranslate nohighlight">\(x'_a(t)=e^{i 2 \pi (f+N F_e) t}\)</span> sont indiscernables après échantillonnage à la fréquence <span class="math notranslate nohighlight">\(F_e\)</span>. En effet, le signal continu <span class="math notranslate nohighlight">\(x_a(t)=e^{i 2 \pi f t}\)</span> échantillonné à la fréquence <span class="math notranslate nohighlight">\(F_e\)</span> donne la séquence  <span class="math notranslate nohighlight">\(x[n] =e^{i 2 \pi \frac{f}{F_e} n}=e^{i 2 \pi \mathbb{N}u n}\)</span> avec <span class="math notranslate nohighlight">\(\mathbb{N}u=\frac{f}{F_e}\)</span>. La fréquence du signal échantillonnée <span class="math notranslate nohighlight">\(\mathbb{N}u\)</span> est donc égale à la fréquence <span class="math notranslate nohighlight">\(f\)</span> du signal à temps continu, normalisée par rapport à la fréquence d’échantillonnage <span class="math notranslate nohighlight">\(F_e\)</span>. On parlera de fréquence normalisée. De plus, <span class="math notranslate nohighlight">\(x[n]=e^{i 2 \pi \mathbb{N}u n}\)</span> étant <span class="math notranslate nohighlight">\(1\)</span>-périodique, on peut obtenir l’ensemble  des séquences associées à <span class="math notranslate nohighlight">\(x[n]\)</span> en faisant varier le paramètre <span class="math notranslate nohighlight">\(\mathbb{N}u\)</span> sur un intervalle de longueur <span class="math notranslate nohighlight">\(1\)</span>. On notera également que la périodicité n’est conservée que si <span class="math notranslate nohighlight">\(f/F_e\)</span> est rationnel.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="A1intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Signaux et systèmes à temps discrets</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="A1sec2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Systèmes à temps discret</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By C. Poulliat<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
