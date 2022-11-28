@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.3. Fitrage adapté et blanchiment &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>3. Egalisation non linéaire &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,12 +53,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1.4. Filtrage adapté partiel" href="ch1sec4.html" />
-    <link rel="prev" title="1.2. Exemple : Canaux à trajets multiples" href="ch1sec2.html" />
+    <link rel="next" title="3.1. Maximum de Vraisemblance" href="ch3sec1.html" />
+    <link rel="prev" title="2.3. Egalisation par filtrage de Wiener" href="ch2sec3.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,16 +117,16 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="ch1intro.html">
    1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="ch1sec1.html">
      1.1. Représentation bande base des signaux sur canal sélectif en fréquence
@@ -139,8 +137,8 @@ const thebe_selector_output = ".output, .cell_output"
      1.2. Exemple : Canaux à trajets multiples
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec3.html">
      1.3. Fitrage adapté et blanchiment
     </a>
    </li>
@@ -178,11 +176,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ch3intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    3. Egalisation non linéaire
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
@@ -295,7 +293,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch1sec3.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch3intro.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -323,7 +321,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/ch1sec3.md"
+        <a href="_sources/ch3intro.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -372,7 +370,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Fitrage adapté et blanchiment</h1>
+                <h1>Egalisation non linéaire</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -384,25 +382,11 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="fitrage-adapte-et-blanchiment">
-<h1><span class="section-number">1.3. </span>Fitrage adapté et blanchiment<a class="headerlink" href="#fitrage-adapte-et-blanchiment" title="Permalink to this headline">#</a></h1>
-<p>Une stratégie optimale à la réception est d’appliquer un filtre adapté à l’ensemble des contributions convolutives de la chaîne de transmission.
-Cette opération de filtrage s’accompagne de la nécessité d’une mise en oeuvre d’un filtre numérique de blanchiment après échantillonnage au rythme symbole. En effet, le bruit équivalent en sortie de filtre adapté est (hors cas pathologique) coloré. Le modèle d’observation de cette stratégie de réception est donné par</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-y(t)&amp;= h_r(t)*r(t) + h_r*b(t) \nonumber \\
-&amp;= \sum_{k \in \mathbb{Z} }{s_k (h_r*h_c*h_e)(t-k T)} +h_r(t)*b(t) \nonumber \\
-&amp;= \sum_{k \in \mathbb{Z} }{s_k h(t-k T)} + b_r(t)
-\end{aligned}\end{split}\]</div>
-<p>avec <span class="math notranslate nohighlight">\(h(t)=h_r*h_c*h_e(t)\)</span>, enveloppe complexe du canal global <em>équivalent</em> en bande de base.</p>
-<p>La stratégie de réception (optimal), dénommée <em>Whitened Matched Filter</em> [Forney] , est donnée par :</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(h_r(t)\)</span> est le filtre adapté à <span class="math notranslate nohighlight">\(g(t)=h_c(t)*h_e(t)\)</span>,</p></li>
-<li><p>échantillonnage au rythme symbole <span class="math notranslate nohighlight">\(T_s\)</span>, et application d’un filtre blanchissant,
-et nécessité d’un filtre blanchissant,</p></li>
-<li><p>Détection par bloc (interférence entre symbole toujours présente) au sens du maximum de vraisemblance ou critère de détection sous-optimaux.</p></li>
-</ol>
-<p>Nous ne détaillerons pas ce schéma qui n’est pas toujours le plus simple à mettre en oeuvre dans un contexte de canal <span class="math notranslate nohighlight">\(h_c(t)\)</span> variable rapidement en temps.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="egalisation-non-lineaire">
+<h1><span class="section-number">3. </span>Egalisation non linéaire<a class="headerlink" href="#egalisation-non-lineaire" title="Permalink to this headline">#</a></h1>
+<p>Dans ce chapitre, nous présentons des structures d’égalisation non linéaires permettant de pallier aux faibles performances des égaliseurs linéaires en présence de canaux très sélectifs. L’amélioration des performances se fera évidemment au prix d’un accroissement de la complexité.</p>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -432,17 +416,17 @@ et nécessité d’un filtre blanchissant,</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ch1sec2.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ch2sec3.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.2. </span>Exemple : Canaux à trajets multiples</p>
+            <p class="prev-next-title"><span class="section-number">2.3. </span>Egalisation par filtrage de Wiener</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ch1sec4.html" title="next page">
+    <a class='right-next' id="next-link" href="ch3sec1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.4. </span>Filtrage adapté partiel</p>
+        <p class="prev-next-title"><span class="section-number">3.1. </span>Maximum de Vraisemblance</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

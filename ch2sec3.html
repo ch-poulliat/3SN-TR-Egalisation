@@ -1,0 +1,1054 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.3. Egalisation par filtrage de Wiener &#8212; Egalisation temporelle et fréquentielle</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Egalisation non linéaire" href="ch3intro.html" />
+    <link rel="prev" title="2.2. Egalisation linéaire avec critère ZF" href="ch2sec2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/N7solo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Egalisation temporelle et fréquentielle</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Bienvenue au cours d’Egalisation.
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch1intro.html">
+   1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec1.html">
+     1.1. Représentation bande base des signaux sur canal sélectif en fréquence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec2.html">
+     1.2. Exemple : Canaux à trajets multiples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec3.html">
+     1.3. Fitrage adapté et blanchiment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec4.html">
+     1.4. Filtrage adapté partiel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch2intro.html">
+   2. Egalisation linéaire temporelle
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec1.html">
+     2.1. Principes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec2.html">
+     2.2. Egalisation linéaire avec critère ZF
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.3. Egalisation par filtrage de Wiener
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch3intro.html">
+   3. Egalisation non linéaire
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3sec1.html">
+     3.1. Maximum de Vraisemblance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3sec2.html">
+     3.2. Egaliseur à retour de décision
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="biblio.html">
+   4. Bibliographie
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch2sec3.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/ch2sec3.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principe-d-orthogonalite">
+   2.3.1. Principe d’orthogonalité
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#egaliseur-mmse-sans-contrainte">
+   2.3.2. Egaliseur MMSE sans contrainte
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expressions-du-filtre-sans-contrainte">
+     2.3.2.1. Expressions du filtre sans contrainte
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analyse-de-performance">
+     2.3.2.2. Analyse de performance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#egaliseur-rif-de-wiener">
+   2.3.3. Egaliseur RIF de Wiener
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Egalisation par filtrage de Wiener</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principe-d-orthogonalite">
+   2.3.1. Principe d’orthogonalité
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#egaliseur-mmse-sans-contrainte">
+   2.3.2. Egaliseur MMSE sans contrainte
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expressions-du-filtre-sans-contrainte">
+     2.3.2.1. Expressions du filtre sans contrainte
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analyse-de-performance">
+     2.3.2.2. Analyse de performance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#egaliseur-rif-de-wiener">
+   2.3.3. Egaliseur RIF de Wiener
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="egalisation-par-filtrage-de-wiener">
+<h1><span class="section-number">2.3. </span>Egalisation par filtrage de Wiener<a class="headerlink" href="#egalisation-par-filtrage-de-wiener" title="Permalink to this headline">#</a></h1>
+<div class="figure align-default" id="wiener">
+<a class="reference internal image-reference" href="_images/egal_wiener.png"><img alt="_images/egal_wiener.png" src="_images/egal_wiener.png" style="height: 12cm;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Principe du filtrage de Wiener</span><a class="headerlink" href="#wiener" title="Permalink to this image">#</a></p>
+</div>
+<p>Une autre approche pour l’égalisation linéaire des canaux sélectifs en fréquences consiste à considérer comme critère d’optimisation la
+minimisation de l’erreur quadratique moyenne (EQMM), <em>mimimum mean square error (MMSE)</em>. Comparé au cas d’un critère ZF, le critère MMSE
+prend en compte ici le bruit additif et la réduction de l’interférence entre symboles qui sont les deux principaux termes de perturbation du
+signal reçu. Contrairement au cas de l’égaliseur ZF qui ne gère que l’interférence entre symboles, l’égaliseur MMSE cherche un compromis
+entre réduction des interférences entre symboles et amplification du bruit.</p>
+<p>Le principe est alors le suivant (voir schéma <a class="reference internal" href="#wiener"><span class="std std-numref">Fig. 2.2</span></a>):</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 2.1 </span></p>
+<div class="definition-content section" id="proof-content">
+<p>Trouver le filtre optimal <span class="math notranslate nohighlight">\(w_{opt}(z)\)</span> qui minimise la fonction de coût</p>
+<div class="math notranslate nohighlight">
+\[J_{\mathbf{w}}=\mathbb{E}\left(|e[n]|^2\right), \; e[n]=\hat{s}[n]-s[n-d], \; s[n]=w*y[n]\]</div>
+</div>
+</div><div class="section" id="principe-d-orthogonalite">
+<h2><span class="section-number">2.3.1. </span>Principe d’orthogonalité<a class="headerlink" href="#principe-d-orthogonalite" title="Permalink to this headline">#</a></h2>
+<p>Sans contrainte sur la structure de <span class="math notranslate nohighlight">\(w[n]\)</span>, le critère à optimiser peut s’écrire</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+J_{\mathbf{w}}&amp;=\mathbb{E}\left(|e[n]|^2\right)\\
+&amp;=\mathbb{E}\left(\left(\sum_{k=-\infty}^{+\infty}{w[k]y[n-k]}-s[n-d]\right)\left(\sum_{-\infty}^{+\infty}{w^*[k]y^*[n-k]-s^*[n-d]}\right)\right)
+\end{aligned}\end{split}\]</div>
+<p>Le filtre optimum s’obtient en recherchant les points stationnaires de la fonction <span class="math notranslate nohighlight">\(J_{\mathbf{w}}\)</span> vue comme une fonction de <span class="math notranslate nohighlight">\(\mathbb{C}\)</span> dans
+<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> et dont on peut montrer dans le cas à dimension finie que c’est une fonction quadratique de <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span>. En appliquant les règles
+de différenciation dans le cas complexe, on obtient l’expression suivante</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\frac{\partial J}{\partial w^*[p]}&amp;=\mathbb{E}\left(\left(\sum_{k=-\infty}^{+\infty}{w[k]y[n-kk]}\right)y^*[n-p]\right)\\
+&amp;=\mathbb{E}\left(e[n] y^*[n-p]\right) =0,\; \forall p \in \mathbb{Z}.
+\end{aligned}\end{split}\]</div>
+<p>On obtient ainsi la règle dîte du principe d’orthogonalité, l’erreur étant dans ce cas orthogonale aux observations
+si on interprète la covariance comme un produit scalaire.</p>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 2.2 </span> (Principe d’orthogonalité)</p>
+<div class="definition-content section" id="proof-content">
+<div class="math notranslate nohighlight">
+\[\mathrm{CNS} : \; \mathbb{E}(e_{opt}[n]y[n-k]^*) = 0, \; \forall k \in \mathbb{Z}\]</div>
+</div>
+</div><div class="proof property admonition" id="property-2">
+<p class="admonition-title"><span class="caption-number">Property 2.1 </span></p>
+<div class="property-content section" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\mathbb{E}(XY^{*})=&lt;X,Y&gt;\)</span> définit un produit scalaire sur
+<span class="math notranslate nohighlight">\(\mathcal{H}=L^2(\Omega)\)</span> si les variables sont centrées (espace des
+variables aléatoires de variance finie). L’erreur optimale est donc
+obtenue si elle est orthogonale à l’espace des observations (meilleure
+estimation obtenue). C’est donc une sorte d’équivalent du théorème de
+Pythagore.</p>
+<div class="figure align-default" id="orthogonality">
+<a class="reference internal image-reference" href="_images/principe_ortho.png"><img alt="_images/principe_ortho.png" src="_images/principe_ortho.png" style="height: 12cm;" /></a>
+</div>
+</div>
+</div><p>Nous avons donc à résoudre</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\mathbb{E}(e[n]y^*[n-p])&amp;=0,\; \forall p
+\end{aligned}\]</div>
+<p>ce qui donne en considérant <span class="math notranslate nohighlight">\(\hat{s}[n]=\sum_k{w[k] y[n-k]}\)</span> et <span class="math notranslate nohighlight">\(e[n]=\hat{s}[n]-s[n-d]\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\sum_k{w[k]\mathbb{E}(y[n-k]y^*[n-p])}&amp;=\mathbb{E}(s[n-d]y^*[n-p])\,\; \forall p
+\end{aligned}\]</div>
+<p>On obtient alors un système linéaire, appelé <em>équations normales</em> donné par</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+w[p]*\boldsymbol{\gamma}_{y}[p]&amp;= \boldsymbol{\gamma}_{sy}[p-d], \; \forall p
+\end{aligned}\]</div>
+<p>Dans le domaine en <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>, ceci à équivaut à</p>
+<div class="math notranslate nohighlight">
+\[w(z)=\frac{\overline{\gamma}_{sy}(z) z^{-d}}{\overline{\gamma}_{y}(z)}\]</div>
+<p>Dans le domaine de Fourier, on a également</p>
+<div class="math notranslate nohighlight">
+\[\overset{\circ}{w}(\nu)=\frac{\overset{\circ}{\gamma}_{sy}(\nu) e^{-i2 \pi \nu d}}{\overset{\circ}{\gamma}_{y}(\nu)}\]</div>
+<p>A partir des équations précédentes, on peut donner la propriété remarquable suivante qui illustre bien le principe d’orthogonalité vu
+précédemment. Considérons l’autocorrélation du processus d’erreur <span class="math notranslate nohighlight">\(\{e[n]\}\)</span> dont l’expression est donnée par</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\boldsymbol{\gamma}_{e}[p]&amp;=\mathbb{E}(e[n]e^*[n-p]) \\
+&amp;= \mathbb{E}(e[n](\hat{s}[n-p]-s[n-d-p])^*)\\
+&amp;=\boldsymbol{\gamma}_{e\hat{s}}[p]-\boldsymbol{\gamma}_{es}[p+d]
+\end{aligned}\end{split}\]</div>
+<p>On a alors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\mathbf{\gamma}_{e\hat{s}}[p]&amp;=\sum_k{w^*[k]\underbrace{\mathbb{E}(e[n]y^*[n-p-k])}_{=0}} \\
+&amp;=0
+\end{aligned}\end{split}\]</div>
+<p>Ceci signifie bien que l’erreur est orthogonale au signal estimé/prédit <span class="math notranslate nohighlight">\(\hat{s}\)</span>. On en déduit que</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\gamma}_{e}[p]=-\boldsymbol{\gamma}_{es}[p+d]=\boldsymbol{\gamma}_{s}[p]-\boldsymbol{\gamma}_{\hat{s}s}[p+d],\]</div>
+<p>en utilisant le fait que <span class="math notranslate nohighlight">\(e[n]=\hat{s}[n]-s[n-d]\)</span> et dont on détaillera ci-après l’expression.</p>
+<p>On peut cependant d’ores et déjà donner la variance de l’erreur comme</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\sigma_e^2 &amp;=\boldsymbol{\gamma}_{e}[0] \\
+&amp;=\boldsymbol{\gamma}_{s}[0]-\boldsymbol{\gamma}_{\hat{s}s}[d] \\
+&amp;=\sigma_s^2-\boldsymbol{\gamma}_{\hat{s}s}[d]
+\end{aligned}\end{split}\]</div>
+<div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 2.3 </span> (Filtre de Wiener)</p>
+<div class="definition-content section" id="proof-content">
+<ol>
+<li><p><strong>Domaine temporel :</strong></p>
+<div class="math notranslate nohighlight">
+\[w[p]*\boldsymbol{\gamma}_{y}[p]=\boldsymbol{\gamma}_{sy}[p-d], \; \forall p\]</div>
+</li>
+<li><p><strong>Domaine en <span class="math notranslate nohighlight">\(\mathcal{Z} \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[w(z)=\frac{\overline{\gamma}_{sy}(z) z^{-d}}{\overline{\gamma}_{y}(z)}\]</div>
+</li>
+<li><p><strong>Domaine fréquentiel:</strong></p>
+<div class="math notranslate nohighlight">
+\[\overset{\circ}{w}(\nu)=\frac{\overset{\circ}{\gamma}_{sy}(\nu) }{\overset{\circ}{\gamma}_{y}(\nu)}e^{-i 2 \pi \nu d}\]</div>
+</li>
+</ol>
+</div>
+</div></div>
+<div class="section" id="egaliseur-mmse-sans-contrainte">
+<h2><span class="section-number">2.3.2. </span>Egaliseur MMSE sans contrainte<a class="headerlink" href="#egaliseur-mmse-sans-contrainte" title="Permalink to this headline">#</a></h2>
+<p>Dans le cadre de l’égaliseur sans contrainte, le filtre est un filtre IIR sans contrainte (infini “à gauche” et “à droite “). Il suffit
+maintenant de calculer les termes intervenant dans les équations normales générales de la formulation du problème d’estimation de Wiener
+en explicitant le modèle d’observation lié à la problématique d’égalisation. Dans notre cas, nous avons comme modèle d’observation</p>
+<div class="math notranslate nohighlight">
+\[y[n]=\sum_k h[k] s[n-k]+b[n].\]</div>
+<div class="section" id="expressions-du-filtre-sans-contrainte">
+<h3><span class="section-number">2.3.2.1. </span>Expressions du filtre sans contrainte<a class="headerlink" href="#expressions-du-filtre-sans-contrainte" title="Permalink to this headline">#</a></h3>
+<p>Par application directe des formules de filtrage d’un processus
+aléatoire (centré) stationnaire au sens large (stationnaire à l’ordre
+<span class="math notranslate nohighlight">\(1\)</span> et <span class="math notranslate nohighlight">\(2\)</span>), les processus de bruit et du signal étant mutuellement
+stationnaires et indépendants (décorrélés suffit), il vient</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\gamma}_{y}[p]=h[p]*h^*[-p]*\boldsymbol{\gamma}_{s}[p]+\boldsymbol{\gamma}_{b}[p]=\gamma_{h}[p]*\boldsymbol{\gamma}_{s}[p]+\boldsymbol{\gamma}_{b}[p]\]</div>
+<p>avec</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\gamma}_{h}[p]=h[p]*\check{h}(p)\]</div>
+<div class="math notranslate nohighlight">
+\[\check{h}(p)=h^*[-p].\]</div>
+<p>Ici, <span class="math notranslate nohighlight">\(\check{h}(p)\)</span> s’interprète comme le filtre numérique adapté à
+<span class="math notranslate nohighlight">\(h[n]\)</span> et <span class="math notranslate nohighlight">\(\boldsymbol{\gamma}_{h}[p]=\sum_k h[k]h^*[k-p]\)</span> est ce que
+l’on appelle l’autocorrelation déterministe associée à la séquence
+<span class="math notranslate nohighlight">\(\{h[n\}]\)</span> On en déduit facilement que dans le domaine en <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>,
+on obtient</p>
+<div class="math notranslate nohighlight">
+\[\gamma_{y}(z)=\overline{h}(z)\overline{h}^*(z^{-1})\gamma_s(z)+\gamma_b(z).\]</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Par souci de notation simplifiée, on adopte la définition</p>
+<div class="math notranslate nohighlight">
+\[\overline{h}^*(z)\triangleq \sum_k h^*[k] z^{-k}.\]</div>
+</div>
+<p>En remarquant que <span class="math notranslate nohighlight">\(\gamma_s(z)=\sigma_s^2\)</span> et <span class="math notranslate nohighlight">\(\gamma_b(z)=\sigma_b^2\)</span>,
+on obtient au final</p>
+<div class="math notranslate nohighlight">
+\[\gamma_y(z)=\sigma_{s}^2 \overline{h}(z)\overline{h}^*(z^{-1})\gamma_s(z)+\sigma_b^2.\]</div>
+<p>De même, en remarquant que par symétrie hermitienne
+<span class="math notranslate nohighlight">\(\gamma_{sy}[k]=\gamma_{ys}^*[-k]\)</span> et
+<span class="math notranslate nohighlight">\(\gamma_{ys}[k]=h[k]*\gamma_s[k]=\sigma_s^2 h[k]\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\gamma_{sy}(z)=\gamma^*_{ys}(z^{-1})=\sigma_s^2 \overline{h}^*(z^{-1})\]</div>
+<p>Au final, nous obtenons</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\overline{w}_{\infty}(z)&amp;=&amp; \frac{\sigma_s^2 z^{-d} \overline{h}^*(z^{-1})}{\sigma_s^2 \overline{h}(z) \overline{h}^*(z^{-1})+\sigma_b^2}
+\end{aligned}\]</div>
+<p>A fort rapport signal sur bruit (ie <span class="math notranslate nohighlight">\(\frac{\sigma_s^2}{\sigma_b^2} \rightarrow +\infty\)</span>), on obtient alors</p>
+<div class="math notranslate nohighlight">
+\[\overline{w}_{\infty}(z) \rightarrow \overline{w}_{\mathsf{ZF}}(z)=\frac{z^{-d} }{\overline{h}(z)}\]</div>
+<p>A contrario, à faible rapport signal sur bruit,</p>
+<div class="math notranslate nohighlight">
+\[\overline{w}_{\infty}(z) \rightarrow \overline{w}_{\mathsf{MF}}(z)=\frac{\sigma_s^2}{\sigma_b^2} z^{-d} \overline{h}^*(z^{-1})\]</div>
+<p>On obtient facilement l’expression fréquentielle en posant <span class="math notranslate nohighlight">\(z=e^{j 2\pi \nu}\)</span>, les résultats pouvant alors se résumer comme suit :</p>
+<div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definition 2.4 </span> (Filtre de Wiener/MMSE sans contrainte)</p>
+<div class="definition-content section" id="proof-content">
+<ol>
+<li><p><strong>Domaine en <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[\overline{w}_{\infty}(z)= \frac{\sigma_s^2 z^{-d}\overline{h}^*(z^{-1})}{\sigma_s^2 \overline{h}(z) \overline{h}^*(z^{-1})+\sigma_b^2}\]</div>
+<p>avec <span class="math notranslate nohighlight">\(\overline{h}^*(z)=\sum_n{h^*(n) z^{-n}}\)</span></p>
+</li>
+<li><p><strong>Domaine fréquentiel :</strong></p>
+<div class="math notranslate nohighlight">
+\[\overset{\circ}{w}_{\infty}(\nu)= e^{-j 2 \pi \nu d} \frac{\sigma_s^2 \overset{\circ}{h}^*(\nu)}{\sigma_s^2 |\overset{\circ}{h}(\nu)|^{2}+\sigma_b^2}\]</div>
+</li>
+<li><p><strong>Equivalence à fort SNR avec le filtre ZF:</strong></p>
+<div class="math notranslate nohighlight">
+\[\overline{w}_{\infty}(z) \approx w_{\mathsf{ZF}}(z)\]</div>
+</li>
+<li><p><strong>Equivalence à faible SNR avec le filtre adapté:</strong></p>
+<div class="math notranslate nohighlight">
+\[\overline{w}_{\infty}(z) \approx \overline{w}_{\mathsf{MF}}(z)=\frac{\sigma_s^2}{\sigma_b^2} z^{-d} \overline{h}^*(z^{-1})\]</div>
+</li>
+</ol>
+</div>
+</div></div>
+<div class="section" id="analyse-de-performance">
+<h3><span class="section-number">2.3.2.2. </span>Analyse de performance<a class="headerlink" href="#analyse-de-performance" title="Permalink to this headline">#</a></h3>
+<p>Nous allons nous intéresser par la suite à l’analyse des performances en
+calculant le rapport signal sur bruit résultant. Sans perte de
+généralité, on considérera dans le cas sans contrainte que le délai est
+nul (<span class="math notranslate nohighlight">\(d=0\)</span>), ce dernier n’influant pas les performances du filtre
+égaliseur sans contrainte, mais alourdissant les dérivations.</p>
+<p>En rappelant que <span class="math notranslate nohighlight">\(\boldsymbol{\gamma}_{e}[p]=\boldsymbol{\gamma}_{s}[p]-\boldsymbol{\gamma}_{\hat{s}s}[p+d]\)</span>,
+il vient facilement que pour <span class="math notranslate nohighlight">\(d=0\)</span></p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\gamma}_{e}[p]=\sigma_s^2 \delta[p]-(w*h*\gamma_{s})[p]\]</div>
+<p>Dans le domaine en <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>, on trouve</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\overline{\gamma}_{e}(z)&amp;=\sigma_s^2-\overline{w}(z)\overline{h}(z)\overline{\gamma}_{s}(z)\\
+&amp;=\sigma_s^2-\frac{[\sigma_s^2]^2 \overline{h}(z)\overline{h}^*(z^{-1})}{\sigma_s^2 \overline{h}(z) \overline{h}^*(z^{-1})+\sigma_b^2}\\
+&amp;=\frac{\sigma_s^2 N_0}{\sigma_s^2 \overline{h}(z) \overline{h}^*(z^{-1})+N_0}
+\end{aligned}\end{split}\]</div>
+<p>ou de manière équivalent dans le domaine de Fourier</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+\overset{\circ}{\boldsymbol{\gamma}}_{e}(\nu)&amp;=\frac{\sigma_s^2 N_0}{\sigma_s^2 \vert\overset{\circ}{h}(\nu)\vert^2+N_0}
+\end{aligned}\]</div>
+<p>On obtient alors la variance d’erreur suivante</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\sigma_e^2&amp;=\int_{[1]} \! \overset{\circ}{\boldsymbol{\gamma}}_{e}(\nu)\mathrm{d}\nu\\
+&amp;=\int_{[1]} \! \frac{\sigma_s^2 N_0}{\sigma_s^2 \vert\overset{\circ}{h}(\nu)\vert^2+N_0}\mathrm{d}\nu 
+\end{aligned}\end{split}\]</div>
+<p>On peut à partir de cette expression exprimer le rapport signal-à-bruit
+<strong>en sortie de filtre égaliseur</strong>. Notons
+<span class="math notranslate nohighlight">\(\overline{h}_T(z)=\overline{w}(z)\overline{h}(z)\)</span>, le transfert totale
+associé à la concaténation des filtres numériques du canal discret
+équivalent et du filtre égaliseur. Le signal en sortie d’égaliseur peut
+être interprété comme</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\hat{s}[n]&amp;=w[n]*h[n]*s[n-d]+w[n]*b[n] \\
+&amp;=h_T[n]*s[n]+w[n]*b[n]\\
+&amp;=h_T[0]s[n]+\underbrace{\sum_{k \neq 0} h_T[k] s[n-k]}_{\mathrm{terme \; d'IES \; r\acute{e}siduel}}+\underbrace{w[n]*b[n]}_{\mathrm{bruit \; corr\acute{e}l\acute{e} \; b'[n]}}
+&amp;=h_T[0]s[n]+e'[n]
+\end{aligned}\end{split}\]</div>
+<p>où <span class="math notranslate nohighlight">\(e'[n]\)</span> est un terme de bruit plus interférences
+entre symboles résiduelles. Ce terme ne contient pas la contribution du
+symbole d’intérêt <span class="math notranslate nohighlight">\(s[n]\)</span> et il est indépendant de ce dernier. On voit
+également que l’estimateur MMSE introduit un biais égale à <span class="math notranslate nohighlight">\(h_T[0]\)</span>. On
+a donc avant décision un modèle du type</p>
+<div class="math notranslate nohighlight">
+\[\hat{x}[n]=\alpha s[n]+ e'[n].\]</div>
+<p>où <span class="math notranslate nohighlight">\(\alpha=\mathbb{E}(\hat{x}[n]|x[n])=h_T[0]\)</span> est le biais du modèle.
+On définit alors les deux types de quantités pour le rapport signal à
+bruit. On définit le rapport signal sur bruit lié à une estimation
+biaisée sur le modèle <span class="math notranslate nohighlight">\(\hat{s}[n]=s[n]+e[n]\)</span> comme étant</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{biased}}=\frac{\sigma_s^2}{\sigma_e^2}.\]</div>
+<p>D’après l’expression de <span class="math notranslate nohighlight">\(\sigma_e^2\)</span> calculée précédemment, on obtient</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{biased}}=\mathcal{H}\{\mathsf{SNR}(\nu)+1\}.\]</div>
+<p>Le rapport signal sur bruit après égalisation qui prend en compte le
+biais est donné quant à lui par</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{unbiased}}=\frac{\alpha^2\sigma_s^2}{\sigma_{e'}^2}=\frac{h_T[0]^2\sigma_s^2}{\sigma_{e'}^2}.\]</div>
+<p>On va maintenant déterminer ces termes et analyser leur comportement. En
+remarquant que, par définition, <span class="math notranslate nohighlight">\(\hat{s}[n]=s[n]+e[n]\)</span>, on en déduit par
+identification que</p>
+<div class="math notranslate nohighlight">
+\[\hat{s}[n]=h_T[0]s[n]+\underbrace{e[n]+(1-h_T[0])s[n]}_{e'[n]}\]</div>
+<p>Comme</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\overline{h}_T(z)&amp;=\frac{\sigma_s^2 \overline{h}(z)\overline{h}^*(z^{-1})}{\sigma_s^2 \overline{h}(z) \overline{h}^*(z^{-1})+\sigma_b^2}\\
+&amp;=1-\frac{\gamma_e(z)}{\sigma_s^2},
+\end{aligned}\end{split}\]</div>
+<p>il vient</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+h_T[0]&amp;=1-\frac{1}{\sigma_s^2}\int_{[1]} \! \frac{\sigma_s^2 N_0}{\sigma_s^2 \vert\overset{\circ}{h}(\nu)\vert^2+N_0}\mathrm{d}\nu \nonumber\\
+&amp;=\int_{[1]} \! \frac{\sigma_s^2 \vert\overset{\circ}{h}(\nu)\vert^2}{\sigma_s^2 \vert\overset{\circ}{h}(\nu)\vert^2+N_0}\mathrm{d}\nu &gt;0 \nonumber\\
+&amp;=\int_{[1]} \! \frac{\mathsf{SNR(\nu)}}{\mathsf{SNR(\nu)}+1}\mathrm{d}\nu\\
+&amp;=1-\sigma_e^2/\sigma_s^2 &lt; 1
+\end{aligned}\end{split}\]</div>
+<p>On notera également que <span class="math notranslate nohighlight">\(h_T[0]\)</span> est réel et <span class="math notranslate nohighlight">\(0&lt;h_T[0]&lt;1\)</span>. De plus, une
+analyse à faible rapport signal à bruit, montre que
+<span class="math notranslate nohighlight">\(h_T[0] \rightarrow 0\)</span>, alors que à fort rapport signal sur bruit
+celui-ci tend vers <span class="math notranslate nohighlight">\(1\)</span>. On a donc toujours un biais <span class="math notranslate nohighlight">\(\alpha&lt;1\)</span>. La
+dernière expression nous montre que</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{biased}}=\frac{1}{1-\alpha}.\]</div>
+<p>Le calcul directe de <span class="math notranslate nohighlight">\(\sigma_{e'}^2\)</span> nous donne</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+ \sigma_{e'}^2&amp;=\mathbb{E}(\vert e'[n]\vert^2)\\
+ &amp;=(1-h_T[0])^2 \sigma_s^2+2*(1-h_T[0])\gamma_{ed}[0]+\sigma_{e}^2\\
+ &amp;=(1-h_T[0])^2 \sigma_s^2-2*(1-h_T[0])\sigma_{e}^2+\sigma_{e}^2.
+\end{aligned}\end{split}\]</div>
+<p>On en déduit</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\mathsf{SNR_{unbiased}}&amp;=\frac{h_T[0]^2}{(1-h_T[0])^2-2 (1-h_T[0])^2+(1-h_T[0])}\\ 
+ &amp;= \frac{h_T[0]}{(1-h_T[0])}\\
+ &amp;= \frac{\alpha}{(1-\alpha)}
+\end{aligned}\end{split}\]</div>
+<p>On en déduit le lien</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{unbiased}}=\mathsf{SNR_{biased}}-1=\mathcal{H}\{\mathsf{SNR}(\nu)+1\}-1.\]</div>
+<div class="proof property admonition" id="property-5">
+<p class="admonition-title"><span class="caption-number">Property 2.2 </span></p>
+<div class="property-content section" id="proof-content">
+<ol>
+<li><p><strong>Biais sur l’estimateur MMSE :</strong></p>
+<div class="math notranslate nohighlight">
+\[\alpha=\int_{[1]} \! \frac{\mathsf{SNR(\nu)}}{\mathsf{SNR(\nu)}+1}\mathrm{d}\nu\]</div>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR}( \nu ) = \frac{\sigma_s^2 \vert \overset{\circ}{h}{(\nu)}\vert ^ { 2 }}{ N _ { 0 }}\]</div>
+</li>
+<li><p><strong>Rapport signal sur bruit, estimateur biaisé :</strong></p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{biased}}=\frac{1}{1-\alpha}.\]</div>
+</li>
+<li><p><strong>Rapport signal sur bruit, estimateur biaisé :</strong></p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{unbiased}}=\frac{\alpha}{1-\alpha}\]</div>
+</li>
+<li><p><strong>Equivalence entre ces deux quantités:</strong></p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{unbiased}}=\mathsf{SNR_{biased}}-1=\mathcal{H}\{\mathsf{SNR}(\nu)+1\}-1.\]</div>
+</li>
+<li><p><strong>Relation d’ordre avec l’égaliseur ZF :</strong></p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{unbiased}} &gt; \mathsf{SNR_{ZF}}\]</div>
+</li>
+</ol>
+</div>
+</div></div>
+</div>
+<div class="section" id="egaliseur-rif-de-wiener">
+<h2><span class="section-number">2.3.3. </span>Egaliseur RIF de Wiener<a class="headerlink" href="#egaliseur-rif-de-wiener" title="Permalink to this headline">#</a></h2>
+<p>Dans le cas où <span class="math notranslate nohighlight">\(w[n]\)</span> est un filtre de taille <span class="math notranslate nohighlight">\(N\)</span>, le problème s’écrit alors</p>
+<div class="math notranslate nohighlight">
+\[\hat{s[n]}=\sum_{k=0}^{N-1}{w_k y_{n-k}} \mbox{ et } \mathbb{E}(e_{opt}[n]y[n-p]^*) = 0, \; \forall p \in [0,N-1]\]</div>
+<p>Par rapport à la section précédente, on a donc un nombre <span class="math notranslate nohighlight">\(N\)</span> d’équations qui permettent de déterminer <span class="math notranslate nohighlight">\(w[n]\)</span>. En développant les expressions dans
+le domaine temporel comme précédemment, on obtient alors le jeu d’équations normales</p>
+<div class="math notranslate nohighlight">
+\[w*\boldsymbol{\gamma}_{y}[p]=\boldsymbol{\gamma}_{sy}[p-d], \; \forall p \in [0, \cdots N-1]\]</div>
+<p>Ainsi, en prenant une écriture vectorielle, l’expression précédente peut alors s’écrire</p>
+<div class="math notranslate nohighlight">
+\[[\boldsymbol{\gamma}_{y}[p] \boldsymbol{\gamma}_{y}[p-1] \cdots  \boldsymbol{\gamma}_{y}[p-N+1]] {\bf w}=\boldsymbol{\gamma}_{sy}[p-d], \;\forall p \in [0, \cdots N-1]\]</div>
+<p>avec</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf w}=\begin{pmatrix}
+w[0]\\
+w[1]\\
+\vdots\\
+w[N-1]
+\end{pmatrix}\end{split}\]</div>
+<p>En regroupant les <span class="math notranslate nohighlight">\(N\)</span> équations pour <span class="math notranslate nohighlight">\(p \in [0, \cdots N-1]\)</span>, il vient
+alors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+\boldsymbol{\gamma}_{Y}[0] &amp; \boldsymbol{\gamma}_{Y}[-1] &amp; \cdots &amp; \boldsymbol{\gamma}_{Y}[-N+1] \\
+\boldsymbol{\gamma}_{Y}[1] &amp; \boldsymbol{\gamma}_{Y}[0] &amp; \cdots &amp; \boldsymbol{\gamma}_{Y}[-N+2] \\
+\vdots    &amp; \vdots    &amp; \ddots &amp; \vdots    \\
+\boldsymbol{\gamma}_{Y}[N-1] &amp; \boldsymbol{\gamma}_{Y}[N-2] &amp; \cdots &amp; \boldsymbol{\gamma}_{Y}[0] \\
+\end{pmatrix}\begin{pmatrix}
+w[0]\\
+w[1]\\
+\vdots\\
+w[N-1]
+\end{pmatrix}=\begin{pmatrix}
+\boldsymbol{\gamma}_{sy}[-d]\\
+\boldsymbol{\gamma}_{sy}[1-d]\\
+\vdots\\
+\boldsymbol{\gamma}_{sy}[N-1-d]
+\end{pmatrix}\end{split}\]</div>
+<p>En posant</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol{R}_y=\begin{pmatrix}
+\boldsymbol{\gamma}_{Y}[0] &amp; \boldsymbol{\gamma}_{Y}[-1] &amp; \cdots &amp; \boldsymbol{\gamma}_{Y}[-N+1] \\
+\boldsymbol{\gamma}_{Y}[1] &amp; \boldsymbol{\gamma}_{Y}[0] &amp; \cdots &amp; \boldsymbol{\gamma}_{Y}[-N+2] \\
+\vdots    &amp; \vdots    &amp; \ddots &amp; \vdots    \\
+\boldsymbol{\gamma}_{Y}[N-1] &amp; \boldsymbol{\gamma}_{Y}[N-2] &amp; \cdots &amp; \boldsymbol{\gamma}_{Y}[0] \\
+\end{pmatrix},\; \Gamma_{sy}=\begin{pmatrix}
+\boldsymbol{\gamma}_{sy}[-d]\\
+\boldsymbol{\gamma}_{sy}[1-d]\\
+\vdots\\
+\boldsymbol{\gamma}_{sy}[N-1-d]
+\end{pmatrix},\end{split}\]</div>
+<p>nous obtenons</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{R}_y \boldsymbol{w}=[(\gamma_{sy}(p-d))_{p=0 \cdots N-1}]= \Gamma_{sy}\]</div>
+<p>L’expression détaillée en fonction des paramètres du modèle nous permet
+alors de calculer <em>analytiquement</em> le filtre <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span>. En adoptant
+les notations suivantes,</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{Y}_n=\left[ y[n]\; \ldots y[n-N+1]\right]^{\top},\]</div>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{B}_n=\left[ b[n]\; \ldots b[n-N+1]\right]^{\top},\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol{H}=\left(\begin{array}{ccccccc}
+h[0] &amp; \ldots &amp; h[L-1] &amp; 0 &amp; \ldots &amp; \ldots&amp; 0 \\ 
+0 &amp; h[0] &amp; \ldots &amp; h[L-1] &amp; \ddots&amp;  &amp; \vdots \\ 
+\vdots &amp; \ddots &amp;\ddots &amp;  &amp; \ddots &amp; \ddots&amp; \vdots \\ 
+\vdots &amp;  &amp; \ddots &amp; \ddots &amp;  &amp; \ddots&amp; 0\\ 
+0 &amp; \ldots &amp; \ldots &amp; 0&amp; h[0] &amp; \ldots &amp; h[L-1] 
+\end{array} \right),\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{S}_n=\left[ s[n]\; \ldots s[n-N-L+2]\right]^{\top},\]</div>
+<p>on obtient l’expression matricielle suivante pour le signal reçu :</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{Y}_n= \boldsymbol{H S}_n+\boldsymbol{B}_n.\]</div>
+<p>En remarquant que <span class="math notranslate nohighlight">\(\boldsymbol{R}_y=\mathbb{E}(\boldsymbol{Y}_n^{*}\boldsymbol{Y}_n^{\top})\)</span> et
+<span class="math notranslate nohighlight">\(\mathbf{\Gamma}_{sy}=[(\gamma_{sy}(p-d))_{p=0 \cdots N-1}]=\mathbb{E}(s[n-d]\boldsymbol{Y}_n^{*})\)</span>,
+il vient alors</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{R}_y=\sigma_s^2 \boldsymbol{H}^*\boldsymbol{H}^{\top}+\sigma_b^2 \boldsymbol{I}_N\]</div>
+<p>et</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\Gamma}_{sy}=\sigma_s^2 \boldsymbol{H}^* \boldsymbol{1}_d\]</div>
+<p>où</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{1}_d=[0 \cdots 0 \underbrace{ 1 }_{ \mbox{position d}} 0 \cdots 0]^{\top}.\]</div>
+<p>On en déduit aisément l’expression analytique du filtre</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{w}=\sigma_s^2(\sigma_s^2 \boldsymbol{H}^*\boldsymbol{H}^{\top}+\sigma_b^2 \boldsymbol{I}_N)^{-1} \boldsymbol{H}^* \boldsymbol{1}_d.\]</div>
+<p>A partir de</p>
+<div class="math notranslate nohighlight">
+\[e[n]=\hat{s}[n]-s[n-d]=\boldsymbol{w}^{\top} \boldsymbol{Y} - s[n-d],\]</div>
+<p>l’erreur quadratique moyenne se développe alors comme suit</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+J{(\boldsymbol{w})}&amp;=\mathbb{E}(\vert e[n] \vert^2) \nonumber \\
+&amp;=\sigma_s^{2} + \boldsymbol{w}^{\dagger} \mathbf{R}_y \boldsymbol{w} - 2 \Re{(\mathbf{w}^{\dagger}{\Gamma}_{sy})}\nonumber 
+\end{aligned}\end{split}\]</div>
+<p>A l’optimal, on a</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{R}_y \boldsymbol{w}=\left[(\gamma_{sy}(p-d))_{p=0 \cdots N-1}\right]= \Gamma_{sy}\]</div>
+<p>et donc</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\sigma_{e,\mathrm{opt}}^2 &amp;=\sigma_s^{2}-\mathbf{\Gamma}_{sy}^{\dagger} \boldsymbol{w} \\
+&amp;= \sigma_s^{2}- \mathbf{w}^{\dagger}\mathbf{\Gamma}_{sy}\\
+&amp;=\sigma_s^{2}- \boldsymbol{w}^{\dagger} \mathbf{R}_y \boldsymbol{w}\\
+&amp;=\sigma_s^{2} (1 -\underbrace{\mathbf{w}^{\dagger} \mathbf{H}^{*} \mathbf{H}^{\dagger} \mathbf{w}}_{IES}- \underbrace{\mathrm{snr}^{-1} \Vert w \Vert ^2}_{bruit})
+\end{aligned}\end{split}\]</div>
+<p>En utilisant les différentes expressions de <span class="math notranslate nohighlight">\(w\)</span> et <span class="math notranslate nohighlight">\(\mathbf{\Gamma}_{sy}\)</span>, il vient</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{e,\mathrm{opt}}^2= \sigma _ { x }^2 - \sigma _ { x }^2\mathbf { 1 } _ { d } ^ { T } \mathbf { H }^{\top} \left[ \mathbf { H } ^ {*} \mathbf { H }^{\top} + \frac{\sigma_b^{2}}{\sigma_x^{2}}\mathbf{I}_N \right] ^ { - 1 } \mathbf {H} ^ { * }  \mathbf { 1 } _ { d }
+\]</div>
+<p>En notant</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{P}= \mathbf { H }^{\top} \left[ \mathbf { H } ^ {*} \mathbf { H }^{\top} + \frac{\sigma_b^{2}}{\sigma_x^{2}}\mathbf{I}_N \right] ^ { - 1 } \mathbf {H} ^ { * } ,\]</div>
+<p>il vient</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\sigma_{e,\mathrm{opt}}^2&amp;= \sigma _ { x }^2 ( 1 -  \mathbf { 1 } _ { d } ^ { T } \mathbf{P} \mathbf { 1 } _ { d } )\nonumber \\
+&amp;= \sigma _ { x }^2 ( 1 - \mathbf{p}_{d,d})
+\end{aligned}\end{split}\]</div>
+<p>On peut alors montrer que</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\hat { x }[ n ] &amp;=w[n]*y[n] \\
+&amp;=\boldsymbol{w}^{\top}\boldsymbol{Y}_n \\
+&amp;= \boldsymbol{Y}_n^{\top} \boldsymbol{w} \\
+&amp;=\boldsymbol{S}_n^{\top}\mathbf { H }^{\top}(\boldsymbol{H}^*\boldsymbol{H}^{\top}+\frac{\sigma_b^2}{\sigma_s^2 } \boldsymbol{I}_N)^{-1} \boldsymbol{H}^*  \boldsymbol{1}_d+\boldsymbol{B}_n^{\top}\boldsymbol{w}\\
+&amp;= \alpha s \left[ n - { d } \right] + s_{\mathrm{IES}}[n] + b_f [ n ]
+\end{aligned}\end{split}\]</div>
+<p>avec</p>
+<div class="math notranslate nohighlight">
+\[\alpha=\mathbf{p}_{d,d}\]</div>
+<p>et</p>
+<div class="math notranslate nohighlight">
+\[s_{\mathrm{IES}}[n]=\sum_{k=0^;k \neq d}^{N-1}{\mathbf{p}_{k,d} s[n-k]}\]</div>
+<p>Comme dans le cas non contraint, on peut alors donner le rapport signal sur bruit biaisé comme étant</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{FIR,biased}}=\frac{1}{1-\alpha}.\]</div>
+<p>De même, on aura comme rapport signal sur bruit non biaisé</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{FIR,unbiased}}=\frac{\alpha}{1-\alpha}=\mathsf{SNR_{FIR,biased}}-1.\]</div>
+<p>On en déduit que les relations à taille finie sont identiques à celles
+du cas non contraint.</p>
+<div class="proof definition admonition" id="definition-6">
+<p class="admonition-title"><span class="caption-number">Definition 2.5 </span> (Filtre Wiener RIF)</p>
+<div class="definition-content section" id="proof-content">
+<ol>
+<li><p><strong>Expression:</strong></p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{w}=\sigma_s^2(\sigma_s^2 \boldsymbol{H}^*\boldsymbol{ H}^{\top}+\sigma_b^2 \boldsymbol{I}_N)^{-1} \boldsymbol{H}^* \boldsymbol{1}_d\]</div>
+<p>où</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{1}_d=[0 \cdots 0 \underbrace{ 1 }_{ \mbox{position d}} 0 \cdots 0]^{\top}\]</div>
+</li>
+<li><p><strong>Rapport signal sur bruit, estimateur biaisé :</strong></p>
+<p>En notant,</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{P}= \mathbf { H }^{\top} \left[ \mathbf { H } ^ {*} \mathbf { H }^{\top} + \frac{\sigma_b^{2}}{\sigma_x^{2}}\mathbf{I}_N \right] ^ { - 1 } \mathbf {H} ^ { * } ,\]</div>
+<p>et</p>
+<div class="math notranslate nohighlight">
+\[\alpha=\mathbf{p}_{d,d},\]</div>
+<p>il vient</p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{FIR,biased}}=\frac{1}{1-\alpha}.\]</div>
+</li>
+<li><p><strong>Rapport signal sur bruit, estimateur non biaisé :</strong></p>
+<div class="math notranslate nohighlight">
+\[\mathsf{SNR_{FIR,unbiased}}=\frac{\alpha}{1-\alpha}=\mathsf{SNR_{FIR,biased}}-1.\]</div>
+</li>
+<li><p><strong>Equivalence à fort SNR avec le filtre ZF:</strong> En utilisant associés
+au cas Wiener RIF, il vient</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{w}_{\infty} \approx \boldsymbol{w}_{\mathsf{ZF-LS}}=(\boldsymbol{H}^*\boldsymbol{H}^{\top})^{-1} \boldsymbol{H}^*\boldsymbol{1}_{d}.\]</div>
+</li>
+<li><p><strong>Equivalence à faible SNR avec le filtre adapté:</strong></p>
+<div class="math notranslate nohighlight">
+\[\overline{w}_{\infty}(z) \approx \overline{w}_{\mathsf{MF}}(z)=\frac{\sigma_s^2}{\sigma_b^2} z^{-d} \overline{h}^*(z^{-1})\]</div>
+</li>
+</ol>
+</div>
+</div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ch2sec2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.2. </span>Egalisation linéaire avec critère ZF</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ch3intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Egalisation non linéaire</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By C. Poulliat<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -15,10 +15,15 @@ Notons que $d$ introduit un délai de traitement pour le système complet.
 Le principe général de l'égalisation dite linéaire est donnée par la
 figure suivante :
 
-::: center
-![Chaine pour égalisation
-linéaire](canalegallin.pdf){width="\\textwidth"}
-:::
+```{figure} ./images/canalegallin.png
+---
+width: 16cm
+name: canalegallin
+---
+Chaine pour égalisation
+linéaire
+```
+
 
 Au niveau du récepteur, $w[n]$ est un filtre numérique dît *filtre égaliseur* que
 l'on cherche à déterminer/optimiser. Comme filtre numérique, il peut

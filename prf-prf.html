@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.3. Fitrage adapté et blanchiment &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>Proof Index &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -46,6 +46,7 @@
     <script >let toggleHintHide = 'Click to hide';</script>
     <script >let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="_static/tabs.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,18 +54,21 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1.4. Filtrage adapté partiel" href="ch1sec4.html" />
-    <link rel="prev" title="1.2. Exemple : Canaux à trajets multiples" href="ch1sec2.html" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
     
+
+    <script>
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
 <!-- Checkboxes to toggle the left sidebar -->
@@ -118,17 +122,17 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="ch1intro.html">
    1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="ch1sec1.html">
      1.1. Représentation bande base des signaux sur canal sélectif en fréquence
@@ -139,8 +143,8 @@ const thebe_selector_output = ".output, .cell_output"
      1.2. Exemple : Canaux à trajets multiples
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch1sec3.html">
      1.3. Fitrage adapté et blanchiment
     </a>
    </li>
@@ -295,7 +299,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch1sec3.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fprf-prf.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -315,52 +319,6 @@ title="Open an issue"
   </div>
 </div>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/ch1sec3.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
     </div>
 </div>
 
@@ -372,7 +330,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Fitrage adapté et blanchiment</h1>
+                <h1></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -384,46 +342,96 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="fitrage-adapte-et-blanchiment">
-<h1><span class="section-number">1.3. </span>Fitrage adapté et blanchiment<a class="headerlink" href="#fitrage-adapte-et-blanchiment" title="Permalink to this headline">#</a></h1>
-<p>Une stratégie optimale à la réception est d’appliquer un filtre adapté à l’ensemble des contributions convolutives de la chaîne de transmission.
-Cette opération de filtrage s’accompagne de la nécessité d’une mise en oeuvre d’un filtre numérique de blanchiment après échantillonnage au rythme symbole. En effet, le bruit équivalent en sortie de filtre adapté est (hors cas pathologique) coloré. Le modèle d’observation de cette stratégie de réception est donné par</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-y(t)&amp;= h_r(t)*r(t) + h_r*b(t) \nonumber \\
-&amp;= \sum_{k \in \mathbb{Z} }{s_k (h_r*h_c*h_e)(t-k T)} +h_r(t)*b(t) \nonumber \\
-&amp;= \sum_{k \in \mathbb{Z} }{s_k h(t-k T)} + b_r(t)
-\end{aligned}\end{split}\]</div>
-<p>avec <span class="math notranslate nohighlight">\(h(t)=h_r*h_c*h_e(t)\)</span>, enveloppe complexe du canal global <em>équivalent</em> en bande de base.</p>
-<p>La stratégie de réception (optimal), dénommée <em>Whitened Matched Filter</em> [Forney] , est donnée par :</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(h_r(t)\)</span> est le filtre adapté à <span class="math notranslate nohighlight">\(g(t)=h_c(t)*h_e(t)\)</span>,</p></li>
-<li><p>échantillonnage au rythme symbole <span class="math notranslate nohighlight">\(T_s\)</span>, et application d’un filtre blanchissant,
-et nécessité d’un filtre blanchissant,</p></li>
-<li><p>Détection par bloc (interférence entre symbole toujours présente) au sens du maximum de vraisemblance ou critère de détection sous-optimaux.</p></li>
-</ol>
-<p>Nous ne détaillerons pas ce schéma qui n’est pas toujours le plus simple à mettre en oeuvre dans un contexte de canal <span class="math notranslate nohighlight">\(h_c(t)\)</span> variable rapidement en temps.</p>
-</div>
 
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            kernelName: "python3",
-            path: "./."
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
+   <h1>Proof Index</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-algorithm-2"><strong>algorithm-2</strong></a> | 
+   <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
+   <a href="#cap-definition-1"><strong>definition-1</strong></a> | 
+   <a href="#cap-definition-3"><strong>definition-3</strong></a> | 
+   <a href="#cap-definition-4"><strong>definition-4</strong></a> | 
+   <a href="#cap-definition-6"><strong>definition-6</strong></a> | 
+   <a href="#cap-property-1"><strong>property-1</strong></a> | 
+   <a href="#cap-property-2"><strong>property-2</strong></a> | 
+   <a href="#cap-property-5"><strong>property-5</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-algorithm-2"><td></td><td>
+       <strong>algorithm-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ch3sec1.html#algorithm-2"><code class="xref">algorithm-2</code></a> <em>(ch3sec1)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-0"><td></td><td>
+       <strong>definition-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ch3sec1.html#definition-0"><code class="xref">definition-0</code></a> <em>(ch3sec1)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-1"><td></td><td>
+       <strong>definition-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ch2sec3.html#definition-1"><code class="xref">definition-1</code></a> <em>(ch2sec3)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-3"><td></td><td>
+       <strong>definition-3</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ch2sec3.html#definition-3"><code class="xref">definition-3</code></a> <em>(ch2sec3)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-4"><td></td><td>
+       <strong>definition-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ch2sec3.html#definition-4"><code class="xref">definition-4</code></a> <em>(ch2sec3)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-6"><td></td><td>
+       <strong>definition-6</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ch2sec3.html#definition-6"><code class="xref">definition-6</code></a> <em>(ch2sec3)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-property-1"><td></td><td>
+       <strong>property-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ch3sec1.html#property-1"><code class="xref">property-1</code></a> <em>(ch3sec1)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-property-2"><td></td><td>
+       <strong>property-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ch2sec3.html#property-2"><code class="xref">property-2</code></a> <em>(ch2sec3)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-property-5"><td></td><td>
+       <strong>property-5</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ch2sec3.html#property-5"><code class="xref">property-5</code></a> <em>(ch2sec3)</em></td><td>
+       <em>property</em></td></tr>
+   </table>
+
 
               </div>
               
@@ -432,20 +440,6 @@ et nécessité d’un filtre blanchissant,</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ch1sec2.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.2. </span>Exemple : Canaux à trajets multiples</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="ch1sec4.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.4. </span>Filtrage adapté partiel</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

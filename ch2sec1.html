@@ -171,11 +171,38 @@ const thebe_selector_output = ".output, .cell_output"
      2.2. Egalisation linéaire avec critère ZF
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch2sec3.html">
+     2.3. Egalisation par filtrage de Wiener
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch3intro.html">
+   3. Egalisation non linéaire
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3sec1.html">
+     3.1. Maximum de Vraisemblance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch3sec2.html">
+     3.2. Egaliseur à retour de décision
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="biblio.html">
-   3. Bibliographie
+   4. Bibliographie
   </a>
  </li>
 </ul>
@@ -371,9 +398,11 @@ version une version éventuellement retardée de <span class="math notranslate n
 Notons que <span class="math notranslate nohighlight">\(d\)</span> introduit un délai de traitement pour le système complet.</p>
 <p>Le principe général de l’égalisation dite linéaire est donnée par la
 figure suivante :</p>
-<p>::: center
-<img alt="Chaine pour égalisationlinéaire" src="canalegallin.pdf" />{width=”\textwidth”}
-:::</p>
+<div class="figure align-default" id="canalegallin">
+<a class="reference internal image-reference" href="_images/canalegallin.png"><img alt="_images/canalegallin.png" src="_images/canalegallin.png" style="width: 16cm;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Chaine pour égalisation
+linéaire</span><a class="headerlink" href="#canalegallin" title="Permalink to this image">#</a></p>
+</div>
 <p>Au niveau du récepteur, <span class="math notranslate nohighlight">\(w[n]\)</span> est un filtre numérique dît <em>filtre égaliseur</em> que
 l’on cherche à déterminer/optimiser. Comme filtre numérique, il peut
 avoir différentes structures possibles, ie. à réponse impulsionnelle
