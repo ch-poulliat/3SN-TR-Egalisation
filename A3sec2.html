@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Egalisation linéaire temporelle &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>7.2. Stationnarité &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex": {"macros": {"tf": ["\\\\overset{\\\\circ}{#1}", 1], "tz": ["\\\\overline{#1}", 1]}}, "tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2.1. Principes" href="ch2sec1.html" />
-    <link rel="prev" title="1.4. Filtrage adapté partiel" href="ch1sec4.html" />
+    <link rel="next" title="7.3. Propriétés des fonctions d’autocorrélation." href="A3sec3.html" />
+    <link rel="prev" title="7.1. Caractérisation d’un processus aléatoire au premier et second ordre." href="A3sec1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -121,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
   Egalisation
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="ch1intro.html">
    1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
@@ -154,11 +156,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2intro.html">
    2. Egalisation linéaire temporelle
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
@@ -241,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
   Annexes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="A1intro.html">
    5. Signaux et systèmes à temps discrets
@@ -290,23 +292,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="A3intro.html">
    7. Processus aléatoires discrets
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="A3sec1.html">
      7.1. Caractérisation d’un processus aléatoire au premier et second ordre.
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A3sec2.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      7.2. Stationnarité
     </a>
    </li>
@@ -439,7 +441,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch2intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FA3sec2.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -467,7 +469,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/ch2intro.md"
+        <a href="_sources/A3sec2.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -516,7 +518,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Egalisation linéaire temporelle</h1>
+                <h1>Stationnarité</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -528,10 +530,71 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="egalisation-lineaire-temporelle">
-<h1><span class="section-number">2. </span>Egalisation linéaire temporelle<a class="headerlink" href="#egalisation-lineaire-temporelle" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
+  <div class="section" id="stationnarite">
+<h1><span class="section-number">7.2. </span>Stationnarité<a class="headerlink" href="#stationnarite" title="Permalink to this headline">#</a></h1>
+<p>La stationnarité d’un processus aléatoire <span class="math notranslate nohighlight">\(X(n,\omega)\)</span> traduit une invariance dans le temps des propriétés statistiques du processus.</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 7.4 </span> (Stationnarité forte)</p>
+<div class="definition-content section" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\forall k, \quad (X_{n_{1}},X_{n_{2}},\ldots,X_{n_{N}})\)</span> a même loi de probabilité que
+<span class="math notranslate nohighlight">\((X_{n_{1}+k},X_{n_{2}+k},\ldots,X_{n_{N}+k})\)</span>.</p>
 </div>
+</div><div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 7.5 </span> (Stationnarité du premier ordre)</p>
+<div class="definition-content section" id="proof-content">
+<div class="math notranslate nohighlight">
+\[\mathbb{E}(X(n,\omega))=m_{X}(n)= m_{X}=\text{constante}\]</div>
+</div>
+</div><p>On dit que le processus <span class="math notranslate nohighlight">\(X(n,\omega)\)</span> est <em>centré</em>  si sa moyenne est nulle pour tout <span class="math notranslate nohighlight">\(n\)</span>. Un processus centré est donc stationnaire au premier ordre. On notera <span class="math notranslate nohighlight">\(X_c\)</span> le processus centré déduit du processus <span class="math notranslate nohighlight">\(X\)</span> par :</p>
+<div class="math notranslate nohighlight">
+\[X_c(n,\omega)=X(n,\omega)-m_X(n)\]</div>
+<p>Le processus <span class="math notranslate nohighlight">\(X_c\)</span> est stationnaire au premier ordre.</p>
+<div class="proof definition admonition" id="definition-2">
+<p class="admonition-title"><span class="caption-number">Definition 7.6 </span> (Stationnarité du Second ordre)</p>
+<div class="definition-content section" id="proof-content">
+<div class="math notranslate nohighlight">
+\[ 
+R_{X}({n_1},{n_2})=  R_{X}({n_1+k},{n_2+k}) \quad \forall \quad k \in \mathbb{z} \label{equ:st2} 
+\]</div>
+</div>
+</div><p>L’expression donnée à l’équation~ précédente permet une interprétation aisée~: le processus est stationnaire à l’ordre 2 si sa fonction d’autocorrélation ne dépend pas des instants de calcul mais seulement du décalage  entre ces instants (pour le vérifier prendre <span class="math notranslate nohighlight">\(k=-n_1\)</span>).
+Pour cette raison, il est plus pratique de manipuler une expression de la covariance faisant<br />
+apparaître ce décalage, noté <span class="math notranslate nohighlight">\(p\)</span>. On l’écrira :</p>
+<div class="math notranslate nohighlight">
+\[R_{X}({n},{n-p})\]</div>
+<p><span class="math notranslate nohighlight">\(X\)</span> sera stationnaire à l’ordre deux si <span class="math notranslate nohighlight">\(R_{X}({n},{n-p})\)</span> dépend de <span class="math notranslate nohighlight">\(p\)</span> uniquement (et pas de <span class="math notranslate nohighlight">\(n\)</span>). La même chose peut être appliquée à l’autocovariance.</p>
+<div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 7.7 </span> (Stationnarité au second ordre : fonction d’autocorélation)</p>
+<div class="definition-content section" id="proof-content">
+<p>Si <span class="math notranslate nohighlight">\(X\)</span> est stationnaire au second ordre, alors <span class="math notranslate nohighlight">\(R_{X}({n},{n-p})\)</span> ne dépend que de la seule variable <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p>On note</p>
+<p>$$\gamma_X[p]= R_{X}({n},{n-p})</p>
+<p>la <em>fonction d’autocorrélation du processus</em> <span class="math notranslate nohighlight">\( X\)</span>.
+\end{definition}</p>
+<p>On remarque que la stationnarité forte entraîne la stationnarité au premier et au deuxième
+ordre, mais que la réciproque est généralement fausse (sauf dans le cas Gaussien)</p>
+</div>
+</div><div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definition 7.8 </span> (Stationnarité mutuelle)</p>
+<div class="definition-content section" id="proof-content">
+<p><span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont dits <em>mutuellement stationnaires</em> si leur intercorrélation
+<span class="math notranslate nohighlight">\(R_{X,Y}{n}{n-p} =\mathbb{E}(X(n,\omega)Y^*(n-p,\omega))\)</span> ne dépend que de <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p>On note alors leur <em>fonction d’intercorrélation</em></p>
+<div class="math notranslate nohighlight">
+\[
+\gamma_{X,Y}[p]= R_{X,Y}(n,n-p) 
+\]</div>
+</div>
+</div><div class="proof property admonition" id="property-5">
+<p class="admonition-title"><span class="caption-number">Property 7.1 </span> (Somme de processus)</p>
+<div class="property-content section" id="proof-content">
+<p>Si <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont stationnaires et mutuellement stationnaires, <span class="math notranslate nohighlight">\(X+Y\)</span> l’est aussi et vérifie~:</p>
+<div class="math notranslate nohighlight">
+\[\gamma_{X+Y}[p]= \gamma_{X}[p]+ \gamma_{X,Y}[p]+ \gamma_{Y,X}[p]+ \gamma_{Y}[p]\]</div>
+<p>Alors, <span class="math notranslate nohighlight">\(\gamma_{X+Y}[p]= \gamma_{X}[p]+ \gamma_{Y}[p]\)</span> si et seulement si <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span>
+sont orthogonaux.</p>
+</div>
+</div><p>La même chose peut être dérivée pour les fonctions de covariance avec la somme directe des autocoavriances si les processus sont décorrélés.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -561,17 +624,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ch1sec4.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="A3sec1.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.4. </span>Filtrage adapté partiel</p>
+            <p class="prev-next-title"><span class="section-number">7.1. </span>Caractérisation d’un processus aléatoire au premier et second ordre.</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ch2sec1.html" title="next page">
+    <a class='right-next' id="next-link" href="A3sec3.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Principes</p>
+        <p class="prev-next-title"><span class="section-number">7.3. </span>Propriétés des fonctions d’autocorrélation.</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

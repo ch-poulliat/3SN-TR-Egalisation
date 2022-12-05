@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Egalisation linéaire temporelle &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>4.4. Analyse de performances &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex": {"macros": {"tf": ["\\\\overset{\\\\circ}{#1}", 1], "tz": ["\\\\overline{#1}", 1]}}, "tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2.1. Principes" href="ch2sec1.html" />
-    <link rel="prev" title="1.4. Filtrage adapté partiel" href="ch1sec4.html" />
+    <link rel="next" title="5. Signaux et systèmes à temps discrets" href="A1intro.html" />
+    <link rel="prev" title="4.3. Communications mono-porteuse par bloc :" href="ch4sec3.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,11 +156,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2intro.html">
    2. Egalisation linéaire temporelle
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
@@ -203,16 +205,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="ch4intro.html">
    4. Egalisation fréquentielle lineaire en bloc
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="ch4sec1.html">
      4.1. Notations
@@ -228,8 +230,8 @@ const thebe_selector_output = ".output, .cell_output"
      4.3. Communications mono-porteuse par bloc :
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch4sec4.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      4.4. Analyse de performances
     </a>
    </li>
@@ -439,7 +441,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch2intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch4sec4.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -467,7 +469,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/ch2intro.md"
+        <a href="_sources/ch4sec4.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -504,23 +506,100 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modele-du-signal-en-reception">
+   4.4.1. Modèle du signal en réception
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variance-du-bruit-en-sortie-de-recepteur">
+   4.4.2. Variance du bruit en sortie de récepteur
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#puissance-du-terme-utile">
+   4.4.3. Puissance du terme utile
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#puissance-terme-d-interference-entre-symboles-residuelle">
+   4.4.4. Puissance terme d’interférence entre symboles résiduelle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rapport-signal-a-bruit-en-sortie-de-dft">
+   4.4.5. Rapport signal à bruit en sortie de DFT
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Egalisation linéaire temporelle</h1>
+                <h1>Analyse de performances</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modele-du-signal-en-reception">
+   4.4.1. Modèle du signal en réception
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variance-du-bruit-en-sortie-de-recepteur">
+   4.4.2. Variance du bruit en sortie de récepteur
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#puissance-du-terme-utile">
+   4.4.3. Puissance du terme utile
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#puissance-terme-d-interference-entre-symboles-residuelle">
+   4.4.4. Puissance terme d’interférence entre symboles résiduelle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rapport-signal-a-bruit-en-sortie-de-dft">
+   4.4.5. Rapport signal à bruit en sortie de DFT
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -528,9 +607,198 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="egalisation-lineaire-temporelle">
-<h1><span class="section-number">2. </span>Egalisation linéaire temporelle<a class="headerlink" href="#egalisation-lineaire-temporelle" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
+  <div class="section" id="analyse-de-performances">
+<h1><span class="section-number">4.4. </span>Analyse de performances<a class="headerlink" href="#analyse-de-performances" title="Permalink to this headline">#</a></h1>
+<p>Nous allons maintenant dériver une analyse du rapport signal à bruit en réception et le modèle échantillonné afin d’identifier le biais résultant. Comme le SC-FDE peut être vu comme un système SC-FDMA avec <span class="math notranslate nohighlight">\(M=N,\)</span> on traitera le cas générale du SC-FDMA. De même la modélisation est indépendante du mapping fréquentiel obtenu, seul le gain sur les porteuses est important, on considérera donc le cas d’un utilisateur dont les porteuses d’intérêt sont <span class="math notranslate nohighlight">\(M\)</span> premières porteuses.</p>
+<p>Pour l’émetteur, on adoptera les conventions et notations selon la figure ci-après.</p>
+<div class="figure align-default" id="emetteur-model">
+<a class="reference internal image-reference" href="_images/emetteur.png"><img alt="_images/emetteur.png" src="_images/emetteur.png" style="width: 16cm;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Modèle Emetteur SC-FDMA</span><a class="headerlink" href="#emetteur-model" title="Permalink to this image">#</a></p>
+</div>
+<p>Pour le récepteur, on adoptera les conventions et notations selon la figure ci-après.</p>
+<div class="figure align-default" id="recpeteur-model">
+<a class="reference internal image-reference" href="_images/recepteur.png"><img alt="_images/recepteur.png" src="_images/recepteur.png" style="width: 16cm;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Modèle Récepteur SC-FDMA</span><a class="headerlink" href="#recpeteur-model" title="Permalink to this image">#</a></p>
+</div>
+<div class="section" id="modele-du-signal-en-reception">
+<h2><span class="section-number">4.4.1. </span>Modèle du signal en réception<a class="headerlink" href="#modele-du-signal-en-reception" title="Permalink to this headline">#</a></h2>
+<p>En appliquant les différentes définitions dans les domaines temporel et fréquentiel, on peut donner les modèles suivant pour les signaux dans le domaine temporel et fréquentiel:</p>
+<ul class="simple">
+<li><p><strong>Domaine fréquentiel :</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+Y[k]=&amp;H[k]X[k]+B[k], \; \forall k=0:N-1 \notag \\
+&amp;\notag \\
+Y_e[k]=&amp; W[k]Y[K] \notag \\
+=&amp; W[k]H[k]X[k]+W[k]B[k], \; \forall k=0:M-1 \notag
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Domaine temporel :</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{x}[n]=&amp; TFD^{-1}(Y_e[k]), \; \forall n=1:M-1 \notag \\
+=&amp;\underbrace{\tilde{w}\circledast x[n]}_{\begin{smallmatrix} 
+  \text{signal utile}\\ 
+  \text{+} \\
+  \text{interference} \\ \text{entre symbole}
+\end{smallmatrix}} + \underbrace{w \circledast b[n]}_{bruit \; filtre} = \underbrace{x_u[n]+x_i[n]}_{\hat{x}_t[n]}+ \hat{b}[n] 
+\end{align}
+\end{split}\]</div>
+<p>avec <span class="math notranslate nohighlight">\(\tilde{w}=TFD^{-1}(\tilde{W}[k])=TFD^{-1}(W[k]H[k])\)</span></p>
+</div>
+<div class="section" id="variance-du-bruit-en-sortie-de-recepteur">
+<h2><span class="section-number">4.4.2. </span>Variance du bruit en sortie de récepteur<a class="headerlink" href="#variance-du-bruit-en-sortie-de-recepteur" title="Permalink to this headline">#</a></h2>
+<p>En supposant, les échantillons de bruit indépendant en entrée de DFT, on peut calculer la variance de bruit après filtrage dans les domaines fréquentiel et temporel en utilisant que la DFT est une transformation orthogonale (mais non unitaire) et que par filtrage le bruit reste Gaussien et centré. On eput donc explicité le terme de bruit et la variance comme suit</p>
+<ul class="simple">
+<li><p><strong>Domaine temporel :</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{b}[n]=&amp; TFD^{-1}(W[k]B[k]), \; \forall n=0:M-1  \\
+=&amp; \frac{1}{M} \sum_{k=0}^{M-1} W[k] B[k] e^{-i \frac{2 \pi}{M} n k}
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Variance du bruit, cas générale :</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sigma^2_{\hat{b}}\triangleq &amp; \mathbb{E}(|\hat{b}[n]|^2) \notag \\
+=&amp;  \frac{\sigma_B^2}{M} \times \frac{1}{M}  \sum_{k=0}^{M-1}{\left|W[k]\right|^2} \notag \\
+=&amp;  \sigma_{\tilde{b}_M}^2 \sum_{n=0}^{M-1}{\vert w[n] \vert^2} \notag
+\end{align}
+\end{split}\]</div>
+<p>avec <span class="math notranslate nohighlight">\(\tilde{b}_M[n]=TFD^{-1}(B[k])\)</span> et <span class="math notranslate nohighlight">\(w[n]=TFD^{-1}(W[k])\)</span></p>
+<p>On remarque dès lors que tout est fonction du filtre mis en oeuvre pour l’égalisation fréquentielle.</p>
+<p>Dans le cas d’un filtre MMSE fréquentiel, on a</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+W_{mmse}[k]&amp;= \frac{\gamma H[k]^{*}}{ \gamma \vert H[k]\vert^{2} + 1} \\
+\gamma &amp;=\frac{\sigma_X^2}{\sigma_B^2}\\
+\gamma_k &amp;=  \vert H[k]\vert^{2} \gamma
+\end{align}
+\end{split}\]</div>
+<p>et donc</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\sigma^2_{\hat{b}} =&amp; \frac{\sigma_B^2}{M^2} \sum_{k=0}^{M-1}{\frac{\gamma^2 \vert H[k] \vert^2}{ (\gamma \vert H[k]\vert^{2} + 1)^2}}
+\end{align}
+\]</div>
+<p>Dans le cas d’un filtre ZF, on</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+W_{ZF}[k]&amp;= \frac{\gamma H[k]^{*}}{ \gamma \vert H[k]\vert^{2}}
+\end{align}
+\]</div>
+<p>et donc</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\sigma^2_{\hat{b}} =&amp; \frac{\sigma_B^2}{M^2} \sum_{k=0}^{M-1}{\frac{1}{\gamma \vert H[k]\vert^{2}}}
+\end{align}
+\]</div>
+</div>
+<div class="section" id="puissance-du-terme-utile">
+<h2><span class="section-number">4.4.3. </span>Puissance du terme utile<a class="headerlink" href="#puissance-du-terme-utile" title="Permalink to this headline">#</a></h2>
+<p>Le signal en sortie de IDFT est donné par</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\hat{x}_u[n]&amp;= \tilde{w}[0]x[n]=x[n] \frac{1}{M} \sum_{k=0}^{M-1}{W[k]H[k]}
+\end{align}
+\]</div>
+<p>On en déduit alors par calcul direct la variance</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\sigma_{x_u}^2&amp;= \sigma_x^2 \left\vert \frac{1}{M} \sum_{k=0}^{M-1}{W[k]H[k]} \right\vert^2
+\end{align}
+\]</div>
+</div>
+<div class="section" id="puissance-terme-d-interference-entre-symboles-residuelle">
+<h2><span class="section-number">4.4.4. </span>Puissance terme d’interférence entre symboles résiduelle<a class="headerlink" href="#puissance-terme-d-interference-entre-symboles-residuelle" title="Permalink to this headline">#</a></h2>
+<p>On peut monrer que la variance de <span class="math notranslate nohighlight">\(\hat{x}_i[n]\)</span> est donnée par</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\sigma_{x_i}^2&amp;= \sigma_{x_t}^2 - \sigma_{x_u}^2
+\end{align}
+\]</div>
+<p>avec</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sigma_{x_t}^2 &amp;= \sigma_{x}^2 \sum_{m=0}^{M-1}{\vert \tilde{w}[&lt;n-m&gt;_M]\vert^2} \notag \\
+&amp;= \sigma_{x}^2 \frac{1}{M} \sum_{k=0}^{M-1}{\vert \tilde{W}[k]\vert^2} \notag \\
+&amp;= \sigma_{x}^2 \frac{1}{M} \sum_{k=0}^{M-1}{\vert {W}[k]H[k]\vert^2} \notag
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="section" id="rapport-signal-a-bruit-en-sortie-de-dft">
+<h2><span class="section-number">4.4.5. </span>Rapport signal à bruit en sortie de DFT<a class="headerlink" href="#rapport-signal-a-bruit-en-sortie-de-dft" title="Permalink to this headline">#</a></h2>
+<p>On peut alors en déduire le rapport  signal à bruit en sortie de DFT dont l’expression générale est donnée par</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+SNR &amp;= \frac{\sigma_{x_u}^2 }{\sigma_{x_t}^2 - \sigma_{x_u}^2+\sigma^2_{\hat{b}}}  \notag \\
+&amp;= \frac{\vert\alpha \vert^2}{\frac{1}{M} \sum_{k=0}^{M-1}{(\vert H[k] \vert^2 +\gamma^{-1}) \vert W[k] \vert^2 - \vert \alpha \vert^2}}
+\end{align}\end{split}\]</div>
+<p>avec</p>
+<div class="math notranslate nohighlight">
+\[\alpha=\frac{1}{M} \sum_{k=0}^{M-1}{W[k]H[k]}\]</div>
+<p>En fonction du filtre considéré on peut alors donner les expressions de SBR suivants
+:</p>
+<ul class="simple">
+<li><p><strong>Cas MMSE :</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+ SNR &amp;= \frac{\beta}{1 - \beta}
+\end{align}
+\]</div>
+<p>avec</p>
+<div class="math notranslate nohighlight">
+\[\beta=\frac{1}{M} \sum_{k=0}^{M-1}{\frac{\gamma_k}{\gamma_k+1}}\]</div>
+<ul class="simple">
+<li><p><strong>Cas ZF :</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+ SNR &amp;= \frac{1}{\beta}
+\end{align}
+\]</div>
+<p>avec</p>
+<div class="math notranslate nohighlight">
+\[\beta=\frac{1}{M} \sum_{k=0}^{M-1}{\frac{1}{\gamma_k}}\]</div>
+<p>où pour rappel</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\gamma &amp;=\frac{\sigma_X^2}{\sigma_B^2}\\
+\gamma_k &amp;=  \vert H[k]\vert^{2} \gamma
+\end{align}
+\end{split}\]</div>
+<p>Si on prend le modèle du signal après égalisation, on aura bien une xepression du type</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\hat{x}[n]&amp;= \alpha x[n] + x_i[n] + \hat{b}[n]\\
+&amp;= \alpha x[n] + b'[n]
+\end{align}\end{split}\]</div>
+<p>où</p>
+<div class="math notranslate nohighlight">
+\[\alpha=\tilde{w}[0] = \frac{1}{M} \sum_{k-0}^{M-1} W[k] H[k]\]</div>
+<p><span class="math notranslate nohighlight">\(\alpha\)</span> est donc un terme de biais tel que <span class="math notranslate nohighlight">\(\alpha=1\)</span> pour le cas ZF. On retrouve donc que le récepteur ZF est non biaisé dans le cas fréquentiel et <span class="math notranslate nohighlight">\(0&lt;\alpha&lt;1\)</span> dans le cas MMSE. C’est ce biais qu’il faudra prendre en compte dans la détection et on assimilera souvent <span class="math notranslate nohighlight">\(b'[n]\)</span> à un bruit gaussien additif. Pour le cas SC-FDE, il suffira de considérer le cas <span class="math notranslate nohighlight">\(M=N.\)</span> Ces résultats se généralisent au cas d’une forme d’onde filtrée avec un filtre défini dans le domaine fréquentiel (spectral shaping).</p>
 </div>
 </div>
 
@@ -561,17 +829,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ch1sec4.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ch4sec3.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.4. </span>Filtrage adapté partiel</p>
+            <p class="prev-next-title"><span class="section-number">4.3. </span>Communications mono-porteuse par bloc :</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ch2sec1.html" title="next page">
+    <a class='right-next' id="next-link" href="A1intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Principes</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Signaux et systèmes à temps discrets</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

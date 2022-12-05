@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Egalisation linéaire temporelle &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>4. Egalisation fréquentielle lineaire en bloc &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2.1. Principes" href="ch2sec1.html" />
-    <link rel="prev" title="1.4. Filtrage adapté partiel" href="ch1sec4.html" />
+    <link rel="next" title="4.1. Notations" href="ch4sec1.html" />
+    <link rel="prev" title="3.2. Egaliseur à retour de décision" href="ch3sec2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,11 +154,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2intro.html">
    2. Egalisation linéaire temporelle
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
@@ -203,11 +203,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ch4intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    4. Egalisation fréquentielle lineaire en bloc
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
@@ -439,7 +439,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch2intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch4intro.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -467,7 +467,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/ch2intro.md"
+        <a href="_sources/ch4intro.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -516,7 +516,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Egalisation linéaire temporelle</h1>
+                <h1>Egalisation fréquentielle lineaire en bloc</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -528,8 +528,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="egalisation-lineaire-temporelle">
-<h1><span class="section-number">2. </span>Egalisation linéaire temporelle<a class="headerlink" href="#egalisation-lineaire-temporelle" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="egalisation-frequentielle-lineaire-en-bloc">
+<h1><span class="section-number">4. </span>Egalisation fréquentielle lineaire en bloc<a class="headerlink" href="#egalisation-frequentielle-lineaire-en-bloc" title="Permalink to this headline">#</a></h1>
+<p>Dans ce chapitre nous exposons le principe de l’égalisation implémentée dans le domaine fréquentielle.
+Le principe est fondé sur le fait que l’égalisation temporelle à une complexité qui croît fortement avec le nombre de trajets et le la dispersion temporelle. Cela implique que l’on doit considérer des filtres numériques de plus en plus grands. On contourne le problème en implémentant une égalisation dans le domaine fréquezntielle qui devient compétitive en terme de complexité pour une dispersion temporelle du canal importante.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -561,17 +563,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ch1sec4.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ch3sec2.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.4. </span>Filtrage adapté partiel</p>
+            <p class="prev-next-title"><span class="section-number">3.2. </span>Egaliseur à retour de décision</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ch2sec1.html" title="next page">
+    <a class='right-next' id="next-link" href="ch4sec1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Principes</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span>Notations</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

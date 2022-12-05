@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Egalisation linéaire temporelle &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>4.2. OFDM, un exemple de forme d’onde circulaire &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex": {"macros": {"tf": ["\\\\overset{\\\\circ}{#1}", 1], "tz": ["\\\\overline{#1}", 1]}}, "tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2.1. Principes" href="ch2sec1.html" />
-    <link rel="prev" title="1.4. Filtrage adapté partiel" href="ch1sec4.html" />
+    <link rel="next" title="4.3. Communications mono-porteuse par bloc :" href="ch4sec3.html" />
+    <link rel="prev" title="4.1. Notations" href="ch4sec1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,11 +156,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2intro.html">
    2. Egalisation linéaire temporelle
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
@@ -203,23 +205,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="ch4intro.html">
    4. Egalisation fréquentielle lineaire en bloc
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="ch4sec1.html">
      4.1. Notations
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch4sec2.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      4.2. OFDM, un exemple de forme d’onde circulaire
     </a>
    </li>
@@ -439,7 +441,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch2intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch4sec2.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -467,7 +469,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/ch2intro.md"
+        <a href="_sources/ch4sec2.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -504,23 +506,80 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelisation-recepteur-domaine-temporel">
+   4.2.1. Modélisation récepteur - domaine temporel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelisation-recepteur-domaine-frequentiel">
+   4.2.2. Modélisation récepteur - domaine fréquentiel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aspects-recepteurs">
+   4.2.3. Aspects récepteurs
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Egalisation linéaire temporelle</h1>
+                <h1>OFDM, un exemple de forme d’onde circulaire</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelisation-recepteur-domaine-temporel">
+   4.2.1. Modélisation récepteur - domaine temporel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelisation-recepteur-domaine-frequentiel">
+   4.2.2. Modélisation récepteur - domaine fréquentiel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aspects-recepteurs">
+   4.2.3. Aspects récepteurs
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -528,9 +587,62 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="egalisation-lineaire-temporelle">
-<h1><span class="section-number">2. </span>Egalisation linéaire temporelle<a class="headerlink" href="#egalisation-lineaire-temporelle" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
+  <div class="section" id="ofdm-un-exemple-de-forme-d-onde-circulaire">
+<h1><span class="section-number">4.2. </span>OFDM, un exemple de forme d’onde circulaire<a class="headerlink" href="#ofdm-un-exemple-de-forme-d-onde-circulaire" title="Permalink to this headline">#</a></h1>
+<div class="section" id="modelisation-recepteur-domaine-temporel">
+<h2><span class="section-number">4.2.1. </span>Modélisation récepteur - domaine temporel<a class="headerlink" href="#modelisation-recepteur-domaine-temporel" title="Permalink to this headline">#</a></h2>
+<p>Soit un bloc de <span class="math notranslate nohighlight">\(N\)</span> symboles modulés noté <span class="math notranslate nohighlight">\(X[k] \in \mathcal{X} \subset \mathbb{C}, \forall k=0 \cdots N-1\)</span>. Après passage par le bloc de TFD inverse, on obtient un bloc de symboles</p>
+<div class="math notranslate nohighlight">
+\[x[n]=TFD^{-1}(X[k]), \forall n=0 \cdots N-1.\]</div>
+<p>Après ajout d’un préfixe cyclique, on obtient le vecteur</p>
+<div class="math notranslate nohighlight">
+\[{\bf \tilde{x}}=[\tilde{x}[0] \tilde{x}[1] \cdots \tilde{x}[N+N_{cp}-1]]=[x[N-N_{cp}] \cdots  x[N-1]|x[0] \cdots  x[N-1]].\]</div>
+<p>Après transmission sur le canal sélectif en fréquence de réponse impulsionnelle <span class="math notranslate nohighlight">\(h[n]\)</span>, on a</p>
+<div class="math notranslate nohighlight">
+\[y[n]=h[n] * \tilde{x}[n]+ b[n].\]</div>
+<p>Après retrait du CP, on retrouve bien la convolution circulaire des données avec le canal donnée par</p>
+<div class="math notranslate nohighlight">
+\[y[n]=h[n] \circledast x[n]+ b[n].\]</div>
+<p>On supposera <span class="math notranslate nohighlight">\(b[n]\)</span> comme un processus Gaussien complexe ciculaire de variance <span class="math notranslate nohighlight">\(\sigma^2_b\)</span></p>
+</div>
+<div class="section" id="modelisation-recepteur-domaine-frequentiel">
+<h2><span class="section-number">4.2.2. </span>Modélisation récepteur - domaine fréquentiel<a class="headerlink" href="#modelisation-recepteur-domaine-frequentiel" title="Permalink to this headline">#</a></h2>
+<p>La transformée de Fourier discrète transformant tout produit de convolution circulaire en produit terme à terme des TFD, on a <span class="math notranslate nohighlight">\(\forall k=0 \cdots N-1\)</span></p>
+<div class="math notranslate nohighlight">
+\[Y[k]=TFD(y[n])= H[k]X[k]+B[k]\]</div>
+<p>où <span class="math notranslate nohighlight">\(H[k]=TFD(h[n])\)</span> et <span class="math notranslate nohighlight">\(B[k]=TFD(b[n])\)</span>.Par propriétés de la transformée de Fourier, le bruit est toujours blanc Gaussien, mais <span class="math notranslate nohighlight">\(B[k]\)</span> sont des échantillons de bruit complexes toujours centrés et variance <span class="math notranslate nohighlight">\(\sigma^2_B=N \sigma^2_b\)</span> (<span class="math notranslate nohighlight">\(\sigma^2_B/2\)</span> par dimension). On voit donc que l’on a “transformé” un canal sélectif en fréquence en canal sélectif en temps/à évanouissements temporels. On a donc translaté le problème de détection du domaine fréquentiel au domaine temporel.</p>
+</div>
+<div class="section" id="aspects-recepteurs">
+<h2><span class="section-number">4.2.3. </span>Aspects récepteurs<a class="headerlink" href="#aspects-recepteurs" title="Permalink to this headline">#</a></h2>
+<p>Pour les systèmes OFDM, il est souvent présenté une “égalisation” des canaux avant décision. On “filtre” les données par un filtre “one-tap” (mono-coefficient) <span class="math notranslate nohighlight">\(W[k]\)</span> chaque sous canaux (ie; <span class="math notranslate nohighlight">\(\forall k=1 \cdots N-1\)</span>). On obtient alors un symbole estimé donné par</p>
+<div class="math notranslate nohighlight">
+\[\hat{X}[k]=W[k]Y[k]=W[k]H[k]X[k]+W[k]B[k]=\alpha_k X[k]+B[k]\]</div>
+<p>Deux types de critère peuvent alors s’appliquer comme dans le cas temporelle, le critère ZF et MMSE. Les égaliseurs résultants sont alors données par</p>
+<ol class="simple">
+<li><p><strong>Critère Zero-forcing :</strong></p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[W[k]=\frac{1}{H[k]}\]</div>
+<ol class="simple">
+<li><p>Critère MMSE :**</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[W[k]=\frac{\sigma_X^2H^*[k]}{\sigma_X^2|H[k]|^2+\sigma_B^2}\]</div>
+<p>Cependant, si on réfléchit bien au modèle discret équivalent obtenu après DFT/FFT au récepteur, le modèle étant un modèle à évanouissements scalaires, cette étape n’est pas “nécessaire” si on considère un système OFDM codé. On peut appliquer les règles de détection classique pour un canal sans mémoire scalaire. La première stratégie de détection qui mène à une décision dure des symboles est donnée par le critère de détection par maximum de vraisemblance. En utilisant le modèle discret équivalent il vient directement</p>
+<div class="math notranslate nohighlight">
+\[\hat{X}[k]=\underset {X \in \mathcal{X}}{\operatorname {arg\,max} } \, P(Y[k]|X[k],H[k]),\]</div>
+<p>où, dans le cas Gaussien, on a</p>
+<div class="math notranslate nohighlight">
+\[P(Y[k]|X[k],H[k]) \propto exp(-\frac{||Y[k]-H[k]X[k]||^2}{\sigma_B^2})\]</div>
+<p>Si on souhaite avoir une une information souple au niveau du bit, nous verrons en 3A que l’on peut également appliquer une détection MAP bit pour un schéma codé à bits entrelacés. Si on note les vecteurs binaires <span class="math notranslate nohighlight">\(X_b[n]=[X_1[n] \cdots X_m[n]]\)</span> les étiquettes qui servent à “mapper” les bits d’information sur les symboles <span class="math notranslate nohighlight">\(X[n] \in \mathcal{X}\)</span>, alors on peut définir une quantité appellée LLR (log-likelihood ratio), qui représente une information de type MAP associée au bit à la position <span class="math notranslate nohighlight">\(i\)</span> de l’étiquette <span class="math notranslate nohighlight">\(X_b[n].\)</span> Pour des symboles équidistribués, cette quantité est donnée par</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+ L(x_i[n])&amp;=\log{\left(\frac{P(x_i[n]=0|Y[n])}{P(x_i[n]=1|Y[n])}\right)}\\
+ &amp; = \log{\left( \frac{\sum_{X[n] \in \mathcal{X}_0^i}{P(Y[n]|X[n],H[n])}}{\sum_{X[n] \in \mathcal{X}_1^i}{P(Y[n]|H[n],X[n])}} \right)}
+\end{aligned}
+\end{split}\]</div>
+<p>où <span class="math notranslate nohighlight">\(\mathcal{X}_0^i\)</span> (resp. <span class="math notranslate nohighlight">\(\mathcal{X}_1^i\)</span>) représente le sous ensemble des symboles de <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> ayant une étiquette/un label avec <span class="math notranslate nohighlight">\(x_i=0\)</span> (resp. <span class="math notranslate nohighlight">\(x_i=1\)</span>).</p>
 </div>
 </div>
 
@@ -561,17 +673,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ch1sec4.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ch4sec1.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.4. </span>Filtrage adapté partiel</p>
+            <p class="prev-next-title"><span class="section-number">4.1. </span>Notations</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ch2sec1.html" title="next page">
+    <a class='right-next' id="next-link" href="ch4sec3.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Principes</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Communications mono-porteuse par bloc :</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

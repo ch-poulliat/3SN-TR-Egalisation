@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Egalisation linéaire temporelle &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>4.3. Communications mono-porteuse par bloc : &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex": {"macros": {"tf": ["\\\\overset{\\\\circ}{#1}", 1], "tz": ["\\\\overline{#1}", 1]}}, "tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2.1. Principes" href="ch2sec1.html" />
-    <link rel="prev" title="1.4. Filtrage adapté partiel" href="ch1sec4.html" />
+    <link rel="next" title="4.4. Analyse de performances" href="ch4sec4.html" />
+    <link rel="prev" title="4.2. OFDM, un exemple de forme d’onde circulaire" href="ch4sec2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,11 +156,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2intro.html">
    2. Egalisation linéaire temporelle
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
@@ -203,16 +205,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="ch4intro.html">
    4. Egalisation fréquentielle lineaire en bloc
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="ch4sec1.html">
      4.1. Notations
@@ -223,8 +225,8 @@ const thebe_selector_output = ".output, .cell_output"
      4.2. OFDM, un exemple de forme d’onde circulaire
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch4sec3.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      4.3. Communications mono-porteuse par bloc :
     </a>
    </li>
@@ -439,7 +441,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch2intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch4sec3.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -467,7 +469,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/ch2intro.md"
+        <a href="_sources/ch4sec3.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -504,23 +506,114 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principe">
+   4.3.1. Principe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeles-en-reception-fde">
+   4.3.2. Modèles en réception - FDE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sc-fdma-extension-pour-l-acces-multiple">
+   4.3.3. SC-FDMA: extension pour l’accès multiple
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     4.3.3.1. Principe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sc-fdma-vs-ofdm">
+     4.3.3.2. SC-FDMA vs OFDM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#allocation-de-sous-porteuses">
+     4.3.3.3. Allocation de sous-porteuses
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Egalisation linéaire temporelle</h1>
+                <h1>Communications mono-porteuse par bloc :</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principe">
+   4.3.1. Principe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeles-en-reception-fde">
+   4.3.2. Modèles en réception - FDE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sc-fdma-extension-pour-l-acces-multiple">
+   4.3.3. SC-FDMA: extension pour l’accès multiple
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     4.3.3.1. Principe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sc-fdma-vs-ofdm">
+     4.3.3.2. SC-FDMA vs OFDM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#allocation-de-sous-porteuses">
+     4.3.3.3. Allocation de sous-porteuses
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -528,9 +621,105 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="egalisation-lineaire-temporelle">
-<h1><span class="section-number">2. </span>Egalisation linéaire temporelle<a class="headerlink" href="#egalisation-lineaire-temporelle" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
+  <div class="section" id="communications-mono-porteuse-par-bloc">
+<h1><span class="section-number">4.3. </span>Communications mono-porteuse par bloc :<a class="headerlink" href="#communications-mono-porteuse-par-bloc" title="Permalink to this headline">#</a></h1>
+<div class="section" id="principe">
+<h2><span class="section-number">4.3.1. </span>Principe<a class="headerlink" href="#principe" title="Permalink to this headline">#</a></h2>
+<p>On considère le schéma donné par la Figure XXX. Pour ce schéma, on considère une transmission par bloc comme pour un système de type multi-porteuses. A l’émetteur, on considère la transmission d’une trame  de <span class="math notranslate nohighlight">\(N\)</span> symboles notée <span class="math notranslate nohighlight">\(\textbf{x}=[x_p(0),\cdots,x(N-1)]\)</span> où <span class="math notranslate nohighlight">\(x(n),\; n \in \{1 \cdots N\},\)</span> représente le <span class="math notranslate nohighlight">\(n-\)</span>ième symbole modulé envoyé sur la trame courante émise tel que  <span class="math notranslate nohighlight">\(x(n) \in \mathcal{X}\)</span>, où <span class="math notranslate nohighlight">\(\mathcal{X} \subset \mathbb{C}\)</span> est un ensemble de symboles d’une constellation <span class="math notranslate nohighlight">\(M\)</span>-aire.
+Après ajout d’un préfixe cyclique, on obtient le vecteur, on retrouve le vecteur de symboles à émettre</p>
+<div class="math notranslate nohighlight">
+\[{\bf \tilde{x}}=[\tilde{x}[0] \tilde{x}[1] \cdots \tilde{x}[N+N_{cp}-1]]=[x[N-N_{cp}] \cdots  x[N-1]|x[0] \cdots  x[N-1]].\]</div>
+<p>Après transmission sur le canal sélectif en fréquence <span class="math notranslate nohighlight">\(h[n]\)</span>, on a</p>
+<div class="math notranslate nohighlight">
+\[y[n]=h[n] * \tilde{x}[n]+ b[n]\]</div>
+<p>Après retrait du CP, on a alors</p>
+<div class="math notranslate nohighlight">
+\[y[n]=h[n] \circledast x[n]+ b[n].\]</div>
+</div>
+<div class="section" id="modeles-en-reception-fde">
+<h2><span class="section-number">4.3.2. </span>Modèles en réception - FDE<a class="headerlink" href="#modeles-en-reception-fde" title="Permalink to this headline">#</a></h2>
+<p>Au récepteur, après TFD, l’étape d’égalisation dans le domaine fréquentiel (FDE, \emph{frequency domain equalization}) consiste à appliquer un filtre <span class="math notranslate nohighlight">\(W[k], \; k=0 \cdots N-1\)</span> sur chaque sous-bande. On obtient alors le modèle fréquentiel suivant</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+Y[k]=&amp;H[k]X[k]+B[k], \; \forall k=0:N-1 \notag \\
+&amp;\notag \\
+Y_e[k]=&amp; W[k]Y[K] \notag \\
+=&amp; W[k]H[k]X[k]+W[k]B[k], \; \forall k=0:M-1 \notag
+\end{align}
+\end{split}\]</div>
+<p>Comme pour le cas temporel, différentes stratégies sont possibles pour le filtre <span class="math notranslate nohighlight">\(W[k], \; k=0 \cdots N-1\)</span>:</p>
+<ol class="simple">
+<li><p>Cas MMSE</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+W[k]&amp;= \frac{\gamma H[k]^{*}}{ \gamma \vert H[k]\vert^{2} + 1} \\
+\gamma &amp;=\frac{\sigma_X^2}{\sigma_B^2}\\
+\end{align}
+\end{split}\]</div>
+<ol class="simple">
+<li><p>Cas ZF</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+W[k]&amp;= \frac{H[k]^{*}}{\vert H[k]\vert^{2}} 
+\end{align}
+\]</div>
+<p>Ce modèle se transpose en temporel comme suit</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{x}[n]=&amp; TFD^{-1}(Y_e[k]), \; \forall n=0:M-1 \notag \\
+=&amp;\underbrace{\tilde{w}\circledast x[n]}_{\begin{smallmatrix} 
+  \text{signal utile}\\ 
+  \text{+} \\
+  \text{interference} \\ \text{entre symbole}
+\end{smallmatrix}} + \underbrace{w \circledast b[n]}_{bruit \; filtre} = \underbrace{x_u[n]+x_i[n]}_{\hat{x}_t[n]}+ \hat{b}[n] 
+\end{align}
+\end{split}\]</div>
+<p>avec <span class="math notranslate nohighlight">\(\tilde{w}=TFD^{-1}(\tilde{W}[k])=TFD^{-1}(W[k]H[k]).\)</span></p>
+<p>Si on prend le modèle du signal après égalisation, on aura</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{x}[n]&amp;= \alpha x[n] + x_i[n] + \hat{b}[n]\\
+&amp;= \alpha x[n] + b'[n]
+\end{align}
+\end{split}\]</div>
+<p>On pourra donc faire une détection en faisant une approximation Gaussienne sur <span class="math notranslate nohighlight">\(b'[n]\)</span> et ainsi appliquer les mêmes détecteurs que le cas OFDM. Reste à déterminer le fameux facteur <span class="math notranslate nohighlight">\(\alpha\)</span>, qui est une facteur de biais comme dans le cas des filtres temporels.</p>
+</div>
+<div class="section" id="sc-fdma-extension-pour-l-acces-multiple">
+<h2><span class="section-number">4.3.3. </span>SC-FDMA: extension pour l’accès multiple<a class="headerlink" href="#sc-fdma-extension-pour-l-acces-multiple" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id1">
+<h3><span class="section-number">4.3.3.1. </span>Principe<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Ce schéma d’égalisation fréquentiel peut être étendu pour le cas de communications mono-utilisateurs. Le Principe générale est donné par les figure suivante.</p>
+<p>Les données de l’utilisateur sont “précodées” par une DFT d’ordre <span class="math notranslate nohighlight">\(M\)</span>. Puis les <span class="math notranslate nohighlight">\(M\)</span> données utiles fréquentielles de l’utilisateur sont réparties sur les <span class="math notranslate nohighlight">\(N\)</span> entrées d’une IDFT d’ordre <span class="math notranslate nohighlight">\(N\)</span> avec <span class="math notranslate nohighlight">\(M \leq N.\)</span> Pour chaque utilisateur, le mapping fréquentielle doit assurer que chaque sortie de DFT de chaque utilisateur est mappé de manière unique une entrée de la <span class="math notranslate nohighlight">\(N\)</span>-IDFT et l’on doit également assuré qu’il n’y a aucune collision en tre les utilisateurs (une entrée de la IDFT n’est assignée qu’à un seul utilisateur), assurant par la même un accès fréquentiel orthogonale. Après ajout d’un préfixe cyclique, les données d’un bloc comprenant les données utiles plus les informations redondantes liées au CP sont transmisses sur le canal.  Au récepteur, on aura l’architecture suivante : les données reçues pour un bloc de taille <span class="math notranslate nohighlight">\(N\)</span> qui comporte les données de différents utilisateurs sont d’abord translatées dans le domaine fréquentiel par une DFT d’ordre <span class="math notranslate nohighlight">\(N,\)</span> puis on réalise une égalisation “par porteuse” en appliquant un filtre “égaliseur” par voie de sortie de DFT. Les sorties sont alors démultiplexer pour récupérer les données afférant à chaque utilisateur appliquant l’opération de démultiplexage inverse à l’opération de multiplexage réalisée à l’émission. Par chaque utilisateur, on peut alors récupérer les données estimées par application d’une IDFT d’ordre <span class="math notranslate nohighlight">\(M.\)</span>  On peut alors détecter les données en considérant le modèle de réception précédemment décrit et dont les paramètres analytique seront dérivés dans la section suivante.</p>
+<p>Si on prend le modèle du signal après égalisation, on aura</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{x}[n]&amp;= \alpha x[n] + x_i[n] + \hat{b}[n]\\
+&amp;= \alpha x[n] + b'[n]
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="section" id="sc-fdma-vs-ofdm">
+<h3><span class="section-number">4.3.3.2. </span>SC-FDMA vs OFDM<a class="headerlink" href="#sc-fdma-vs-ofdm" title="Permalink to this headline">#</a></h3>
+<p>D’un point de vue structurel, la différence avec l’OFDM est donnée de la manière suivante :</p>
+<p>Cette forme d’accès est souvent dénommée “DFT-spreaded OFDM” ou “Precoded OFDM, dans le sens où elle peut être vue comme une forme d’onde OFDM  dont les porteuses associée à un utilisateur d’intérêt sont précodées par une DFT. Ce précodage a pour effet de donner au signal montant SC-FDMA les caractéristiques d’une forme d’onde de type mono-porteuse, et donc d’hériter en particulier de ses propriétés de fluctuations d’enveloppes faibles, a contrario de l’OFDM.</p>
+</div>
+<div class="section" id="allocation-de-sous-porteuses">
+<h3><span class="section-number">4.3.3.3. </span>Allocation de sous-porteuses<a class="headerlink" href="#allocation-de-sous-porteuses" title="Permalink to this headline">#</a></h3>
+<p>Plusieurs stratégies sont possibles pour allouer la puissance d’un utilisateur sur la bande allouée dans le domaine fréquentielle : on peut considérer soit un mode entrelacé (ou distribué) ou un mode localisé (allocation ar bloc de sous porteuses).
+Les principales stratégies sont: IFDMA (Interleaved FDMA), DFDMA (Distributed FDMA) et enfin LFDMA (Localized FDMA). Seul le dernier mode a été retenu pour le système LTE (4G) pour des raisons de simplicité de signalisation et de sensibilité à la synchronisation fréquentielle en liaison montante.</p>
+<p>Le schéma LFDMA dans le cas de deux utilisateurs peut être explicité comme suit,  où l’on remarque l’allocation par bloc des porteuses aux utilisateurs.</p>
+<p>TO BE ADDED</p>
+<p>Le récepteur associé peut être visualisé comme suit.</p>
+<p>TO BE ADDED</p>
+</div>
 </div>
 </div>
 
@@ -561,17 +750,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ch1sec4.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ch4sec2.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.4. </span>Filtrage adapté partiel</p>
+            <p class="prev-next-title"><span class="section-number">4.2. </span>OFDM, un exemple de forme d’onde circulaire</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ch2sec1.html" title="next page">
+    <a class='right-next' id="next-link" href="ch4sec4.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Principes</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Analyse de performances</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

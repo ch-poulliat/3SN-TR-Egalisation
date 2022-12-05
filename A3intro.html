@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Egalisation linéaire temporelle &#8212; Egalisation temporelle et fréquentielle</title>
+    <title>7. Processus aléatoires discrets &#8212; Egalisation temporelle et fréquentielle</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex": {"macros": {"tf": ["\\\\overset{\\\\circ}{#1}", 1], "tz": ["\\\\overline{#1}", 1]}}, "tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2.1. Principes" href="ch2sec1.html" />
-    <link rel="prev" title="1.4. Filtrage adapté partiel" href="ch1sec4.html" />
+    <link rel="next" title="7.1. Caractérisation d’un processus aléatoire au premier et second ordre." href="A3sec1.html" />
+    <link rel="prev" title="6.2. Transformée en \(\mathcal{Z}\)." href="A2sec2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -121,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
   Egalisation
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="ch1intro.html">
    1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
@@ -154,11 +156,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch2intro.html">
    2. Egalisation linéaire temporelle
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
@@ -241,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
   Annexes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="A1intro.html">
    5. Signaux et systèmes à temps discrets
@@ -290,11 +292,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="A3intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    7. Processus aléatoires discrets
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
@@ -439,7 +441,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch2intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FA3intro.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -467,7 +469,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/ch2intro.md"
+        <a href="_sources/A3intro.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -516,7 +518,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Egalisation linéaire temporelle</h1>
+                <h1>Processus aléatoires discrets</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -528,8 +530,17 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="egalisation-lineaire-temporelle">
-<h1><span class="section-number">2. </span>Egalisation linéaire temporelle<a class="headerlink" href="#egalisation-lineaire-temporelle" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="processus-aleatoires-discrets">
+<h1><span class="section-number">7. </span>Processus aléatoires discrets<a class="headerlink" href="#processus-aleatoires-discrets" title="Permalink to this headline">#</a></h1>
+<p>Pour caractériser un  processus sur <span class="math notranslate nohighlight">\(N\)</span> instants d’observation,
+il faudrait connaître la loi du vecteur <span class="math notranslate nohighlight">\((X_{n_1}, ..., X_{n_N})\)</span>.
+Sauf dans des cas tres particuliers, bruit blanc fort de loi donnée ou
+processus gaussiens, on n’a pas accès à
+cette information.  On se contente alors de caractériser le processus par ces différents
+<em>moments</em>, <span class="math notranslate nohighlight">\(\mathbb{E}(X_{n_1})\)</span>, <span class="math notranslate nohighlight">\(\mathbb{E}(X_{n_1}X_{n_2}^*)\)</span>,
+<span class="math notranslate nohighlight">\(\mathbb{E}(X_{n_1}X_{n_2}^*X_{n_3})\)</span>,,…
+Cependant en pratique, les deux premiers moments suffisent pour une
+grande partie des applications, et nous allons rappeler les principaux résultats ci-après</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -561,17 +572,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ch1sec4.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="A2sec2.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.4. </span>Filtrage adapté partiel</p>
+            <p class="prev-next-title"><span class="section-number">6.2. </span>Transformée en <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>.</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ch2sec1.html" title="next page">
+    <a class='right-next' id="next-link" href="A3sec1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Principes</p>
+        <p class="prev-next-title"><span class="section-number">7.1. </span>Caractérisation d’un processus aléatoire au premier et second ordre.</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
