@@ -1,653 +1,415 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.1. Signaux à temps discrets &#8212; Egalisation temporelle et fréquentielle</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystyle.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/mystyle-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script >let toggleHintShow = 'Click to show';</script>
-    <script >let toggleHintHide = 'Click to hide';</script>
-    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex": {"macros": {"tf": ["\\\\overset{\\\\circ}{#1}", 1], "tz": ["\\\\overline{#1}", 1]}}, "tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script>window.MathJax = {"tex": {"macros": {"tf": ["\\\\overset{\\\\circ}{#1}", 1], "tz": ["\\\\overline{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="5.2. Systèmes à temps discret" href="A1sec2.html" />
     <link rel="prev" title="5. Signaux et systèmes à temps discrets" href="A1intro.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/N7solo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Egalisation temporelle et fréquentielle</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/N7solo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/N7solo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Bienvenue au cours d’Egalisation.
+                    Méthodes d’égalisation temporelles et fréquentielles
                 </a>
             </li>
         </ul>
-        <p class="caption">
- <span class="caption-text">
-  Egalisation
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Egalisation</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ch1intro.html">
-   1. Modèles des signaux en réception pour les canaux sélectifs en fréquence
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch1sec1.html">
-     1.1. Représentation bande base des signaux sur canal sélectif en fréquence
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch1sec2.html">
-     1.2. Exemple : Canaux à trajets multiples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch1sec3.html">
-     1.3. Fitrage adapté et blanchiment
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch1sec4.html">
-     1.4. Filtrage adapté partiel
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ch2intro.html">
-   2. Egalisation linéaire temporelle
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch2sec1.html">
-     2.1. Principes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch2sec2.html">
-     2.2. Egalisation linéaire avec critère ZF
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch2sec3.html">
-     2.3. Egalisation par filtrage de Wiener
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ch3intro.html">
-   3. Egalisation non linéaire
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch3sec1.html">
-     3.1. Maximum de Vraisemblance
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch3sec2.html">
-     3.2. Egaliseur à retour de décision
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ch4intro.html">
-   4. Egalisation fréquentielle lineaire en bloc
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch4sec1.html">
-     4.1. Notations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch4sec2.html">
-     4.2. OFDM, un exemple de forme d’onde circulaire
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch4sec3.html">
-     4.3. Communications mono-porteuse par bloc :
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ch4sec4.html">
-     4.4. Analyse de performances
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch1intro.html">1. Modèles des signaux en réception pour les canaux sélectifs en fréquence</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec1.html">1.1. Représentation bande base des signaux sur canal sélectif en fréquence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec2.html">1.2. Exemple : Canaux à trajets multiples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec3.html">1.3. Fitrage adapté et blanchiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch1sec4.html">1.4. Filtrage adapté partiel</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Annexes
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch2intro.html">2. Egalisation linéaire temporelle</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec1.html">2.1. Principes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec2.html">2.2. Egalisation linéaire avec critère ZF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch2sec3.html">2.3. Egalisation par filtrage de Wiener</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch3intro.html">3. Egalisation non linéaire</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec1.html">3.1. Maximum de Vraisemblance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch3sec2.html">3.2. Egaliseur à retour de décision</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ch4intro.html">4. Egalisation fréquentielle lineaire en bloc</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec1.html">4.1. Notations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec2.html">4.2. OFDM, un exemple de forme d’onde circulaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec3.html">4.3. Communications mono-porteuse par bloc :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch4sec4.html">4.4. Analyse de performances</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Annexes</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="A1intro.html">
-   5. Signaux et systèmes à temps discrets
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     5.1. Signaux à temps discrets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A1sec2.html">
-     5.2. Systèmes à temps discret
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="A2intro.html">
-   6. Analyse et représentations des signaux et systèmes discrets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A2sec1.html">
-     6.1. Transformée de Fourier des signaux à temps discrets/des séquences.
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A2sec2.html">
-     6.2. Transformée en
-     <span class="math notranslate nohighlight">
-      \(\mathcal{Z}\)
-     </span>
-     .
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="A3intro.html">
-   7. Processus aléatoires discrets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A3sec1.html">
-     7.1. Caractérisation d’un processus aléatoire au premier et second ordre.
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A3sec2.html">
-     7.2. Stationnarité
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A3sec3.html">
-     7.3. Propriétés des fonctions d’autocorrélation.
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A3sec4.html">
-     7.4. Densité spectrale de puissance d’un processus
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="A4intro.html">
-   8. Filtrage linéaire de processus aléatoires discrets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A4sec1.html">
-     8.1. Filtre linéaire invariant par décalage
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A4sec2.html">
-     8.2. Caractérisation des signaux aléatoires filtrés
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="biblio.html">
-   9. Bibliographie
-  </a>
- </li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="A1intro.html">5. Signaux et systèmes à temps discrets</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.1. Signaux à temps discrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A1sec2.html">5.2. Systèmes à temps discret</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="A2intro.html">6. Analyse et représentations des signaux et systèmes discrets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="A2sec1.html">6.1. Transformée de Fourier des signaux à temps discrets/des séquences.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A2sec2.html">6.2. Transformée en <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>.</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="A3intro.html">7. Processus aléatoires discrets</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="A3sec1.html">7.1. Caractérisation d’un processus aléatoire au premier et second ordre.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A3sec2.html">7.2. Stationnarité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A3sec3.html">7.3. Propriétés des fonctions d’autocorrélation.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A3sec4.html">7.4. Densité spectrale de puissance d’un processus</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="A4intro.html">8. Filtrage linéaire de processus aléatoires discrets</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="A4sec1.html">8.1. Filtre linéaire invariant par décalage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A4sec2.html">8.2. Caractérisation des signaux aléatoires filtrés</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="biblio.html">9. Bibliographie</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ch-poulliat/3SN-TR-Egalisation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/A1sec1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
 
 
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FA1sec1.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/A1sec1.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sequences-et-espace-s-des-sequences">
-   5.1.1. Séquences et Espace(s) des séquences
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sequences-a-support-infini">
-     5.1.1.1. Séquences à support infini
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sequences-a-support-temporel-fini">
-     5.1.1.2. Séquences à support temporel fini
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sequences-particulieres">
-   5.1.2. Séquences particulières
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#impulsion-delta-de-kronecker">
-     5.1.2.1. Impulsion Delta de Kronecker
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sequence-impulsion-unite">
-     5.1.2.2. Séquence Impulsion Unité
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sequences-sinusoidales">
-   5.1.3. Séquences sinusoïdales
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Signaux à temps discrets</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sequences-et-espace-s-des-sequences">
-   5.1.1. Séquences et Espace(s) des séquences
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sequences-a-support-infini">
-     5.1.1.1. Séquences à support infini
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sequences-a-support-temporel-fini">
-     5.1.1.2. Séquences à support temporel fini
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sequences-particulieres">
-   5.1.2. Séquences particulières
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#impulsion-delta-de-kronecker">
-     5.1.2.1. Impulsion Delta de Kronecker
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sequence-impulsion-unite">
-     5.1.2.2. Séquence Impulsion Unité
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sequences-sinusoidales">
-   5.1.3. Séquences sinusoïdales
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Signaux à temps discrets</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-et-espace-s-des-sequences">5.1.1. Séquences et Espace(s) des séquences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-a-support-infini">5.1.1.1. Séquences à support infini</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-a-support-temporel-fini">5.1.1.2. Séquences à support temporel fini</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-particulieres">5.1.2. Séquences particulières</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impulsion-delta-de-kronecker">5.1.2.1. Impulsion Delta de Kronecker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-impulsion-unite">5.1.2.2. Séquence Impulsion Unité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-sinusoidales">5.1.3. Séquences sinusoïdales</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="section" id="signaux-a-temps-discrets">
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="signaux-a-temps-discrets">
 <h1><span class="section-number">5.1. </span>Signaux à temps discrets<a class="headerlink" href="#signaux-a-temps-discrets" title="Permalink to this headline">#</a></h1>
-<div class="section" id="sequences-et-espace-s-des-sequences">
+<section id="sequences-et-espace-s-des-sequences">
 <h2><span class="section-number">5.1.1. </span>Séquences et Espace(s) des séquences<a class="headerlink" href="#sequences-et-espace-s-des-sequences" title="Permalink to this headline">#</a></h2>
 <p>A partir des échantillons d’un signal analogique <span class="math notranslate nohighlight">\(x_a(t)\)</span>, on obtient un signal à temps discret représenté par des séquences de nombres qui sont notées <span class="math notranslate nohighlight">\(\left\{x[n]\right\},\)</span> ou de manière vectorielle par <span class="math notranslate nohighlight">\({\bf x}\)</span>, où <span class="math notranslate nohighlight">\(x[n]\)</span> étant l’élément d’index temporelle <span class="math notranslate nohighlight">\(n\)</span> (<span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span> entier relatif). Par souci de simplicité des notations, on omettra les parenthèses lorsque le contexte le permet. Généralement, on a à manipuler deux grandes catégories de séquences:</p>
-<ol>
+<ol class="arabic">
 <li><p><em><strong>Les séquences discrètes à support temporel infini :</strong></em></p>
 <p>ce sont des séquences dont le support temporel <span class="math notranslate nohighlight">\(n\)</span> est défini sur <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> (dîtes infinies “à gauche” et “à droite”, en référence à l’échantillon de référence pour <span class="math notranslate nohighlight">\(n=0\)</span>), sur <span class="math notranslate nohighlight">\(\mathbb{Z}_{+}\)</span> (encore noté <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>) (signal causal infini à droite), ou sur <span class="math notranslate nohighlight">\(\mathbb{Z}_{-}\)</span> (signal infini à gauche). Ces séquences appartiennent appartiennent à l’espace vectoriel <span class="math notranslate nohighlight">\(\mathbb{C}^{\mathbb{Z}}\)</span> et sont notées</p>
 </li>
 </ol>
 <div class="math notranslate nohighlight">
 \[{\bf x}=\left[\begin{array}{lllll}{\cdots} &amp; {x[-1]} &amp; {x[0]} &amp; {x[1]} &amp; {\cdots}\end{array}\right]^{\top}.\]</div>
-<ol>
+<ol class="arabic" start="2">
 <li><p><em><strong>Les séquences discrètes à support temporel fini :</strong></em></p>
 <p>Ces séquences sont à support fini et sont représentées de manière générale par un vecteur de taille fini <span class="math notranslate nohighlight">\({\bf x} \in \mathbb{C}^N\)</span> donné par</p>
 <div class="math notranslate nohighlight">
@@ -659,7 +421,7 @@ title="Print to PDF"
 </li>
 </ol>
 <p>où <span class="math notranslate nohighlight">\({\bf x}\)</span> est assimilé à un vecteur de <span class="math notranslate nohighlight">\(\mathbb{C}^N\)</span>. L’indexation retenue ne correspond donc plus nécessairement à l’indexation temporelle des échantillons.</p>
-<div class="section" id="sequences-a-support-infini">
+<section id="sequences-a-support-infini">
 <h3><span class="section-number">5.1.1.1. </span>Séquences à support infini<a class="headerlink" href="#sequences-a-support-infini" title="Permalink to this headline">#</a></h3>
 <p>Pour les séquences à support infinies, les séquences de <span class="math notranslate nohighlight">\(\mathbb{C}^{\mathbb{Z}}\)</span> définissent un espace vectoriel des séquences complexes infinies définies sur <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> formellement décrit comme</p>
 <div class="math notranslate nohighlight">
@@ -683,8 +445,8 @@ La norme associé est donnée par</p>
 <div class="math notranslate nohighlight">
 \[\Vert x\Vert _{p}=\left(\sum_{n \in \mathbb{Z}}\left|x_{n}\right|^{p}\right)^{1 / p}\]</div>
 <p>On peut alors montrer que si <span class="math notranslate nohighlight">\(p&lt;q\)</span>, alors <span class="math notranslate nohighlight">\(\ell^{p}(\mathbb{Z})\subset \ell^{p}(\mathbb{Z}\)</span>. Ceci implique que l’ensemble <span class="math notranslate nohighlight">\(\ell^{1}(\mathbb{Z}\)</span> est l’ensemble de séquences le plus réduit/restreint. En particulier, pour ce qui nous concerne le plus, on s’intéresse surtout au fait que <span class="math notranslate nohighlight">\(\ell^{1}(\mathbb{Z})\subset \ell^{2}(\mathbb{Z})\)</span>. Cela induit en effet que que si une séquence à une norme <span class="math notranslate nohighlight">\(\ell^1\)</span> finie alors elle aura une norme <span class="math notranslate nohighlight">\(\ell^2\)</span> finie., les signaux absolument sommables sont donc de carrés sommables. L’inverse est faux.</p>
-</div>
-<div class="section" id="sequences-a-support-temporel-fini">
+</section>
+<section id="sequences-a-support-temporel-fini">
 <h3><span class="section-number">5.1.1.2. </span>Séquences à support temporel fini<a class="headerlink" href="#sequences-a-support-temporel-fini" title="Permalink to this headline">#</a></h3>
 <p>Pour les séquences à support fini, les séquences de <span class="math notranslate nohighlight">\(\mathbb{C}^{\mathbb{Z}}\)</span> définissent un sous-espace vectoriel de dimension finie des séquences complexes finies définies sur <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> se décrivant formellement comme</p>
 <div class="math notranslate nohighlight">
@@ -705,27 +467,27 @@ La norme associé est donnée par</p>
 <p>et pour <span class="math notranslate nohighlight">\(p=1\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\Vert x \Vert_1=\sum_{n=0}^{N-1}\left|x_{n}\right|.\]</div>
-</div>
-</div>
-<div class="section" id="sequences-particulieres">
+</section>
+</section>
+<section id="sequences-particulieres">
 <h2><span class="section-number">5.1.2. </span>Séquences particulières<a class="headerlink" href="#sequences-particulieres" title="Permalink to this headline">#</a></h2>
-<div class="section" id="impulsion-delta-de-kronecker">
+<section id="impulsion-delta-de-kronecker">
 <h3><span class="section-number">5.1.2.1. </span>Impulsion Delta de Kronecker<a class="headerlink" href="#impulsion-delta-de-kronecker" title="Permalink to this headline">#</a></h3>
 <p>La séquence dîte de Kronecker est donnée par définition par</p>
 <div class="proof definition admonition" id="definition-0">
 <p class="admonition-title"><span class="caption-number">Definition 5.1 </span> (Impulsion Delta de Kronecker)</p>
-<div class="definition-content section" id="proof-content">
+<section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight">
 \[\begin{split}\delta[n]=\left\{\begin{array}{ll}{1,} &amp; {\text { for } n=0 ;} \\ {0,} &amp; {\text { otherwise }}\end{array} \quad n \in \mathbb{Z}\right.\end{split}\]</div>
 <p>En notation vectoriel, on  notera</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{\delta}=\left[\begin{array}{lllll}{\cdots} &amp; 0 &amp; {1} &amp; {0} &amp; {\cdots}\end{array}\right]^{\top}\]</div>
-</div>
+</section>
 </div><p>L’ensemble <span class="math notranslate nohighlight">\(\left\{\delta[n-k]\right\}_{k \in \mathbb{Z}}\)</span> qui correspond aux versions décalées de <span class="math notranslate nohighlight">\(k\)</span> échantillons dans le temps de la séquence <span class="math notranslate nohighlight">\(\delta[n]\)</span> forme la base orthonormale usuelle associée à <span class="math notranslate nohighlight">\(\ell^{2}(\mathbb{Z})\)</span>. On notera <span class="math notranslate nohighlight">\({\bf \delta_k}\)</span> la version vectorielle de <span class="math notranslate nohighlight">\(\delta[n-k]\)</span>.</p>
 <p>En particulier, on aura les propriétés suivantes:</p>
 <div class="proof property admonition" id="property-1">
 <p class="admonition-title"><span class="caption-number">Property 5.1 </span></p>
-<div class="property-content section" id="proof-content">
+<section class="property-content" id="proof-content">
 <ul class="simple">
 <li><p><em><strong>Produit (terme à terme) d’une séquence par l’impulsion de Kronecker:</strong></em></p></li>
 </ul>
@@ -736,30 +498,30 @@ La norme associé est donnée par</p>
 </ul>
 <div class="math notranslate nohighlight">
 \[\langle x, \delta_{n_0} \rangle =\sum_{k \in \mathbb{Z}}{x[k] \delta[k-n_0]}=x[n_0]\]</div>
-</div>
-</div></div>
-<div class="section" id="sequence-impulsion-unite">
+</section>
+</div></section>
+<section id="sequence-impulsion-unite">
 <h3><span class="section-number">5.1.2.2. </span>Séquence Impulsion Unité<a class="headerlink" href="#sequence-impulsion-unite" title="Permalink to this headline">#</a></h3>
 <p>La séquence d’impulsion Unité dîte Heaviside est donnée par définition par</p>
 <div class="proof definition admonition" id="definition-2">
 <p class="admonition-title"><span class="caption-number">Definition 5.2 </span> (Echelon Heaviside)</p>
-<div class="definition-content section" id="proof-content">
+<section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight">
 \[\begin{split}U[n]=\left\{\begin{array}{ll}{1,} &amp; {\text { for } n \in \mathbb{N} ;} \\ {0,} &amp; {\text { otherwise }}\end{array} \quad n \in \mathbb{Z}\right.\end{split}\]</div>
-</div>
+</section>
 </div><p>On a la relation suivante par rapport à la séquence Delta</p>
 <div class="math notranslate nohighlight">
 \[U[n]=\sum_{k=-\infty}^{n}{\delta[k]}.\]</div>
 <p>On voit qu’il existe une relation d’intégration entre ces deux séquences.</p>
 <p>Cette séquence a ses éléments bornés par 1 et donc appartient à <span class="math notranslate nohighlight">\(\ell^{\infty}(\mathbb{Z})\)</span> et donc n’appartient ni à <span class="math notranslate nohighlight">\(\ell^{1}(\mathbb{Z})\)</span>, ni à <span class="math notranslate nohighlight">\(\ell^{2}(\mathbb{Z})\)</span>.</p>
-</div>
-</div>
-<div class="section" id="sequences-sinusoidales">
+</section>
+</section>
+<section id="sequences-sinusoidales">
 <h2><span class="section-number">5.1.3. </span>Séquences sinusoïdales<a class="headerlink" href="#sequences-sinusoidales" title="Permalink to this headline">#</a></h2>
 <p>Ce sont les séquences de type <span class="math notranslate nohighlight">\(x[n]=e^{i 2 \pi \mathbb{N}u n},\)</span> ou <span class="math notranslate nohighlight">\(x[n]=sin(2nvn),\)</span>  et <span class="math notranslate nohighlight">\(x[n]=cos(2nvn),\)</span> .</p>
 <p>Par périodicité <span class="math notranslate nohighlight">\(x[n]=e^{i 2 \pi \mathbb{N}u n}\)</span> et <span class="math notranslate nohighlight">\(x'[n]=e^{i 2 \pi (\mathbb{N}u+N) n}\)</span>  sont identiques pour <span class="math notranslate nohighlight">\(N\)</span> est entier. Ceci peut être interprété  comme une conséquence du repliement de  spectre lors de  l’échantillonnage à la fréquence <span class="math notranslate nohighlight">\(F_e=1/T_e\)</span>. Ainsi, deux signaux continus définis par <span class="math notranslate nohighlight">\(x_a(t)=e^{i 2 \pi f t}\)</span> et <span class="math notranslate nohighlight">\(x'_a(t)=e^{i 2 \pi (f+N F_e) t}\)</span> sont indiscernables après échantillonnage à la fréquence <span class="math notranslate nohighlight">\(F_e\)</span>. En effet, le signal continu <span class="math notranslate nohighlight">\(x_a(t)=e^{i 2 \pi f t}\)</span> échantillonné à la fréquence <span class="math notranslate nohighlight">\(F_e\)</span> donne la séquence  <span class="math notranslate nohighlight">\(x[n] =e^{i 2 \pi \frac{f}{F_e} n}=e^{i 2 \pi \mathbb{N}u n}\)</span> avec <span class="math notranslate nohighlight">\(\mathbb{N}u=\frac{f}{F_e}\)</span>. La fréquence du signal échantillonnée <span class="math notranslate nohighlight">\(\mathbb{N}u\)</span> est donc égale à la fréquence <span class="math notranslate nohighlight">\(f\)</span> du signal à temps continu, normalisée par rapport à la fréquence d’échantillonnage <span class="math notranslate nohighlight">\(F_e\)</span>. On parlera de fréquence normalisée. De plus, <span class="math notranslate nohighlight">\(x[n]=e^{i 2 \pi \mathbb{N}u n}\)</span> étant <span class="math notranslate nohighlight">\(1\)</span>-périodique, on peut obtenir l’ensemble  des séquences associées à <span class="math notranslate nohighlight">\(x[n]\)</span> en faisant varier le paramètre <span class="math notranslate nohighlight">\(\mathbb{N}u\)</span> sur un intervalle de longueur <span class="math notranslate nohighlight">\(1\)</span>. On notera également que la périodicité n’est conservée que si <span class="math notranslate nohighlight">\(f/F_e\)</span> est rationnel.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -773,7 +535,7 @@ La norme associé est donnée par</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -781,50 +543,109 @@ La norme associé est donnée par</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="A1intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5. </span>Signaux et systèmes à temps discrets</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="A1intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Signaux et systèmes à temps discrets</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="A1sec2.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="A1sec2.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">5.2. </span>Systèmes à temps discret</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-et-espace-s-des-sequences">5.1.1. Séquences et Espace(s) des séquences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-a-support-infini">5.1.1.1. Séquences à support infini</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-a-support-temporel-fini">5.1.1.2. Séquences à support temporel fini</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-particulieres">5.1.2. Séquences particulières</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impulsion-delta-de-kronecker">5.1.2.1. Impulsion Delta de Kronecker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-impulsion-unite">5.1.2.2. Séquence Impulsion Unité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-sinusoidales">5.1.3. Séquences sinusoïdales</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By C. Poulliat<br/>
-  
-      &copy; Copyright 2021.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By C. Poulliat
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
