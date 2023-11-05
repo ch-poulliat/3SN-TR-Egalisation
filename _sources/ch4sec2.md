@@ -40,7 +40,7 @@ Deux types de critère peuvent alors s'appliquer comme dans le cas temporelle, l
 
 $$W[k]=\frac{1}{H[k]}$$
 
-2. Critère MMSE :**
+2. **Critère MMSE :**
 
 $$W[k]=\frac{\sigma_X^2H^*[k]}{\sigma_X^2|H[k]|^2+\sigma_B^2}$$
 
